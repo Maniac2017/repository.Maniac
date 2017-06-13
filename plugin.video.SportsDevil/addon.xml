@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon
   id="plugin.video.SportsDevil"
-  version="13062017"
+  version="14062017"
   name="SportsDevil"
   provider-name="SportsDevil">
   <requires>
