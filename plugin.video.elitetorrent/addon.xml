@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.elitetorrent" name="EliteTorrent" version="5.5.5" 
+       provider-name="Clipol">
+    <requires>
+        <import addon="xbmc.python" version="2.12.0"/>
+        <import addon="script.module.mctools" optional="false"/>
+    </requires>
+    <extension point="xbmc.python.pluginsource" library="main.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.service" library="service.py" start="login">
+    </extension>
+    <extension point="xbmc.addon.metadata">
+                <summary lang="es">Peliculas y Series</summary>
+                <description lang="es">Add-on es de EliteTorrent</description>
+        <language></language>
+        <platform>all</platform>
+        <forum></forum>
+        <disclaimer></disclaimer>
+        <license></license>
+    </extension>
+</addon>
