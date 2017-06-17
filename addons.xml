@@ -161,7 +161,7 @@
     </extension>
 </addon>
 
-<addon id="plugin.video.now_music" name="Now Thats What I Call Music"	version="5.5.5"	provider-name="Clipol">
+<addon id="plugin.video.now_music" name="Now Thats What I Call Music"	version="5.5.6"	provider-name="Clipol">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.addon.common" version="2.0.0"/>
