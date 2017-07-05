@@ -26,6 +26,37 @@
 
 </addon>
 
+<addon id="plugin.video.angelaaron" name="PVRIPTV" version="0.0.3" provider-name="Angelaaron">
+    <requires>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>Gracias por usar mi addon</summary>
+        <description>Carga listas de forma sencilla</description>
+    </extension>
+</addon>
+
+<addon id="plugin.video.anwizard"
+	   name="AnWizard"
+	   version="1.0.0"
+	   provider-name="Cakaab">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary>AnWizard</summary>
+    <description>Instalador inteligente que ayuda a configurar tu Kodi correctamente</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon
 	id="plugin.video.arenavisionezy"
 	name="ArenaVision EZY"
@@ -139,6 +170,24 @@
   </extension>
 </addon>
 
+<addon id="plugin.video.musicando" name="Musicando" version="0.0.1" provider-name="Simio">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="plugin.video.youtube"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="addon.py">
+    <provides>video audio</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <language>en</language>
+    <summary lang="es">Los Mejores Videos de YouTube. </summary>
+    <description lang="es">Los videos mas destacados de la red.</description>
+    <disclaimer lang="es">
+    </disclaimer>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.newpct1" name="NewPct1" version="5.5.5"
        provider-name="Clipol">
     <requires>
@@ -177,27 +226,6 @@
     <platform>all</platform>
     <forum>n/a</forum>
     <website>n/a</website>
-  </extension>
-</addon>
-
-<addon id="plugin.video.series" name="[COLOR gold]Series[/COLOR]" version="0.0.26" provider-name="Iego-CTA">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Series</summary>
-    <description>Podrás ver las series de ahora y antes, asi como las series animadas (dibujos)</description>
-    <disclaimer></disclaimer>
-    <language></language>
-    <platform>all</platform>
-    <license></license>
-    <forum></forum>
-    <website></website>
-    <email></email>
-    <source></source>
   </extension>
 </addon>
 
@@ -250,26 +278,6 @@
 		<summary>Third party Kodi addons updates/mods</summary>
 		<description>RonnieHD Repository</description>
 		<disclaimer></disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-
-<addon id="repository.shani" name="Shanis Addon Repository" version="2.9" provider-name="Shani">
-	<extension point="xbmc.addon.repository" name="Shanis Addon Repository">
-        <dir>
-			<info compressed="false">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml</info>
-			<checksum>https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/addons.xml.md5</checksum>
-			<datadir zip="true">https://offshoregit.com/tvaresolvers/tva-common-repository/raw/master/zips/</datadir>
-		</dir>
-
-    <info compressed="false">https://offshoregit.com/Shani-08/main/addons.xml</info>
-    <checksum>https://offshoregit.com/Shani-08/main/addons.xml.md5</checksum>
-    <datadir zip="true">https://offshoregit.com/Shani-08/main/zips</datadir>
-
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>Addons related to XBMC for Zemtv etc</summary>
-		<description>Go though the plugins and see what you like</description>
 		<platform>all</platform>
 	</extension>
 </addon>
