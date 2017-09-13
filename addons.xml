@@ -533,4 +533,27 @@
     <website></website>
   </extension>
 </addon>
+
+<addon id="skin.catana" version="1.1.1" name="[COLOR lime]Catana[/COLOR]" provider-name="Catana">
+	<requires>
+		<import addon="xbmc.gui" version="5.12.0"/>
+		<import addon="script.skinshortcuts" version="0.4.0" />
+		<import addon="plugin.program.autocompletion" version="1.0.1" />
+		<import addon="resource.images.studios.coloured" version="0.0.1" />
+		<import addon="script.skin.helper.service" version="1.0.100" />
+	</requires>
+	<extension point="xbmc.gui.skin" debugging="false" effectslowdown="0.75">
+		<res width="1280" height="720" aspect="16:9" default="true" folder="720p" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<summary></summary>
+		<description></description>
+		<platform>all</platform>
+		<license/>
+		<forum></forum>
+		<assets>
+			<icon>resources/icon.png</icon>
+		</assets>
+	</extension>
+</addon>
 </addons>
