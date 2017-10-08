@@ -149,35 +149,6 @@
   </extension>
 </addon>
 
-<addon
-	id="plugin.video.arenavisionezy"
-	name="ArenaVision EZY"
-	version="5.3.8"
-	provider-name="Wazzu">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="program.plexus" />
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="addon.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary>ArenaVision EZY</summary>
-		<description>Interfaz para ArenaVision</description>
-		<platform>all</platform>
-		<license/>
-		<forum/>
-		<website/>
-		<email>egrueda@gmail.com</email>
-		<source/>
-	</extension>
-	<extension point="xbmc.addon.repository" name="ArenaVision EZY">
-		<info compressed="false">https://avezy.tk/repo/addons.xml</info>
-		<checksum>https://avezy.tk/repo/addons.xml.md5</checksum>
-		<datadir zip="true">https://avezy.tk/repo/zip/</datadir>
-	</extension>
-</addon>
-
 <addon id="plugin.video.bonanza"
        name="IPTV BONANZA"
        version="1.0.0"
@@ -216,27 +187,6 @@
     <platform>all</platform>
     <forum>n/a</forum>
     <website>n/a</website>
-  </extension>
-</addon>
-
-<addon id="plugin.video.cine" name="Cine" version="1.0.23" provider-name="Topo">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Cine</summary>
-    <description>Addon de Cine</description>
-    <disclaimer></disclaimer>
-    <language></language>
-    <platform>all</platform>
-    <license></license>
-    <forum></forum>
-    <website></website>
-    <email></email>
-    <source></source>
   </extension>
 </addon>
 
@@ -282,24 +232,6 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.laliga" name="La Liga" version="0.0.20" provider-name="Topo">
-	<requires>
-		<import addon="xbmc.python" version="2.1.0"/>
-		<import addon="script.module.liveresolver"  />
-	</requires>
-	<extension point="xbmc.python.pluginsource" library="default.py">
-		<provides>video</provides>
-	</extension>
-	<extension point="xbmc.addon.metadata">
-		<summary lang="en">Liga Española: La mejor liga del mundo</summary>
-		<description lang="en">Liga Española, Premier, Champions and much more</description>
-		<description lang="es">Liga Española, Premier, Champions y mucho más</description>
-		<disclaimer lang="en">The author does not host or distribute any of the content displayed by this addon. The author does not have any affiliation with the content provider.</disclaimer>
-		<disclaimer lang="es">El autor no almacena ni distribuye ninguno de los contenidos que se muestran en este addon. El autor no tiene ninguna afiliación con el proveedor de contenidos.</disclaimer>
-		<platform>all</platform>
-	</extension>
-</addon>
-
 <addon id="plugin.video.musicando" name="Musicando" version="0.0.1" provider-name="Simio">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -318,28 +250,6 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.newpct1" name="NewPct1" version="5.5.5"
-       provider-name="Clipol">
-    <requires>
-        <import addon="xbmc.python" version="2.12.0"/>
-        <import addon="script.module.mctools" optional="false"/>
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="main.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.service" library="service.py" start="login">
-    </extension>
-    <extension point="xbmc.addon.metadata">
-                <summary lang="es">Peliculas</summary>
-                <description lang="es">Add-on es de NewPCT1</description>
-        <language></language>
-        <platform>all</platform>
-        <forum></forum>
-        <disclaimer></disclaimer>
-        <license></license>
-    </extension>
-</addon>
-
 <addon id="plugin.video.now_music" name="Now Thats What I Call Music"	version="5.5.7"	provider-name="Clipol">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -356,6 +266,38 @@
     <platform>all</platform>
     <forum>n/a</forum>
     <website>n/a</website>
+  </extension>
+</addon>
+
+<addon id="plugin.video.Planeta"
+       name="Planeta"
+       version="1.1.0"
+       provider-name="CatNer">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.beautifulsoup4" />
+    <import addon="script.module.requests" />
+    <import addon="script.module.httplib2" />
+    <import addon="script.module.liveresolver" version="0.1.24" optional="true"/>
+    <import addon="script.module.youtube.dl" optional="true"/>
+    <import addon="plugin.video.youtube" optional="true" />
+    <import addon="script.module.urlresolver" optional="true"/>
+    <import addon="script.module.simplejson" />
+     <import addon="script.module.livestreamer" optional="true"/>
+     <import addon="script.module.pyamf" optional="true"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+
+
+  <extension point="xbmc.addon.metadata">
+    <summary></summary>
+    <description>
+    </description>
+    <platform>all</platform>
   </extension>
 </addon>
 
