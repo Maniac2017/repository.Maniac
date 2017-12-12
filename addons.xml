@@ -476,7 +476,7 @@
   </extension>
 </addon>
 
-<addon id="skin.catana" version="1.1.1" name="[COLOR lime]Catana[/COLOR]" provider-name="Catana">
+<addon id="skin.catana" version="1.1.2" name="[COLOR lime]Catana[/COLOR]" provider-name="Catana">
 	<requires>
 		<import addon="xbmc.gui" version="5.12.0"/>
 		<import addon="script.skinshortcuts" version="0.4.0" />
