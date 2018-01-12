@@ -1,0 +1,17 @@
+<!-- CELLARDOOR COLOR SET BY CDTV -->
+<colors>
+        <!-- CONFLUENCE LITE COLORS -->
+	<color name="white">FFffffff</color>
+	<color name="grey">FFb4b4b4</color>
+	<color name="grey2">88FFFFFF</color>
+        <color name="grey2+">FF5e5e5e</color>
+	<color name="grey3">FF505050</color>
+	<color name="grey4">17FFFFFF</color>
+	<color name="black">FF000000</color>
+	<color name="blue">FF005C99</color>
+	<color name="selected">FF4D94FE</color>
+	<color name="dialogheader">FF4D94FE</color>
+        <color name="orange">FF4D94FE</color>
+        <color name="invalid">FF807FFE</color>
+	<color name="selected+">FF4D94FE</color>
+</colors>

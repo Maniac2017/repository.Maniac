@@ -1,0 +1,17 @@
+<!-- INNERVISION COLOR SET BY CDTV -->
+<colors>
+        <!-- CONFLUENCE LITE COLORS -->
+	<color name="white">FFffffff</color>
+	<color name="grey">FFb4b4b4</color>
+	<color name="grey2">88FFFFFF</color>
+        <color name="grey2+">FF5e5e5e</color>
+	<color name="grey3">33FFFFFF</color>
+	<color name="grey4">17FFFFFF</color>
+	<color name="black">FF000000</color>
+	<color name="blue">FFEB9E17</color>
+	<color name="selected">FFFF3334</color>
+	<color name="dialogheader">FFFF3334</color>
+        <color name="orange">FFD22B04</color>
+        <color name="invalid">FFEB9E17</color>
+	<color name="selected+">d0ebb217</color>
+</colors>
