@@ -232,7 +232,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.musicando" name="Musicando" version="0.0.4" provider-name="Catoal">
+<addon id="plugin.video.musicando" name="Musicando" version="0.0.5" provider-name="Catoal">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="plugin.video.youtube"/>
@@ -321,6 +321,23 @@
     <summary>Plexus wrapper</summary>
     <description lang="en">P2P-Streams fork that works as a Plexus wrapper</description>
     <disclaimer lang="en">The authors does not host nor distribute any of the content you may watch using this addon. The authors have no affiliation with any of the content providers. This addon does not track its users.</disclaimer>
+    <platform>all</platform>
+  </extension>
+</addon>
+
+<addon id="plugin.video.sportweb" name="[COLOR coral]SportsWeb[/COLOR]" version="0.0.1" provider-name="Bad-Max">
+  <requires>
+   <import addon="xbmc.python" version="2.1.0"/>
+   <import addon="script.module.requests"/>
+   <import addon="plugin.video.SportsDevil"/>
+   <import addon="program.plexus"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Para Intentar ver lo mejor del Deporte, mediante las Webs mas estables</summary>
+    <description>Plugin Para Intentar ver lo mejor del Deporte, mediante las Webs mas estables... necesario Plex+AceStream, F4MTester y SportsDevil (el de Jairox, sobre todo para los VerLiga.net... y desactivar la opción al SportsDevil la opción 'AutoActualizar'... Gracias También a Goldonx por su siempre desinteresada ayuda) para su correcto Funcionamiento.</description>
     <platform>all</platform>
   </extension>
 </addon>
