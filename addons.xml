@@ -325,7 +325,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.sportweb" name="[COLOR coral]SportsWeb[/COLOR]" version="0.0.1" provider-name="Bad-Max">
+<addon id="plugin.video.sportweb" name="[COLOR coral]SportsWeb[/COLOR]" version="0.0.2" provider-name="Bad-Max">
   <requires>
    <import addon="xbmc.python" version="2.1.0"/>
    <import addon="script.module.requests"/>
