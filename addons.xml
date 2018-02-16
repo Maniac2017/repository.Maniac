@@ -232,7 +232,7 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.musicando" name="Musicando" version="0.0.5" provider-name="Catoal">
+<addon id="plugin.video.musicando" name="Musicando" version="0.0.6" provider-name="Catoal">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="plugin.video.youtube"/>
@@ -468,6 +468,24 @@
                 <description>Download and install addons from the Kodi Youtube group. This plugin is not official from Google.</description>
 		<platform>all</platform>
 	</extension>
+</addon>
+
+<addon id="script.kodispeedtest"
+       name="Test de Velocidad"
+       version="0.0.5"
+       provider-name="[COLOR lime]Catoal[/COLOR]">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+  </requires>
+  <extension point="xbmc.python.script"
+             library="default.py">
+        <provides>video executable</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Test de velocidad</summary>
+    <description lang="en"></description>
+    <platform>all</platform>
+  </extension>
 </addon>
 
 <addon id="script.limpiarkodi"
