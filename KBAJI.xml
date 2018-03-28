@@ -48,7 +48,7 @@ def GetLSProData(page_data,Cookie_Jar,m):
  nrj=json.loads(nr)
  nr = nrj['Content']
  r2 = re.findall(r'(?s)value=\"(.*?)\"', nr)[0]
- data_a ={'__RequestVerificationToken': r2 , 'Username': 'catoal1' , 'Password' : 'masterkodi2016'}
+ data_a ={'__RequestVerificationToken': r2 , 'Username': 'adminespalantir' , 'Password' : 'adminespalantir'}
  nr1 = requests.post('http://diskokosmiko.mx/action/Account/Login', headers=headers,cookies = rv1 , data=data_a)
  print nr1.headers['Set-Cookie']
  rasp = re.findall('ASPXAUTH_v2=(.*?);', nr1.headers['Set-Cookie'])[0]
