@@ -11,7 +11,7 @@
         <fanart></fanart>
         ]]></listrepeat>
 <expres>terror:"(.*?)" src="(.*?)"</expres>
-<page>xxxxxxxxxxxxx.txt</page>
+<page>https://raw.githubusercontent.com/Maniac2017/repository.Maniac/master/KBAGI.txt</page>
 <cookieJar></cookieJar>
 </regex>
 
