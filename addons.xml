@@ -118,6 +118,42 @@
   </extension>
 </addon>
 
+<addon id="plugin.video.Agora"
+       name="[COLOR white]Agora[/COLOR]"
+       version="0.0.2"
+       provider-name="Teco">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.beautifulsoup4" />
+    <import addon="script.module.requests" />
+    <import addon="script.module.httplib2" />
+    <import addon="script.module.liveresolver" version="0.1.24" optional="true"/>
+    <import addon="script.module.youtube.dl" optional="true"/>
+    <import addon="plugin.video.youtube" optional="true" />
+    <import addon="script.module.urlresolver" optional="true"/>
+    <import addon="script.module.simplejson" />
+     <import addon="script.module.livestreamer" optional="true"/>
+     <import addon="script.module.pyamf" optional="true"/>
+	 <import addon="script.globalsearch" version="5.0.0"/>
+	 <import addon="plugin.program.autocompletion" version="1.0.1"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+  <extension point="xbmc.addon.repository" name=" ">
+        <info></info>
+        <checksum></checksum>
+        <datadir zip="false"></datadir>
+    </extension>
+    <summary> </summary>
+    <description>Addon de Documentales 100% gratuito y basado en Youtube con licencia GNU GPL.</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.angelaaron" name="PVRIPTV" version="0.0.3" provider-name="Angelaaron">
     <requires>
     </requires>
@@ -321,35 +357,6 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.wet4u"
-       name="Wet4U"
-       version="1.0.2"
-       provider-name="Pólux">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.beautifulsoup4" />
-    <import addon="script.module.requests" />
-    <import addon="script.module.httplib2" />
-    <import addon="script.module.liveresolver" version="0.1.24" optional="true"/>
-    <import addon="script.module.youtube.dl" optional="true"/>
-    <import addon="plugin.video.youtube" optional="true" />
-    <import addon="script.module.urlresolver" optional="true"/>
-    <import addon="script.module.simplejson" />
-     <import addon="script.module.livestreamer" optional="true"/>
-     <import addon="script.module.pyamf" optional="true"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary>Addon xxx. Contenido sólo para mayores 18 años</summary>
-    <description>Addon xxx. Vídeos y películas eróticas</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="program.plexus"
        name="Plexus"
        version="0.1.6.a"
@@ -373,20 +380,6 @@
    	<disclaimer lang="es">El autor no aloja ni distribuye cualquier contenido que ud. pudiera reproducir usando este addon. El autor no tiene participacion en el desarrollo de cualquier tecnologia incluida. Cuando requiera ayuda en el foro de Kodi por favor respete las reglas (http://kodi.wiki/view/Forum_rules).</disclaimer>
     <platform>all</platform>
   </extension>
-</addon>
-
-<addon id="repository.kodil" name=".[COLOR blue].Kodil [/COLOR][COLOR white] Repository [/COLOR]" version="1.3" provider-name="kodil">
-    <extension point="xbmc.addon.repository" name=".Kodil  Repository ">
-        <info compressed="false">https://raw.githubusercontent.com/kodil/kodil/master/addons.xml</info>
-        <checksum>https://raw.githubusercontent.com/kodil/kodil/master/addons.xml.md5</checksum>
-        <datadir zip="true">https://raw.githubusercontent.com/kodil/kodil/master/repo</datadir>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <summary>kodisrael repository</summary>
-        <description>kodil repository - the most extensive repository in isrl </description>
-        <description>הריפו של קודישראל - מאגר ההרחבות הגדול והאיכותי בישראל  </description>
-        <platform>all</platform>
-    </extension>
 </addon>
 
 <addon id="repository.myshows.me" name="MyShows.me Kodi Repo" version="1.0.5" provider-name="DiMartino">
@@ -490,7 +483,7 @@
   </extension>
 </addon>
 
-<addon id="skin.catana" version="1.1.7" name="[COLOR lime]Catana[/COLOR]" provider-name="Catana">
+<addon id="skin.catana" version="1.1.8" name="[COLOR lime]Catana[/COLOR]" provider-name="Catana">
 	<requires>
 		<import addon="xbmc.gui" version="5.12.0"/>
 		<import addon="script.skinshortcuts" version="0.4.0" />
