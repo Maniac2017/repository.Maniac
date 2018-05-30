@@ -226,6 +226,22 @@
   </extension>
 </addon>
 
+<addon id="plugin.video.comics" name="[COLOR blue][B]Visor de Comics[/B][/COLOR]" version="0.0.4" provider-name="Bad-Max">
+  <requires>
+   <import addon="xbmc.python" version="2.1.0"/>
+   <import addon="script.module.requests"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+        <provides>video</provides>
+  </extension>
+  <extension point="xbmc.addon.metadata">
+    <summary lang="en">Addon de Pruebas para Lectura de Comics</summary>
+    <description>[COLOR red]Lectura de Comics en la TV.[/COLOR]  [COLOR white]*Este Addon es un mero ejercicio de programación y está orientado a que cada usuario lo utilice como Copia de Seguridad Digital de sus propios Comics. No se hace responsable del uso que cada usuario le dé.[/COLOR]
+</description>
+    <platform>all</platform>
+  </extension>
+</addon>
+
 <addon id="plugin.video.JustForLaughs"
 	name="Just For Laughs"
 	version="1.0.0"
