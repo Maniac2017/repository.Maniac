@@ -522,7 +522,7 @@
 	</extension>
 </addon>
 
-<addon id="skin.hsk.konfluence" version="999.44" name="HSK Konfluence" provider-name="SchisM">
+<addon id="skin.hsk.konfluence" version="999.45" name="HSK Konfluence" provider-name="SchisM">
 	<requires>
 		<import addon="xbmc.gui" version="5.12.0"/>
 		<import addon="script.skinshortcuts" version="0.4.0" />
