@@ -97,27 +97,6 @@
 
 </addon>
 
-<addon id="plugin.video.18"
-       name="[COLOR pink]Solo Adultos + 18[/COLOR]"
-	   version="5.5.5"
-	   provider-name="Maniac">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-	<import addon="script.module.addon.common" />
-	<import addon="script.module.requests" />
-	<import addon="script.module.urlresolver" />
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-        <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en"></summary>
-    <description lang="en"></description>
-	<disclaimer lang="en"></disclaimer>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.Agora"
        name="[COLOR white]Agora[/COLOR]"
        version="0.0.2"
@@ -182,47 +161,6 @@
     <summary>AnWizard</summary>
     <description>Instalador inteligente que ayuda a configurar tu Kodi correctamente</description>
     <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.bonanza"
-       name="IPTV BONANZA"
-       version="1.0.0"
-       provider-name="BONANZA">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.video.F4mProxy" version="2.5.7" />
-    </requires>
-    <extension point="xbmc.python.pluginsource"
-               library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <license>GPL 2.0</license>
-        <summary lang="en">IPTV BONANZA</summary>
-        <description lang="en">Find and play daily IPTV lists in blogs and websites.</description>
-    </extension>
-</addon>
-
-<addon id="plugin.video.canalnereo"
-	name="[COLOR skyblue]Canal NEREO[/COLOR]"
-	version="0.0.1"
-	provider-name="Catoal">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.addon.common" version="2.0.0"/>
-    <import addon="plugin.video.youtube" version="5.0.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="es">Kodi-Tutoriales</summary>
-    <description lang="es">Kodi, Addon , Repositorios</description>
-    <platform>all</platform>
-    <forum>n/a</forum>
-    <website>n/a</website>
   </extension>
 </addon>
 
@@ -297,38 +235,6 @@
     <platform>all</platform>
     <forum>n/a</forum>
     <website>n/a</website>
-  </extension>
-</addon>
-
-<addon id="plugin.video.Planeta"
-       name="Planeta"
-       version="1.1.1"
-       provider-name="CatNer">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.beautifulsoup4" />
-    <import addon="script.module.requests" />
-    <import addon="script.module.httplib2" />
-    <import addon="script.module.liveresolver" version="0.1.24" optional="true"/>
-    <import addon="script.module.youtube.dl" optional="true"/>
-    <import addon="plugin.video.youtube" optional="true" />
-    <import addon="script.module.urlresolver" optional="true"/>
-    <import addon="script.module.simplejson" />
-     <import addon="script.module.livestreamer" optional="true"/>
-     <import addon="script.module.pyamf" optional="true"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-
-
-  <extension point="xbmc.addon.metadata">
-    <summary></summary>
-    <description>
-    </description>
-    <platform>all</platform>
   </extension>
 </addon>
 
