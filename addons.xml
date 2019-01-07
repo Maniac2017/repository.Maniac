@@ -405,7 +405,7 @@
   </extension>
 </addon>
 
-<addon id="skin.aeon.nox.5" version="8.0.0" name="Aeon Nox" provider-name="BigNoid">
+<addon id="skin.aeon.nox.5" version="8.0.1" name="Aeon Nox" provider-name="BigNoid">
 	<requires>
 		<import addon="xbmc.gui" version="5.13.0"/>
 		<import addon="script.grab.fanart" version="0.12.8"/>
@@ -524,7 +524,7 @@
 	</extension>
 </addon>
 
-<addon id="skin.hsk.konfluence" version="999.46" name="HSK Konfluence" provider-name="SchisM">
+<addon id="skin.hsk.konfluence" version="999.47" name="HSK Konfluence" provider-name="SchisM">
 	<requires>
 		<import addon="xbmc.gui" version="5.12.0"/>
 		<import addon="script.skinshortcuts" version="0.4.0" />
