@@ -234,8 +234,8 @@
 
 <addon id="plugin.video.plexus-streams"
        name="Plexus-Streams"
-       version="1.0.15m"
-       provider-name="D4FC">
+       version="2.0.69b"
+       provider-name="D4FC (Mod by Teco)">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
     <import addon="script.module.beautifulsoup" version="3.0.8"/>
@@ -250,7 +250,7 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary>Plexus wrapper</summary>
-    <description lang="en">P2P-Streams fork that works as a Plexus wrapper</description>
+    <description lang="es">Mod By Teco</description>
     <disclaimer lang="en">The authors does not host nor distribute any of the content you may watch using this addon. The authors have no affiliation with any of the content providers. This addon does not track its users.</disclaimer>
     <platform>all</platform>
   </extension>
