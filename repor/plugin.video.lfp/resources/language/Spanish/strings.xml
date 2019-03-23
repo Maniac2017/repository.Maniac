@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strings>
+    <string id="30000">Zona horaria</string>
+    <string id="30001">Filtrar links cuando sea posible (más lento)</string>
+    <!-- Europa -->
+    <string id="30010">Europa</string>
+    <string id="30011">Mostrar partidos de [COLOR gold]La Liga[/COLOR]</string>
+    <string id="30012">Mostrar partidos de [COLOR gold]La Liga 2[/COLOR]</string>
+    <string id="30013">Mostrar partidos de la [COLOR gold]Copa del Rey[/COLOR]</string>
+    <string id="30014">Mostrar partidos de la [COLOR gold]Premier League[/COLOR]</string>
+    <string id="30015">Mostrar partidos de la [COLOR gold]Italia Serie A[/COLOR]</string>
+    <string id="30016">Mostrar partidos de la [COLOR gold]Bundesliga[/COLOR]</string>
+    <string id="30017">Mostrar partidos de la [COLOR gold]French Ligue 1[/COLOR]</string>
+    <string id="30018">Mostrar partidos de la [COLOR gold]Portugal Superliga[/COLOR]</string>
+    <string id="30019">Mostrar partidos de la [COLOR gold]Eredivisie[/COLOR]</string>
+    <!-- América -->
+    <string id="30020">América</string>
+    <string id="30021">Mostrar partidos de [COLOR gold]Argentina[/COLOR]</string>
+    <string id="30022">Mostrar partidos de [COLOR gold]Chile[/COLOR]</string>
+    <string id="30023">Mostrar partidos de [COLOR gold]México[/COLOR]</string>
+    <string id="30024">Mostrar partidos de [COLOR gold]Brasil[/COLOR]</string>
+    <string id="30025">Mostrar partidos de la [COLOR gold]MLS (USA)[/COLOR]</string>
+    <string id="30026">Mostrar partidos de [COLOR gold]Colombia[/COLOR]</string>
+    <string id="30027">Mostrar partidos de [COLOR gold]Copa MX[/COLOR]</string>
+    <!-- Internacional -->
+    <string id="30030">Internacional</string>
+    <string id="30031">Mostrar partidos de la [COLOR gold]UEFA Champions League[/COLOR]</string>
+    <string id="30032">Mostrar partidos de la [COLOR gold]UEFA Europa League[/COLOR]</string>
+    <string id="30033">Mostrar partidos de [COLOR gold]Clasificación del Mundial[/COLOR]</string>
+    <string id="30034">Mostrar partidos de la [COLOR gold]UEFA Youth League[/COLOR]</string>
+    <string id="30035">Mostrar partidos de la [COLOR gold]Copa Sudamericana[/COLOR]</string>
+</strings>
+

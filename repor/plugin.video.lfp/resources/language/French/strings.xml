@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strings>
+    <string id="30000">Fuseau horaire</string>
+    <string id="30001">Filtrer les liens chaque fois que possible (plus lent)</string>
+    <!-- Europa -->
+    <string id="30010">Europe</string>
+    <string id="30011">Voir les matchs de [COLOR gold]La Liga[/COLOR]</string>
+    <string id="30012">Voir les matchs de [COLOR gold]La Liga 2[/COLOR]</string>
+    <string id="30013">Voir les matchs de la [COLOR gold]Copa del Rey[/COLOR]</string>
+    <string id="30014">Voir les matchs de la [COLOR gold]Premier League[/COLOR]</string>
+    <string id="30015">Voir les matchs de la [COLOR gold]Italie Serie A[/COLOR]</string>
+    <string id="30016">Voir les matchs de la [COLOR gold]Bundesliga[/COLOR]</string>
+    <string id="30017">Voir les matchs de la [COLOR gold]French Ligue 1[/COLOR]</string>
+    <string id="30018">Voir les matchs de la [COLOR gold]Portugal Superliga[/COLOR]</string>
+    <string id="30019">Voir les matchs de la [COLOR gold]Eredivisie[/COLOR]</string>
+    <!-- América -->
+    <string id="30020">Amérique</string>
+    <string id="30021">Voir les matchs de [COLOR gold]l'Argentine[/COLOR]</string>
+    <string id="30022">Voir les matchs de [COLOR gold]Chili[/COLOR]</string>
+    <string id="30023">Voir les matchs de [COLOR gold]Mexique[/COLOR]</string>
+    <string id="30024">Voir les matchs de [COLOR gold]Brésil[/COLOR]</string>
+    <string id="30025">Voir les matchs de la [COLOR gold]MLS (USA)[/COLOR]</string>
+    <string id="30026">Voir les matchs de [COLOR gold]La Colombie[/COLOR]</string>
+    <string id="30027">Voir les matchs de la [COLOR gold]Copa MX[/COLOR]</string>
+    <!-- Internacional -->
+    <string id="30030">International</string>
+    <string id="30031">Voir les matchs de la [COLOR gold]UEFA Champions League[/COLOR]</string>
+    <string id="30032">Voir les matchs de la [COLOR gold]UEFA Europa League[/COLOR]</string>
+    <string id="30033">Voir les matchs de [COLOR gold]Éliminatoires de la Coupe du Monde[/COLOR]</string>
+    <string id="30034">Voir les matchs de la [COLOR gold]UEFA Youth League[/COLOR]</string>
+    <string id="30035">Voir les matchs de la [COLOR gold]Copa Sudamericana[/COLOR]</string>
+</strings>
+
