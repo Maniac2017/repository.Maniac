@@ -22,8 +22,9 @@ import base64
 import cookielib
 import requests
 import magic_aes
+import xbmc
 
-BASEURL='http://www.sport365.live/es/home'
+
 UA='Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'
 
 
@@ -62,9 +63,10 @@ def getUrlc(url, data=None, header={}, usecookies=True):
     return link, c
 
 
-def getChannels(addheader=False):
+def getChannels(addheader=False, BASEURL='http://www.sport365.live/en'):
     ret=''
-    content = getUrl(BASEURL)
+    xbmc.log('@#@#BASEURL: %s' % BASEURL, xbmc.LOGNOTICE)
+    content = getUrl(BASEURL + '/main')
     wrapper = re.compile('(http[^"]+/advertisement.js\?\d+)').findall(content)
     wrappers = re.compile('<script type="text/javascript" src="(http://s1.medianetworkinternational.com/js/\w+.js)"').findall(content)
     for wrapper in wrappers:
@@ -83,7 +85,7 @@ def getChannels(addheader=False):
                   datetime.utcfromtimestamp(ts)).total_seconds()
 
     minutes = int(utc_offset) / 60
-    url = 'http://www.sport365.live/es/events/-/1/-/-/' + str(minutes)
+    url = BASEURL + '/events/-/1/-/-/' + str(minutes)
 
     content = getUrl(url)
     ids = [(a.start(), a.end()) for a in re.finditer('onClick=', content)]
@@ -99,7 +101,7 @@ def getChannels(addheader=False):
         online = '[COLOR lightgreen]•[/COLOR]' if subset.find('/images/types/dot-green-big.png')>0 else '[COLOR red]*[/COLOR]'
         if links and title2:
             event,urlenc=links[0]
-            url = 'http://www.sport365.live/es/links/%s/1@%s'%(event.split('_')[-1],ret)
+            url = BASEURL + '/links/%s/1@%s'%(event.split('_')[-1],ret)
             etime,title1= t[:2]
             lang = t[-1]
             quality = t[-2].replace('&nbsp;', '') if 'nbsp' in t[-2] else 'SD'
@@ -174,14 +176,16 @@ def getChannelVideo(item):
             a, c = getUrlc(srcs[-1], header=header, usecookies=True) if srcs else '', ''
             a, c = getUrlc(src, header=header, usecookies=True)
             # print a
+            url_head = '|User-Agent={0}&Referer={1}'.format(urllib.quote(UA), urllib.quote('http://h5.adshell.net/peer5'))
+
             if src.startswith('http'):
-                href = src + '|Referer=http://h5.adshell.net/peer5&User-Agent=%s' % UA
+                href = src + url_head
                 # print href
                 return href, srcs[-1], header, item['title']
             else:
                 href = magic_aes.decode_hls(src)
                 if href:
-                    href += '|Origin=http://h5.adshell.net&Referer=http://h5.adshell.net/peer5&User-Agent=%s' % UA
+                    href += url_head
                     return href, srcs[-1], header, item['title']
     return ''
 
