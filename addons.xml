@@ -97,21 +97,6 @@
 
 </addon>
 
-<addon id="plugin.program.WizardCatana" name="Wizard Catana" version="0.0.3" provider-name="CatAna">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>executable</provides>
-  </extension>
-  <extension point="xbmc.service" library="startup.py" start="startup" />
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Wizard</summary>
-    <description lang="en">Wizard Catana</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="plugin.video.1x2" name="1x2" version="0.0.9" provider-name="By Teco">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
