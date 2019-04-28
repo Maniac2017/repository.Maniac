@@ -97,7 +97,7 @@
 
 </addon>
 
-<addon id="plugin.video.1x2" name="1x2" version="0.0.10" provider-name="By Teco">
+<addon id="plugin.video.1x2" name="1x2" version="0.0.11" provider-name="By Teco">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.liveresolver"  />
@@ -271,35 +271,6 @@
   </extension>
 </addon>
 
-<addon id="plugin.video.sport365.live" name="Sport365 Mod by Teco" version="2.7.2" provider-name="Bugatsinho">
-    <requires>
-        <import addon="xbmc.python" version="2.1.0"/>
-        <import addon="script.module.requests" version="2.19.1"/>
-        <import addon="plugin.video.f4mTester" />
-    </requires>
-    <extension point="xbmc.python.pluginsource" library="main.py">
-        <provides>video</provides>
-    </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Sport365 originally made by GalAnonim</summary>
-    <description lang="en">Fork version 1.0 by GalAnonim!Kindly note that Sport365 Live is not an official part of the media player you are running, and therefore not to be mentioned within official support channels, this addon has nothing to do with the media player itself, nor it’s intended use, it is simply a third party plugin which has been added to your system.</description>
-    <disclaimer lang="en">Sport365 Live does not provide any streams of its own. Stream quality, content and copyright are responsibility of the ad-financed source web site.</disclaimer>
-    <language>en</language>
-    <platform>all</platform>
-    <license>GNU GENERAL PUBLIC LICENSE. Version 2, June 1991</license>
-    <website>https://bugatsinho.github.io</website>
-    <twitter>@bugatsinho</twitter>
-  <assets>
-    <icon>icon.png</icon>
-    <fanart>fanart.png</fanart>
-  </assets>
-  <news>2.5.2 23-03-2019
-- add inputstream option for playback(settings)
-- add alternatives domains and language support
-      (https://github.com/bugatsinho/bugatsinho.github.io/pull/15)</news>
-  </extension>
-</addon>
-
 <addon id="plugin.video.YouKids"
        name="[COLOR gold]YouKids[/COLOR]"
        version="0.0.3"
@@ -350,6 +321,30 @@
    	<disclaimer lang="es">El autor no aloja ni distribuye cualquier contenido que ud. pudiera reproducir usando este addon. El autor no tiene participacion en el desarrollo de cualquier tecnologia incluida. Cuando requiera ayuda en el foro de Kodi por favor respete las reglas (http://kodi.wiki/view/Forum_rules).</disclaimer>
     <platform>all</platform>
   </extension>
+</addon>
+
+<addon id="repository.bugatsinho" name=" Bugatsinho repository" version="2.1" provider-name="Bugatsinho">
+    <extension point="xbmc.addon.repository" name="Bugatsinho repository">
+        <info compressed="false">https://raw.githubusercontent.com/bugatsinho/bugatsinho.github.io/master/addons.xml</info>
+        <checksum>https://raw.githubusercontent.com/bugatsinho/bugatsinho.github.io/master/addons.xml.md5</checksum>
+        <datadir zip="true">https://raw.githubusercontent.com/bugatsinho/bugatsinho.github.io/master/_zips</datadir>
+        <hashes>false</hashes>
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/jsergio123/zips/master/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/jsergio123/zips/master/</datadir>
+        </dir>
+        <dir>
+            <info compressed="false">https://raw.githubusercontent.com/Twilight0/repo.twilight0.libs/master/_zips/addons.xml</info>
+            <checksum>https://raw.githubusercontent.com/Twilight0/repo.twilight0.libs/master/_zips/addons.xml.md5</checksum>
+            <datadir zip="true">https://raw.githubusercontent.com/Twilight0/repo.twilight0.libs/master/_zips/</datadir>
+        </dir>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <summary>Bugatsinho repository</summary>
+        <description>This repository contains Greek, Spanish and other addons!Read first each addon's description!</description>
+        <platform>all</platform>
+    </extension>
 </addon>
 
 <addon id="repository.myshows.me" name="MyShows.me Kodi Repo" version="1.0.5" provider-name="DiMartino">

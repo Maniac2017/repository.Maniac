@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<strings>
+    <string id="30000">Timezone</string>
+    <string id="30001">Filter links where possible (slower)</string>
+    <!-- Europa -->
+    <string id="30010">Europe</string>
+    <string id="30011">Show [COLOR gold]La Liga[/COLOR] matches</string>
+    <string id="30012">Show [COLOR gold]La Liga 2[/COLOR] matches</string>
+    <string id="30013">Show [COLOR gold]Spanish Copa del Rey[/COLOR] matches</string>
+    <string id="30014">Show [COLOR gold]Premier League[/COLOR] matches</string>
+    <string id="30015">Show [COLOR gold]Italy Serie A[/COLOR] matches</string>
+    <string id="30016">Show [COLOR gold]Bundesliga[/COLOR] matches</string>
+    <string id="30017">Show [COLOR gold]French Ligue 1[/COLOR] matches</string>
+    <string id="30018">Show [COLOR gold]Portugal Superliga[/COLOR] matches</string>
+    <string id="30019">Show [COLOR gold]Eredivisie[/COLOR] matches</string>
+    <!-- América -->
+    <string id="30020">America</string>
+    <string id="30021">Show [COLOR gold]Argentina[/COLOR] matches</string>
+    <string id="30022">Show [COLOR gold]Chile[/COLOR] matches</string>
+    <string id="30023">Show [COLOR gold]Mexico[/COLOR] matches</string>
+    <string id="30024">Show [COLOR gold]Brazil[/COLOR] matches</string>
+    <string id="30025">Show [COLOR gold]MLS[/COLOR] matches</string>
+    <string id="30026">Show [COLOR gold]Colombia[/COLOR] matches</string>
+    <string id="30027">Show [COLOR gold]Copa MX[/COLOR] matches</string>
+    <!-- Internacional -->
+    <string id="30030">International</string>
+    <string id="30031">Show [COLOR gold]UEFA Champions League[/COLOR] matches</string>
+    <string id="30032">Show [COLOR gold]UEFA Europa League[/COLOR] matches</string>
+    <string id="30033">Show [COLOR gold]FIFA World Cup Qualifiers[/COLOR] matches</string>
+    <string id="30034">Show [COLOR gold]UEFA Youth League[/COLOR] matches</string>
+    <string id="30035">Show [COLOR gold]Copa Sudamericana[/COLOR] matches</string>
+</strings>
+
