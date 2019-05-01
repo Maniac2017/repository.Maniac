@@ -97,7 +97,7 @@
 
 </addon>
 
-<addon id="plugin.video.1x2" name="1x2" version="0.0.12" provider-name="By Teco">
+<addon id="plugin.video.1x2" name="1x2" version="0.0.13" provider-name="By Teco">
     <requires>
         <import addon="xbmc.python" version="2.1.0"/>
         <import addon="script.module.liveresolver"  />
