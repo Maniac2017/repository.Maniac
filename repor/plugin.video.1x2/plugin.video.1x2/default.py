@@ -48,11 +48,11 @@ class main():
         return links
 
     def channels(self):
-        result = client.request('http://bit.ly/2Fy8R81', headers=self.headers, proxy="142.93.203.191:8080")
+        result = client.request('http://bit.ly/2Fy8R81', headers=self.headers, proxy="198.27.69.221:81")
         result = result.replace('<tr></tr>','')
         result = result.replace('<tr></tr>','')
         result = result.replace('<br />\n',' ')
-        result = result.replace('</tr><tr><td class="auto-style3" colspan="6">','')
+        result = result.replace('</tr><tr><td class="auto-style27" colspan="6">','')
         result = result.replace('<div id="1000233144"></div>','')
         result = result.replace('<script type="9b247a083b3ba8670323e9c1-text/javascript">','')
         result = result.replace('<!--//--><![CDATA[// ><!--','')
@@ -64,10 +64,15 @@ class main():
         result = result.replace('</tr><tr><td class="auto-style4" colspan="6">','')
         result = result.replace('<tr><td class="auto-style14" colspan="6">Last update:','')
         result = result.replace('<span class="auto-style15"> 29/04/2019 07:30 CEST</span> UTC +1 (Paris, Madrid, Brusells)</td>','')
+        result = result.replace('</tr><tr class="auto-style19"><td class="auto-style20" style="width: 129px">','</tr><tr><td class="auto-style27" style="width: 129px">')
+        result = result.replace('</tr><tr><td class="auto-style27" style="width: 129px">','</tr><tr><td class="auto-style27" style="width: 129px">')
+        result = result.replace('</tr><tr class="auto-style19"><td style="width: 129px" class="auto-style20">','</tr><tr><td class="auto-style27" style="width: 129px">')
 
 
 
-        table = client.parseDOM(result,'table',attrs={'style':'width: 100%; float: left'})[0]
+
+
+        table = client.parseDOM(result,'table',attrs={'style':'width: 100%; '})[0]
         rows = client.parseDOM(table,'tr')
 
 #       zx=''
@@ -219,7 +224,7 @@ class main():
         return new
 
     def resolve(self,url):
-        data = client.request(url, headers=self.headers, proxy="142.93.203.191:8080")
+        data = client.request(url, headers=self.headers, proxy="198.27.69.221:81")
         url = re.findall('{format:"json",id:"([^"]+)"}', data, re.DOTALL)
         url = url[0]
         return 'plugin://program.plexus/?mode=1&url=acestream://%s&name=Video' %url
