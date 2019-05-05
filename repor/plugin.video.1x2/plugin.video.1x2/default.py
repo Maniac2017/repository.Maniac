@@ -14,6 +14,10 @@ AddonPath = addon.get_path()
 IconPath = os.path.join(AddonPath, "resources/media/")
 fanart = os.path.join(AddonPath + "/fanart.jpg")
 
+# Proxy
+
+
+
 def icon_path(filename):
     if 'http://' in filename:
         return filename
@@ -38,7 +42,7 @@ class mylang():
 
 class main():
     def __init__(self):
-        self.base = 'http://fainbory.com/8v2z'
+        self.base = 'http://www.arenavision.us'
         self.headers = { "Cookie" : "beget=begetok; has_js=1;" }
         self.rslt = ''
 
@@ -48,7 +52,7 @@ class main():
         return links
 
     def channels(self):
-        result = client.request('http://bit.ly/2Fy8R81', headers=self.headers, proxy="198.27.69.221:81")
+        result = client.request('http://www.arenavision.us/guide', headers=self.headers)
         result = result.replace('<tr></tr>','')
         result = result.replace('<tr></tr>','')
         result = result.replace('<br />\n',' ')
@@ -85,6 +89,7 @@ class main():
 
         events = self.__prepare_events(rows)
         return events
+
 
     @staticmethod
     def convert_time(time,date):
@@ -224,7 +229,7 @@ class main():
         return new
 
     def resolve(self,url):
-        data = client.request(url, headers=self.headers, proxy="198.27.69.221:81")
+        data = client.request(url, headers=self.headers)
         url = re.findall('{format:"json",id:"([^"]+)"}', data, re.DOTALL)
         url = url[0]
         return 'plugin://program.plexus/?mode=1&url=acestream://%s&name=Video' %url

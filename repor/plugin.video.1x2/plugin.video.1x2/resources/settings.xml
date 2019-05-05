@@ -53,11 +53,10 @@
     <setting id="nba2" type="bool" label="40045" default="false"/>
     <setting id="ncaa" type="bool" label="40075" default="false"/>
   </category>
-  <category label="40046">
-    <setting id="motogp" type="bool" label="40049" default="false"/>
-  </category>
   <category label="40047">
     <setting id="formula1cf" type="bool" label="40050" default="false"/>
+    <setting id="motogp" type="bool" label="40049" default="false"/>
+    <setting id="fiaresi" type="bool" label="40178" default="false"/>
   </category>
   <category label="40051">
     <setting id="tenis" type="bool" label="40052" default="false"/>
@@ -76,6 +75,10 @@
     <setting id="link_precheck" type="bool" label="30001" default="true"/>
     <setting id="addon_debug" type="bool" label="Depuración" default="false"/>
     <setting id="torrentPlayer" type="enum" values="Plexus" label="Torrent player" default="0"/>
+    <setting type="sep" />
+    <setting id="proxy_1x2" type="bool" label="Proxy para 1x2" default="false"/>
+    <setting id="proxy_server" type="text" label="Proxy server"  enable="eq(-1,true)" default=""/>
+    <setting id="proxy_port" type="number" label="Proxy port"  enable="!eq(-1,)+eq(-2,true)" default=""/>
   </category>
 
 </settings>

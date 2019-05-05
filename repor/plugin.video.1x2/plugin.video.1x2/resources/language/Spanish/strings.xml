@@ -52,7 +52,7 @@
     <string id="40048">Mostrar partidos de la [COLOR gold]ACB[/COLOR]</string>
     <string id="40046">[B][LOWERCASE][CAPITALIZE][COLOR white]Moto[COLOR darkred]GP[/CAPITALIZE][/LOWERCASE][/B][/COLOR]</string>
     <string id="40049">Mostrar Carreras de [COLOR gold]Moto[COLOR red]GP[/COLOR]</string>
-    <string id="40047">[B][LOWERCASE][CAPITALIZE][COLOR white]formula [COLOR darkred]1[/CAPITALIZE][/LOWERCASE][/B][/COLOR]</string>
+    <string id="40047">[B][LOWERCASE][CAPITALIZE][COLOR white]motor [COLOR darkred][/CAPITALIZE][/LOWERCASE][/B][/COLOR]</string>
     <string id="40050">Mostrar Carreras de [COLOR gold]Formula [COLOR red]1[/COLOR]</string>
     <string id="40056">[B][LOWERCASE][CAPITALIZE][COLOR white]rugby[/CAPITALIZE][/LOWERCASE][/B][/COLOR]</string>
     <string id="40057">Mostrar partidos de [COLOR gold]Rugby[/COLOR]</string>
@@ -65,6 +65,7 @@
     <string id="40075">Mostrar partidos de la[COLOR gold] USA NCAA[/COLOR]</string>
     <string id="40076">Mostrar partidos de la[COLOR gold] Turkish Super Lig[/COLOR]</string>
     <string id="40078">Mostrar partidos de los[COLOR gold] Playoffs de la NBA[/COLOR]</string>
+    <string id="40178">Mostrar Carreras del [COLOR gold] Campeonato Mundial de Resistencia de la FIA[/COLOR]</string>
 
 </strings>
 
