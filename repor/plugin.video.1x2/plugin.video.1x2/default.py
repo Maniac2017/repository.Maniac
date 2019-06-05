@@ -71,7 +71,10 @@ class main():
         result = result.replace('</tr><tr class="auto-style19"><td class="auto-style20" style="width: 129px">','</tr><tr><td class="auto-style27" style="width: 129px">')
         result = result.replace('</tr><tr><td class="auto-style27" style="width: 129px">','</tr><tr><td class="auto-style27" style="width: 129px">')
         result = result.replace('</tr><tr class="auto-style19"><td style="width: 129px" class="auto-style20">','</tr><tr><td class="auto-style27" style="width: 129px">')
-        result = result.replace('</tr><tr><td class="auto-style10" colspan="6">Last update:<span class="auto-style15"> <span class="auto-style13">07/05/2019 15:00 CEST</span></span> UTC +1 (Paris, Madrid, Brusells)</td>','')
+        result = result.replace('</tr><tr><td class="auto-style10" colspan="6">Last update:<span class="auto-style15"> <span class="auto-style13">05/06/2019 04:30 CEST</span></span> UTC +1 (Paris, Madrid, Brusells)</td>','')
+        result = result.replace('FIFA WOMEN´S WORLD CUP 2019 ','FIFA WOMENS WORLD CUP 2019 ')
+        result = result.replace('FIFA WOMEN´S WORLD CUP 2019 ','FIFA WOMENS WORLD CUP 2019')
+
 
 
 

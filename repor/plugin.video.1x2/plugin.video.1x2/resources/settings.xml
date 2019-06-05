@@ -34,6 +34,8 @@
     <setting id="Internacional" type="action" label="[B][LOWERCASE][CAPITALIZE][COLOR lime]INTERNACIONAL[/CAPITALIZE][/LOWERCASE][/B][/COLOR]" />
     <setting id="champions" type="bool" label="30031" default="false"/>
     <setting id="eurleague" type="bool" label="30032" default="false"/>
+    <setting id="nation" type="bool" label="40289" default="false"/>
+    <setting id="womancup" type="bool" label="40287" default="false"/>
     <setting id="concaf" type="bool" label="40082" default="false"/>
     <setting id="copasub" type="bool" label="30035" default="false"/>
     <setting id="Libertadores" type="bool" label="30040" default="false"/>
