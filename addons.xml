@@ -426,7 +426,7 @@
 
 <addon id="script.kelebek"
        name="KELEBEK"
-       version="1.1.0"
+       version="2.0.0"
        provider-name="Anabel">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -434,6 +434,7 @@
     <import addon="script.module.beautifulsoup" version="3.2.1"/>
     <import addon="script.module.beautifulsoup4" />
     <import addon="script.module.requests" />
+    <import addon="script.module.myconnpy" version="1.1.7"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="main.py">
 	<provides>executable</provides>
