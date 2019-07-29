@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.video.1x2"
-  version="1.0.2"
+  version="1.0.3"
   name="1x2"
   provider-name="By Teco">
   <requires>
@@ -15,7 +15,7 @@
     <description lang="es">Los videos son proporcionados por personas ... en línea ... en algún lugar...</description>
     <disclaimer lang="es">El autor no almacena ni distribuye ninguno de los contenidos que se muestran en este addon. El autor no tiene ninguna afiliación con el proveedor de contenidos.</disclaimer>
     <assets>
-      <icon>icon.png</icon>
+      <icon>icon.gif</icon>
       <fanart>fanart.jpg</fanart>
     </assets>
   </extension>
