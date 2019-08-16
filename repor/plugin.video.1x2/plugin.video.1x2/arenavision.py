@@ -7,6 +7,15 @@ def mainmenu(item):
     itemlist = list()
 
     itemlist.append(item.clone(
+        label='Agenda de ArenaVision',
+        channel='arenavision',
+        action='main',
+        icon=os.path.join(image_path, 'arenavisionlogo1.png'),
+        url='http://arenavision.us',
+        plot='Muestra la Agenda oficial de Arenavision.'
+    ))
+
+    '''itemlist.append(item.clone(
         label='Agenda Linkotes',
         channel='arenavision',
         action='main',
@@ -15,15 +24,14 @@ def mainmenu(item):
         plot='Basada en la web https://linkotes.com'
     ))
 
-
-    '''itemlist.append(item.clone(
+    itemlist.append(item.clone(
         label='Agenda Acestream Spanish',
         channel='arenavision',
         action='main',
         icon=os.path.join(image_path, 'acestream_spanish.png'),
         url='http://acestreampi.ddns.net',
         plot='Basada en el grupo de Telegram: https://t.me/acestream_spanish'
-    ))'''
+    ))
 
     itemlist.append(item.clone(
         label='Agenda en imagen de ArenaVision',
@@ -33,7 +41,7 @@ def mainmenu(item):
         url='http://arenavision.us',
         isFolder=False,
         plot='Muestra una imagen de la Agenda oficial de Arenavision.\nUse la tecla ESC para salir.'
-    ))
+    ))'''
 
     itemlist.append(item.clone(
         label='Canales ArenaVision',
@@ -47,15 +55,47 @@ def mainmenu(item):
     return itemlist
 
 
-def read_guide(item):
+def read_guide(item, data=None):
     if 'linkotes' in item.url:
         return read_guide_linkotes('https://friendpaste.com/6wl4zDOlqmLJIEubSRSabr/raw')
+
+    elif 'arenavision' in item.url:
+        return read_guide_arenavision(data)
 
     if 'acestreampi.ddns' in item.url:
         return read_guide_acestream_spanish('http://acestreampi.ddns.net')
 
 
-def read_guide_linkotes(url):
+def read_guide_arenavision(data):
+    guide = []
+
+    if not data:
+        data = download_arenavision()
+
+    patron = '<tr><td class="auto-style3">(\d+/\d+/\d+)</td>\s*<td class="auto-style3">(\d+:\d+) CEST</td>\s*' \
+             '<td class="auto-style3">(.*?)</td>\s*<td class="auto-style3">(.*?)</td>\s*' \
+             '<td class="auto-style3">(.*?)</td>\s*<td class="auto-style3">(.*?)</td>\s*</tr>'
+
+    for fecha, hora, tipo, competicion, titulo, canales in re.findall(patron, data):
+        channels = list()
+        try:
+            for canal_idioma in canales.split('<br />'):
+                canales, idioma = re.findall('(.*?)(\w{3})', canal_idioma, re.DOTALL)[0]
+                for num in re.findall('(\d+)', canales, re.DOTALL):
+                    channels.append({'num': num, 'idioma': idioma})
+        except:
+            pass
+
+        evento = Evento(fecha=fecha, hora=hora, formatTime='CEST', sport=tipo,
+               competition=competicion, title=titulo, channels=channels)
+
+        if evento and (not evento.isFinished() or not get_setting('arena_hide')):
+            guide.append(evento)
+
+    return guide
+
+
+'''def read_guide_linkotes(url):
     guide = []
 
     try:
@@ -69,17 +109,16 @@ def read_guide_linkotes(url):
             for i, canal in enumerate(e.get('canales',[])):
                 canales.append({'num': canal, 'idioma': idiomas[i]})
 
-            if canales:
-                evento = Evento(fecha=e['fecha'].replace('\\',''), hora=e['hora'], formatTime='CEST', sport=e['deporte'],
-                                competition=e['competicion'], title=e['titulo'], channels=canales)
+            evento = Evento(fecha=e['fecha'].replace('\\',''), hora=e['hora'], formatTime='CEST', sport=e['deporte'],
+                            competition=e['competicion'], title=e['titulo'], channels=canales)
 
-                if evento and (not evento.isFinished() or not get_setting('arena_hide')):
-                    guide.append(evento)
+            if evento and (not evento.isFinished() or not get_setting('arena_hide')):
+                guide.append(evento)
+
     except:
         pass
 
     return guide
-
 
 def read_guide_acestream_spanish(url):
     guide = []
@@ -103,7 +142,7 @@ def read_guide_acestream_spanish(url):
             if evento and (not evento.isFinished() or not get_setting('arena_hide')):
                 guide.append(evento)
 
-    return guide
+    return guide'''
 
 
 def get_categorias(item, guide=None):
@@ -186,22 +225,29 @@ def get_agenda(item, guide=None):
                 action= None
             ))
 
-
         # fijar label
-        label = "[COLOR lime]%s[/COLOR]" % evento.hora
+        label = "[COLOR red]%s[/COLOR]" % evento.hora
         if not item.competition:
             if not item.sport:
                 label += ' (%s - %s)' % (evento.sport.label, evento.competition.label)
             else:
                 label += ' (%s)' % evento.competition.label
 
-        itemlist.append(item.clone(
+        new_item = item.clone(
             title= evento.title,
-            label= '%s %s [%s]' % (label, evento.title, evento.idiomas),
+            label= '%s %s' % (label, evento.title),
             icon= evento.get_icon(),
-            action = 'list_channels',
-            channels = evento.channels
-        ))
+            action= ''
+
+        )
+
+        if evento.channels:
+            new_item.channels = evento.channels
+            new_item.action = 'list_channels'
+            new_item.label +=  ' [%s]' % evento.idiomas
+            new_item.label = new_item.label.replace('[COLOR red]','[COLOR lime]')
+
+        itemlist.append(new_item)
 
     return itemlist
 
@@ -252,16 +298,17 @@ def list_all_channels(item):
     itemlist = list()
 
     data = download_arenavision()
-    url_canal = {'{:0>2}'.format(canal): url for url, canal in re.findall('<a href="([^"]+)">ArenaVision (\d+)</a>', data)}
+    if data:
+        url_canal = {'{:0>2}'.format(canal): url for url, canal in re.findall('<a href="([^"]+)">ArenaVision (\d+)</a>', data)}
 
-    for n in range(1,49):
-        n = '{:0>2}'.format(n)
-        url = (get_setting('arena_url') + url_canal.get(n)) if url_canal.get(n) else None
-        if url:
-            itemlist.append(item.clone(
-                label= 'Canal [COLOR red]%s[/COLOR]' % n,
-                action= 'play',
-                url= url))
+        for n in range(1,49):
+            n = '{:0>2}'.format(n)
+            url = (get_setting('arena_url') + url_canal.get(n)) if url_canal.get(n) else None
+            if url:
+                itemlist.append(item.clone(
+                    label= 'Canal [COLOR red]%s[/COLOR]' % n,
+                    action= 'play',
+                    url= url))
 
     return itemlist
 
@@ -273,11 +320,15 @@ def play(item):
     tipo_url = re.findall('(id:|url=)"([^"]+)',data)
 
     if tipo_url:
+        ret = {'action': 'play',
+               'url': tipo_url[0][1],
+               'titulo': 'Arenavision' + item.label}
+
         if tipo_url[0][0] == 'id:':
-            ret = 'plugin://program.plexus/?mode=1&url=acestream://%s&name=Arenavision %s' % (tipo_url[0][1], item.label)
+            ret['VideoPlayer'] = 'plexus'
 
         elif tipo_url[0][0] == 'url=':
-            ret = tipo_url[0][1]
+            ret['VideoPlayer'] = 'directo'
 
         return ret
 
@@ -286,8 +337,10 @@ def play(item):
                         'Intentelo mas tarde o pruebe en otro canal, por favor.')
     return None
 
-
+'''
 def show_guide_img(item):
+    url = None
+
     def sub(url):
         data = httptools.downloadpage(url)
 
@@ -303,8 +356,10 @@ def show_guide_img(item):
         finally:
             os.remove(path)
 
+
     data = download_arenavision()
-    url = re.findall('src="(/static/[^\.]+.png)"', data)
+    if data:
+        url = re.findall('src="(/static/[^\.]+.png)"', data)
 
     if url:
         url = get_setting('arena_url') + url[0]
@@ -325,26 +380,6 @@ def show_guide_img(item):
             import threading
             threading.Thread(name='sub', target=sub, args=(url,)).start()
 
-
-def main(item):
-    itemlist = list()
-
-    if download_arenavision():
-        guide = read_guide(item)
-
-        if get_setting('get_categorias'):
-            itemlist =  get_categorias(item, guide)
-        else:
-            itemlist = get_agenda(item, guide)
-
-    if not itemlist:
-        xbmcgui.Dialog().ok('1x2',
-                            'Ups!  Parece que en estos momentos no hay eventos programados.',
-                            'Intentelo mas tarde, por favor.')
-
-    return itemlist
-
-
 class ImageShower(xbmcgui.Window):
     def showImage(self, image):
         w = self.getWidth()
@@ -359,3 +394,24 @@ class ImageShower(xbmcgui.Window):
 
     def onControl(self, event):
         self.close()
+'''
+
+
+def main(item):
+    itemlist = list()
+
+    data = download_arenavision()
+    if data:
+        guide = read_guide(item, data)
+
+        if get_setting('get_categorias'):
+            itemlist =  get_categorias(item, guide)
+        else:
+            itemlist = get_agenda(item, guide)
+
+        if not itemlist:
+            xbmcgui.Dialog().ok('1x2',
+                                'Ups!  Parece que en estos momentos no hay eventos programados.',
+                                'Intentelo mas tarde, por favor.')
+
+    return itemlist

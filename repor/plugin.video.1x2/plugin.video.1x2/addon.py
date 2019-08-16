@@ -1,13 +1,5 @@
 # -*- coding: utf-8 -*-
 
-'''
-import sys
-import os
-import json
-import re
-import urllib
-import urlparse
-'''
 import xbmc
 import xbmcgui
 import xbmcplugin
@@ -71,22 +63,18 @@ def run(item):
         result = getattr(channel, item.action)(item)
         if isinstance(result,list):
             itemlist = result
-        elif isinstance(result, str):
-            if result == 'refresh':
+        elif isinstance(result, dict):
+            if result['action'] == 'refresh':
                 xbmc.executebuiltin("Container.Refresh")
 
-            elif item.action == 'play':
-                listitem = xbmcgui.ListItem()
-                listitem.setInfo('video', {'title': item.title or item.label})
-                listitem.setPath(result)
-                xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, listitem)
+            elif result['action'] == 'play':
+                play(result)
                 return
     else:
         if item.action == 'play':
-            listitem = xbmcgui.ListItem()
-            listitem.setInfo('video', {'title': item.title or item.label})
-            listitem.setPath(item.url)
-            xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, listitem)
+            play({'VideoPlayer':'directo',
+                  'url': item.url,
+                  'titulo': item.title or item.label})
             return
 
         elif item.action == 'mainmenu':
@@ -124,6 +112,39 @@ def run(item):
 
         xbmcplugin.addSortMethod(handle=int(sys.argv[1]), sortMethod=xbmcplugin.SORT_METHOD_NONE)
         xbmcplugin.endOfDirectory(handle=int(sys.argv[1]), succeeded=True)
+
+
+def play(video_item):
+    logger(video_item)
+
+    listitem = xbmcgui.ListItem()
+    listitem.setInfo('video', {'title': video_item['titulo']})
+    listitem.setProperty('IsPlayable', 'true')
+
+    if video_item['VideoPlayer'] == 'Directo':
+        listitem.setPath(video_item['url'])
+
+    elif video_item['VideoPlayer'] == 'plexus':
+        url = 'plugin://program.plexus/?mode=1&url=acestream://%s&name=Arenavision %s' % \
+              (video_item['url'], video_item['titulo'])
+        listitem.setPath(url)
+
+    elif video_item['VideoPlayer'] == 'InputStream':
+        #listitem.setProperty('inputstreamaddon', 'inputstream.adaptive') #TODO no funciona el adaptative
+        listitem.setMimeType('application/vnd.apple.mpegurl')
+        listitem.setProperty('inputstream.adaptive.manifest_type', video_item['manifest_type'])
+        listitem.setProperty('inputstream.adaptive.stream_headers', video_item['headers'])
+        listitem.setPath(video_item['url'])
+
+    elif video_item['VideoPlayer'] == 'Streamlink':
+        import streamlink.session
+        session = streamlink.session.Streamlink()
+        session.set_option("http-headers", video_item['headers'])
+        streams = session.streams(video_item['url'])
+        stream_url = streams['best'].to_url() + '|' + video_item['headers']
+        listitem.setPath(stream_url)
+
+    xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, listitem)
 
 
 if __name__ == '__main__':

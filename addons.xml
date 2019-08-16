@@ -98,11 +98,13 @@
 </addon>
 
 <addon id="plugin.video.1x2"
-  version="1.0.5"
+  version="1.0.6"
   name="1x2"
   provider-name="By Teco">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
+    <import addon="script.module.streamlink.base" />
+    <import addon="script.module.inputstreamhelper" version="0.3.3"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="addon.py">
     <provides>video</provides>

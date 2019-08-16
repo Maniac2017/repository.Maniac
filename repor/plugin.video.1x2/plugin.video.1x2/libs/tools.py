@@ -140,61 +140,78 @@ class Deporte:
 class Deportes:
     def __init__(self):
         competiciones_soccer=[
-            Competition('La Liga',['SPANISH LA LIGA', 'SPANISH LEAGUE'],os.path.join(image_path, 'soccer_liga_espana.png')),
-            Competition('La Liga 123',['SPANISH LA LIGA 2','SPANISH LEAGUE 2'],os.path.join(image_path, 'socccer_liga_123.png')),
+            Competition('La Liga',['SPANISH LEAGUE', 'Spain - Primera Division'],os.path.join(image_path, 'soccer_liga_espana.png')),
+            Competition('La Liga 123',['SPANISH LA LIGA 2','Spain - Segunda Division'],os.path.join(image_path, 'socccer_liga_123.png')),
             Competition('Copa del Rey','COPA DEL REY',os.path.join(image_path, 'soccer_copa_del_rey.png')),
-            Competition('Liga de Campeones de la UEFA','UEFA CHAMPIONS LEAGUE',os.path.join(image_path, 'soccer_champions_league.png')),
-            Competition('Liga Europa de la UEFA','UEFA EUROPA LEAGUE',os.path.join(image_path, 'soccer_europa_league.png')),
+            Competition('Liga de Campeones de la UEFA',['UEFA CHAMPIONS LEAGUE','Europe - UEFA Champions League'],os.path.join(image_path, 'soccer_champions_league.png')),
+            Competition('Liga Europa de la UEFA',['UEFA EUROPA LEAGUE','Europe - UEFA Europa League'],os.path.join(image_path, 'soccer_europa_league.png')),
             Competition('Copa Iberica','COPA IBERICA',os.path.join(image_path, 'copa_iberica.png')),
             Competition('International Champions Cup','INTERNATIONAL CHAMPIONS CUP',os.path.join(image_path, 'International_Champions_Cup.png')),
-            Competition('Premier League','PREMIER LEAGUE',os.path.join(image_path, 'soccer_liga_inlaterra.png')),
-            Competition('Francia Ligue 1','FRANCE LIGUE 1',os.path.join(image_path, 'soccer_liga_francia.png')),
-            Competition('Supercopa de Portugal','Portugal - Super Cup',os.path.join(image_path, 'soccer_cup_portugal.png')),
-            Competition('Bundesliga', 'BUNDESLIGA',os.path.join(image_path, 'soccer_liga_alemana.png')),
-            Competition('Bundesliga 2', ['Germany - 2.Bundesliga', '2.Bundesliga'],os.path.join(image_path, 'soccer_budesliga2.png')),
+            Competition('Premier League',['PREMIER LEAGUE','England - Premier League'],os.path.join(image_path, 'soccer_liga_inlaterra.png')),
+            Competition('Liga de Campeones de la AFC','Asia - AFC Champions League',os.path.join(image_path, 'soccer_AFC_Champions_League.png')),
+            Competition('English Football League Championship',['ENGLISH CHAMPIONSHIP','England - Championship'],os.path.join(image_path, 'soccer_inlaterra_2.png')),
+            Competition('Francia Ligue 1',['FRENCH LIGUE 1','France - Ligue 1'],os.path.join(image_path, 'soccer_liga_francia.png')),
+            Competition('Francia Ligue 2','France - Ligue 2',os.path.join(image_path, 'soccer_francia2.png')),
+            Competition('Supercopa de Portugal',['Portugal - Super Cup','PORTUGAL LEAGUE CUP'],os.path.join(image_path, 'soccer_cup_portugal.png')),
+            Competition('Bundesliga', ['BUNDESLIGA','Germany - Bundesliga'],os.path.join(image_path, 'soccer_liga_alemana.png')),
+            Competition('Bundesliga 2',['Germany - 2.Bundesliga', '2.Bundesliga'],os.path.join(image_path, 'soccer_budesliga2.png')),
             Competition('Primera División de México','MEXICO LIGA MX',os.path.join(image_path, 'soccer_liga_mexico.png')),
-            Competition('Major League Soccer','USA MLS',os.path.join(image_path, 'soccer_liga_usa.png')),
+            Competition('Major League Soccer',['USA MLS', 'USA - MLS'],os.path.join(image_path, 'soccer_liga_usa.png')),
             Competition('Primera División de Chile','CHILE PRIMERA',os.path.join(image_path, 'soccer_liga_chile.png')),
             Competition('Primera División de Argentina','ARGENTINA SUPERLIGA',os.path.join(image_path, 'soccer_liga_argentina.png')),
             Competition('Supercopa de los Países Bajos','DUTCH SUPERCUP',os.path.join(image_path, 'soccer_dutch_cup.png')),
             Competition('Serie A','ITALY SERIE A',os.path.join(image_path, 'soccer_liga_italia.png')),
             Competition('Liga de las Naciones de la UEFA','UEFA NATIONS LEAGUE',os.path.join(image_path, 'soccer_uefa_nation_league.png')),
             Competition('Clasificación para la Eurocopa 2020','UEFA EURO 2020 QUALIFIERS',os.path.join(image_path, 'soccer_eurocopa.png')),
-            Competition('Primeira Liga','PORTUGAL A LIGA',os.path.join(image_path, 'soccer_liga_portugal.png')),
+            Competition('Primeira Liga',['PORTUGAL LEAGUE', 'Portugal - Primeira Liga'],os.path.join(image_path, 'soccer_liga_portugal.png')),
             Competition('Eredivisie',['HOLLAND EREDIVISIE','Netherlands - Eredivisie'],os.path.join(image_path, 'soccer_liga_holanda.png')),
             Competition('A-League','AUSTRALIA A-LEAGUE',os.path.join(image_path, 'soccer_liga_australiana.png')),
             Competition('Copa México','MEXICO COPA MX',os.path.join(image_path, 'soccer_copa_mexico.png')),
             Competition('Ekstraklasa','Poland - Ekstraklasa',os.path.join(image_path, 'soccer_polaco.png')),
-            Competition('Campeonato Brasileño de Serie A', 'BRAZIL SERIE A',os.path.join(image_path, 'soccer_liga_brasil.png')),
+            Competition('Campeonato Brasileño de Serie A', 'BRAZIL BRASILEIRAO',os.path.join(image_path, 'soccer_liga_brasil.png')),
             Competition('Liga Premier de Rusia', 'Russia - Premier League',os.path.join(image_path, 'soccer_rusia.png')),
             Competition('Liga Juvenil de la UEFA','UEFA YOUTH LEAGUE',os.path.join(image_path, 'soccer_youth_league.png')),
             Competition('Superliga de Suiza','Switzerland - Super League',os.path.join(image_path, 'soccer_suiza.png')),
-            Competition('Copa Argentina','ARGENTINA CUP',os.path.join(image_path, 'soccer_copa_argentina.png')),
+            Competition('Copa Argentina','ARGENTINA COPA',os.path.join(image_path, 'soccer_copa_argentina.png')),
             Competition('Liga Premier de Ucrania','Ukraine - Premier League',os.path.join(image_path, 'soccer_ucrania.png')),
             Competition('Copa Libertadores de América','COPA LIBERTADORES',os.path.join(image_path, 'soccer_comenbol_libertadores.png')),
-            Competition('Superliga de China','CHINESE SUPER LEAGUE',os.path.join(image_path, 'soccer_liga_China.png')),
-            Competition('Superliga de Turquia','TURKISH SUPER LIG',os.path.join(image_path, 'soccer_liga_turquia.png')),
+            Competition('Superliga de China',['CHINESE SUPER LEAGUE','China - Super League'],os.path.join(image_path, 'soccer_liga_China.png')),
+            Competition('Superliga de Turquia',['TURKISH LEAGUE','Turkey - Super Lig'],os.path.join(image_path, 'soccer_liga_turquia.png')),
             Competition('Liga I','Romania - Liga 1',os.path.join(image_path, 'soccer_rumania.png')),
-            Competition('Copa de la Liga de Francia','FRANCE LEAGUE CUP',os.path.join(image_path, 'soccer_copa_francia.png')),
-            Competition('Copa de Alemania','DFB POKAL',os.path.join(image_path, 'soccer_copa_alemania.png')),
+            Competition('Copa de la Liga de Francia','FRENCH LEAGUE CUP',os.path.join(image_path, 'soccer_copa_francia.png')),
+            Competition('Copa de Alemania',['DFB POKAL','Germany - DFB Pokal'],os.path.join(image_path, 'soccer_copa_alemania.png')),
+            Competition('Categoría Primera A','COLOMBIA PRIMERA',os.path.join(image_path, 'soccer_liga_colombia.png')),
             Competition('Scottish Premiership','Scotland - Scottish Premiership',os.path.join(image_path, 'soccer_scot.png')),
-
+            Competition('Copa de la Liga de Escocia','Scotland - Scottish League Cup',os.path.join(image_path, 'soccer_scotland_cup.png')),
+            Competition('Copa Sudamericana',['COPA SUDAMERICANA','South America - Copa Sudamericana'],os.path.join(image_path, 'soccer_comenbol_sudamerica.png')),
+            Competition('Primera Division de Belgica','Belgium - Jupiler Pro League',os.path.join(image_path, 'soccer_belga.png')),
+            Competition('Segunda Division de Portugal','Portugal - Segunda Liga',os.path.join(image_path, 'soccer_portugal_segunda.png')),
+            Competition('Primera Division de Hungara','Hungary - NB I',os.path.join(image_path, 'soccer_hungaro.png')),
+            Competition('Superliga de Eslovaquia','Slovakia - Fortuna Liga',os.path.join(image_path, 'soccer_eslovaco.png')),
+            Competition('Campeones Cup','CAMPEONES CUP',os.path.join(image_path, 'campeones_cup.png')),
+            Competition('Eerste Divisie','Netherlands - Eerste Divisie',os.path.join(image_path, 'Keuken_Kampioen_Divisie.png')),
+            Competition('Toto Cup','Israel - Toto Cup Al',os.path.join(image_path, 'soccer_israel_toto.png')),
+            Competition('Supercopa de Europa','UEFA SUPERCUP',os.path.join(image_path, 'UEFA_Super_Cup.png')),
+            Competition('National League',['England - National League','ENGLISH CHAMPIONSHIP'],os.path.join(image_path, 'soccer_national_league.png')),
             Competition('Amistoso',['Club Friendlies','FRIENDLY MATCH'],os.path.join(image_path, 'soccer_amistoso.png'))
         ]
+
 
         self.SOCCER = Deporte(label='Futbol', names=['SOCCER', 'Fútbol'], icon=os.path.join(image_path, 'soccer.png'), time_max=120, competitions=competiciones_soccer)
         self.TENNIS = Deporte(label='Tenis',  names=['TENNIS', 'Tenis'], icon=os.path.join(image_path, 'tennis.png'), time_max=180)
         self.MOTOGP = Deporte(label='Moto GP', names=['MOTOGP', 'Moto GP'], icon=os.path.join(image_path, 'motogp.png'), time_max=180)
         self.FORMULA1 = Deporte(label='Formula 1', names=['FORMULA1','FORMULA 1'], icon=os.path.join(image_path, 'formula_1.png'), time_max=180)
         self.RUGBY = Deporte(label='Rugby', names='RUGBY', icon=os.path.join(image_path, 'rugby.png'), time_max=120)
-        self.MMA = Deporte(label='Lucha', names='MMA', icon=os.path.join(image_path, 'mma.png'), time_max=120)
+        self.FOOTBALL = Deporte(label='Futbol americano', names=['American Football', 'FOOTBALL'], icon=os.path.join(image_path, 'america.png'), time_max=120)
+        self.AUSSIE_RULES = Deporte(label='Australian Football League', names='Aussie Rules', icon=os.path.join(image_path, 'soccer_Australian_League.png'), time_max=120)
+        self.MMA = Deporte(label='Lucha', names=['MMA', 'World - UFC'], icon=os.path.join(image_path, 'mma.png'), time_max=120)
         self.BOXING = Deporte(label='Boxeo', names='BOXING', icon=os.path.join(image_path, 'boxeo.png'), time_max=120)
         self.BASKETBALL = Deporte(label='Baloncesto', names='BASKETBALL', icon=os.path.join(image_path, 'basketball.png'), time_max=90)
-        self.Baseball = Deporte(label='Grandes Ligas de Béisbol', names='Baseball', icon=os.path.join(image_path, 'mlsi.png'), time_max=190)
+        self.BASEBALL = Deporte(label='Grandes Ligas de Béisbol', names='Baseball', icon=os.path.join(image_path, 'mlsi.png'), time_max=190)
         self.CYCLING = Deporte(label='Ciclismo', names='CYCLING', icon=os.path.join(image_path, 'ciclismo.png'), time_max=180)
-        self.Cricket = Deporte(label='Cricket', names='Cricket', icon=os.path.join(image_path, 'cricket_ball.png'), time_max=180)
-        self.Hockey = Deporte(label='Hockey', names='Hockey', icon=os.path.join(image_path, 'Hockey.png'), time_max=180)
-
+        self.BADMINTON = Deporte(label='Badminton', names='Badminton - World', icon=os.path.join(image_path, 'badminton.png'), time_max=190)
+        self.CRICKET = Deporte(label='Cricket', names='Cricket', icon=os.path.join(image_path, 'cricket_ball.png'), time_max=180)
+        self.HOCKEY = Deporte(label='Hockey', names='Hockey', icon=os.path.join(image_path, 'Hockey.png'), time_max=180)
 
 
     def get_deporte(self,name):
@@ -420,4 +437,7 @@ def set_setting(name, value):
 # Main
 datetime.datetime = proxydt
 dump = datetime.datetime.strptime('20110101', '%Y%m%d')
+set_setting('arena_hide', get_setting('arena_hide'))
 import httptools
+
+#reload(httptools)

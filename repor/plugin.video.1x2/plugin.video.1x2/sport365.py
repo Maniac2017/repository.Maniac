@@ -8,7 +8,6 @@ HOST =  get_setting('sport_url')
 def mainmenu(item):
     itemlist = list()
 
-
     itemlist.append(item.clone(
         label='Agenda Sport365',
         channel='sport365',
@@ -23,7 +22,7 @@ def mainmenu(item):
         channel='sport365',
         action='get_agenda',
         direct=True,
-        icon=os.path.join(image_path, 'live.png'),
+        icon=os.path.join(image_path, 'live.gif'),
         url=HOST + '/es/events/1/-/-/-/120',
         plot='Basada en la web %s' % HOST
     ))
@@ -203,17 +202,24 @@ def get_enlaces(item):
 
 
 def play(item):
-    url = None
-
+    logger('#####################################################')
     data = httptools.downloadpage(item.url).data
+
     url = re.findall('<iframe.*?src="([^"]+)', data)
 
     if url and not '/images/matras.jpg' in url[0]:
         data = httptools.downloadpage(url[0]).data
-        post = {k:v for k,v in re.findall('<input type="hidden" name="([^"]+)" value="([^"]+)">', data)}
-        url = re.findall("action', '([^']+)",data)
 
-        if url:
+        post = {k:v for k,v in re.findall('<input type="hidden" name="([^"]+)" value="([^"]+)">', data)}
+        url = re.findall("action', '([^']+)", data)
+        url_scr = re.findall("<script src='(.*?)'>", data)
+
+        if url and url_scr:
+            data = httptools.downloadpage(url_scr[-1], post=post).data
+            data = re.sub(r"\n|\r|\t|\s{2}|&nbsp;", "", data)
+            id, url_referer = re.findall("id:'(.*?)',url:'(.*?)'", data)[0]
+            url_referer =   url_referer.replace('&req=-1', '&req=' + id)
+
             url_post = url[0]
             data = httptools.downloadpage(url_post,post=post).data
             data = re.sub(r"\n|\r|\t|\s{2}|&nbsp;", "", data)
@@ -229,17 +235,39 @@ def play(item):
                 except:
                     url = ''
 
-            url = url.replace('\\/', '/').replace('"', "")
-            url += "ndex.m3u8|Referer=%s" % url_post
+            url = url.replace('\\/', '/').replace('"', "")[:-1] + 'master.m3u8'
 
-            return url
+            if get_setting('sport_tipo') == 'InputStream':
+                url += "|Referer=%s" % url_post
+
+                hdr = '|User-Agent={0}&Referer=http://h5.adshell.net/peer5&Origin=http://h5.adshell.net&Connection=Keep-alive'.format(urllib.quote(httptools.default_headers["User-Agent"]))
+                ret = {'action': 'play',
+                       'VideoPlayer': 'InputStream',
+                       'manifest_type': 'hls',
+                       'url': url + hdr,
+                       'headers':'Referer=%s&User-Agent=%s&Connection=Keep-alive' %(url_referer, httptools.default_headers['User-Agent']),
+                       'titulo': item.title}
+
+            elif get_setting('sport_tipo') == 'Streamlink':
+                ret = {'action': 'play',
+                       'VideoPlayer': 'Streamlink',
+                       'url': 'hls://' + url ,
+                       'headers': 'User-Agent={0}&Referer={1}&Origin=http://h5.adshell.net'.format(urllib.quote(httptools.default_headers["User-Agent"]), urllib.quote('http://h5.adshell.net/peer5')),
+                       'titulo': item.title}
+
+            else:
+                ret = {'action': 'play',
+                       'VideoPlayer': 'Directo',
+                       'url': url + 'master.m3u8',
+                       'titulo': item.title}
+
+            return ret
 
     if not url:
         xbmcgui.Dialog().ok('1x2',
                             'Ups!  Parece que en estos momentos no hay nada que ver en este enlace.',
                             'Intentelo mas tarde o pruebe en otro enlace, por favor.')
         return None
-
 
 
 def getkey(overwrite=False):
