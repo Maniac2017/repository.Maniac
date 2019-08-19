@@ -130,10 +130,17 @@ def play(video_item):
         listitem.setPath(url)
 
     elif video_item['VideoPlayer'] == 'InputStream':
-        #listitem.setProperty('inputstreamaddon', 'inputstream.adaptive') #TODO no funciona el adaptative
+        listitem.setProperty('inputstreamaddons', 'inputstream.adaptive')
         listitem.setMimeType('application/vnd.apple.mpegurl')
         listitem.setProperty('inputstream.adaptive.manifest_type', video_item['manifest_type'])
         listitem.setProperty('inputstream.adaptive.stream_headers', video_item['headers'])
+        listitem.setProperty('inputstream.adaptive.license_type', 'com.widevine.alpha')
+        listitem.setProperty('inputstream.adaptive.manifest_type', 'hls')
+        listitem.setProperty('inputstream.adaptive.manifest_type', 'mpd')
+        listitem.setProperty('inputstream.adaptive.manifest_type', 'mpdURL')
+        listitem.setProperty('inputstream.adaptive.license_key', 'sport_key')
+        listitem.setProperty('inputstream.adaptive.license_key', 'licURL')
+        listitem.setMimeType('application/dash+xml')
         listitem.setPath(video_item['url'])
 
     elif video_item['VideoPlayer'] == 'Streamlink':
@@ -143,6 +150,17 @@ def play(video_item):
         streams = session.streams(video_item['url'])
         stream_url = streams['best'].to_url() + '|' + video_item['headers']
         listitem.setPath(stream_url)
+
+    elif video_item['VideoPlayer'] == 'F4mtester':
+            stream_url = 'plugin://plugin.video.f4mTester/?streamtype=HLSRETRY&url={0}&name={1}'.format(
+                urllib.quote_plus(stream_url), urllib.quote_plus(orig_title))
+            liz.setPath(stream_url)
+            idle()
+            try:
+                xbmc.executebuiltin('RunPlugin(' + stream_url + ')')
+            except BaseException:
+                pass
+            listitem.setPath(url)
 
     xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, listitem)
 

@@ -141,7 +141,7 @@ class Deportes:
     def __init__(self):
         competiciones_soccer=[
             Competition('La Liga',['SPANISH LEAGUE', 'Spain - Primera Division'],os.path.join(image_path, 'soccer_liga_espana.png')),
-            Competition('La Liga 123',['SPANISH LA LIGA 2','Spain - Segunda Division'],os.path.join(image_path, 'socccer_liga_123.png')),
+            Competition('La Liga 123',['SPANISH LEAGUE 2','Spain - Segunda Division'],os.path.join(image_path, 'socccer_liga_123.png')),
             Competition('Copa del Rey','COPA DEL REY',os.path.join(image_path, 'soccer_copa_del_rey.png')),
             Competition('Liga de Campeones de la UEFA',['UEFA CHAMPIONS LEAGUE','Europe - UEFA Champions League'],os.path.join(image_path, 'soccer_champions_league.png')),
             Competition('Liga Europa de la UEFA',['UEFA EUROPA LEAGUE','Europe - UEFA Europa League'],os.path.join(image_path, 'soccer_europa_league.png')),
@@ -155,10 +155,10 @@ class Deportes:
             Competition('Supercopa de Portugal',['Portugal - Super Cup','PORTUGAL LEAGUE CUP'],os.path.join(image_path, 'soccer_cup_portugal.png')),
             Competition('Bundesliga', ['BUNDESLIGA','Germany - Bundesliga'],os.path.join(image_path, 'soccer_liga_alemana.png')),
             Competition('Bundesliga 2',['Germany - 2.Bundesliga', '2.Bundesliga'],os.path.join(image_path, 'soccer_budesliga2.png')),
-            Competition('Primera División de México','MEXICO LIGA MX',os.path.join(image_path, 'soccer_liga_mexico.png')),
+            Competition('Primera División de México',['MEXICO LIGA MX', 'MEXICO PRIMERA'],os.path.join(image_path, 'soccer_liga_mexico.png')),
             Competition('Major League Soccer',['USA MLS', 'USA - MLS'],os.path.join(image_path, 'soccer_liga_usa.png')),
             Competition('Primera División de Chile','CHILE PRIMERA',os.path.join(image_path, 'soccer_liga_chile.png')),
-            Competition('Primera División de Argentina','ARGENTINA SUPERLIGA',os.path.join(image_path, 'soccer_liga_argentina.png')),
+            Competition('Primera División de Argentina',['ARGENTINA SUPERLIGA', 'ARGENTINA PRIMERA', 'Argentina - Primera Division'],os.path.join(image_path, 'soccer_liga_argentina.png')),
             Competition('Supercopa de los Países Bajos','DUTCH SUPERCUP',os.path.join(image_path, 'soccer_dutch_cup.png')),
             Competition('Serie A','ITALY SERIE A',os.path.join(image_path, 'soccer_liga_italia.png')),
             Competition('Liga de las Naciones de la UEFA','UEFA NATIONS LEAGUE',os.path.join(image_path, 'soccer_uefa_nation_league.png')),
@@ -191,7 +191,10 @@ class Deportes:
             Competition('Campeones Cup','CAMPEONES CUP',os.path.join(image_path, 'campeones_cup.png')),
             Competition('Eerste Divisie','Netherlands - Eerste Divisie',os.path.join(image_path, 'Keuken_Kampioen_Divisie.png')),
             Competition('Toto Cup','Israel - Toto Cup Al',os.path.join(image_path, 'soccer_israel_toto.png')),
+            Competition('Serie A de Ecuador','ECUADOR PRIMERA',os.path.join(image_path, 'soccer_Pro_Ecuador.png')),
             Competition('Supercopa de Europa','UEFA SUPERCUP',os.path.join(image_path, 'UEFA_Super_Cup.png')),
+            Competition('Liga II','Romania - Liga 2',os.path.join(image_path, 'soccer_romania_2.png')),
+            Competition('English Football League One','England - League One',os.path.join(image_path, 'soccer_england_3.png')),
             Competition('National League',['England - National League','ENGLISH CHAMPIONSHIP'],os.path.join(image_path, 'soccer_national_league.png')),
             Competition('Amistoso',['Club Friendlies','FRIENDLY MATCH'],os.path.join(image_path, 'soccer_amistoso.png'))
         ]
@@ -204,14 +207,17 @@ class Deportes:
         self.RUGBY = Deporte(label='Rugby', names='RUGBY', icon=os.path.join(image_path, 'rugby.png'), time_max=120)
         self.FOOTBALL = Deporte(label='Futbol americano', names=['American Football', 'FOOTBALL'], icon=os.path.join(image_path, 'america.png'), time_max=120)
         self.AUSSIE_RULES = Deporte(label='Australian Football League', names='Aussie Rules', icon=os.path.join(image_path, 'soccer_Australian_League.png'), time_max=120)
-        self.MMA = Deporte(label='Lucha', names=['MMA', 'World - UFC'], icon=os.path.join(image_path, 'mma.png'), time_max=120)
+        self.MMA = Deporte(label='Lucha', names=['MMA', 'Mixed Martial Arts'], icon=os.path.join(image_path, 'mma.png'), time_max=120)
         self.BOXING = Deporte(label='Boxeo', names='BOXING', icon=os.path.join(image_path, 'boxeo.png'), time_max=120)
         self.BASKETBALL = Deporte(label='Baloncesto', names='BASKETBALL', icon=os.path.join(image_path, 'basketball.png'), time_max=90)
         self.BASEBALL = Deporte(label='Grandes Ligas de Béisbol', names='Baseball', icon=os.path.join(image_path, 'mlsi.png'), time_max=190)
         self.CYCLING = Deporte(label='Ciclismo', names='CYCLING', icon=os.path.join(image_path, 'ciclismo.png'), time_max=180)
-        self.BADMINTON = Deporte(label='Badminton', names='Badminton - World', icon=os.path.join(image_path, 'badminton.png'), time_max=190)
+        self.BADMINTON = Deporte(label='Badminton', names=['Badminton', 'World - BWF World Championship'], icon=os.path.join(image_path, 'badminton.png'), time_max=190)
         self.CRICKET = Deporte(label='Cricket', names='Cricket', icon=os.path.join(image_path, 'cricket_ball.png'), time_max=180)
         self.HOCKEY = Deporte(label='Hockey', names='Hockey', icon=os.path.join(image_path, 'Hockey.png'), time_max=180)
+        self.HANDBALL = Deporte(label='Balonmano', names='Handball', icon=os.path.join(image_path, 'balonmano.png'), time_max=180)
+        self.ATHLETICS = Deporte(label='Atletismo', names='ATHLETICS', icon=os.path.join(image_path, 'atletismo.png'), time_max=180)
+
 
 
     def get_deporte(self,name):
@@ -256,37 +262,6 @@ class Evento(object):
         if {'fecha', 'hora', 'sport', 'title', 'competition'} - set(self.__dict__):
             raise()
 
-        def date_to_local(fecha, hora, formatTime):
-            def get_utc_offset():
-                utc_offset = xbmcgui.Window(10000).getProperty('utc_offset')
-                if not utc_offset:
-                    data = httptools.downloadpage('https://time.is/es/UTC').data
-                    utc = re.findall('<div id="twd">(\d+):', data, re.DOTALL)[0]
-                    cest = re.findall('<span id="favt4">(\d+):', data, re.DOTALL)[0]
-                    utc_offset = str(int(cest) - int(utc))
-                    xbmcgui.Window(10000).setProperty('utc_offset', utc_offset)
-
-                return int(utc_offset)
-
-            aux = re.findall('(\d{1,2}/\d{1,2}/)(\d{2})$', fecha)
-            if aux:
-                fecha = aux[0][0] + '20' + aux[0][1]
-
-            if formatTime == 'CEST':
-                cest_datetime = datetime.datetime.strptime("%s %s" % (fecha, hora), '%d/%m/%Y %H:%M')
-
-                utc_datetime = cest_datetime - datetime.timedelta(hours=get_utc_offset())
-
-            else:
-                utc_datetime = datetime.datetime.strptime("%s %s" % (fecha, hora), '%d/%m/%Y %H:%M')
-
-            now_timestamp = time.time()
-            local = utc_datetime + (
-                    datetime.datetime.fromtimestamp(now_timestamp) - datetime.datetime.utcfromtimestamp(
-                now_timestamp))
-
-            return local
-
         if not 'formatTime' in self.__dict__:
             self.formatTime = 'UTC'
         self.datetime = date_to_local(self.fecha.replace(".", "/"), self.hora, self.formatTime)
@@ -328,6 +303,38 @@ class Evento(object):
 
 
 # Funciones auxiliares
+
+def date_to_local(fecha, hora, formatTime):
+        def get_utc_offset():
+            utc_offset = xbmcgui.Window(10000).getProperty('utc_offset')
+            if not utc_offset:
+                data = httptools.downloadpage('https://time.is/es/UTC').data
+                utc = re.findall('<div id="twd">(\d+):', data, re.DOTALL)[0]
+                cest = re.findall('<span id="favt4">(\d+):', data, re.DOTALL)[0]
+                utc_offset = str(int(cest) - int(utc))
+                xbmcgui.Window(10000).setProperty('utc_offset', utc_offset)
+
+            return int(utc_offset)
+
+        aux = re.findall('(\d{1,2}/\d{1,2}/)(\d{2})$', fecha)
+        if aux:
+            fecha = aux[0][0] + '20' + aux[0][1]
+
+        if formatTime == 'CEST':
+            cest_datetime = datetime.datetime.strptime("%s %s" % (fecha, hora), '%d/%m/%Y %H:%M')
+
+            utc_datetime = cest_datetime - datetime.timedelta(hours=get_utc_offset())
+
+        else:
+            utc_datetime = datetime.datetime.strptime("%s %s" % (fecha, hora), '%d/%m/%Y %H:%M')
+
+        now_timestamp = time.time()
+        local = utc_datetime + (
+                datetime.datetime.fromtimestamp(now_timestamp) - datetime.datetime.utcfromtimestamp(
+            now_timestamp))
+
+        return local
+
 
 def logger(message, level=None):
     def encode_log(message=""):

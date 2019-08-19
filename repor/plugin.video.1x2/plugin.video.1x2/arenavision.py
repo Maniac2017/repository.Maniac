@@ -3,6 +3,7 @@
 from libs.tools import *
 
 
+
 def mainmenu(item):
     itemlist = list()
 
@@ -14,6 +15,7 @@ def mainmenu(item):
         url='http://arenavision.us',
         plot='Muestra la Agenda oficial de Arenavision.'
     ))
+
 
     '''itemlist.append(item.clone(
         label='Agenda Linkotes',
@@ -51,6 +53,15 @@ def mainmenu(item):
         url='http://arenavision.us',
         plot='Canales oficiales de Arenavision. Puedes escoger diferentes dominios desde el menu de ajustes.'
     ))
+
+    if get_EAS(item):
+        itemlist.append(item.clone(
+            label='Eventos Acestream Spanish',
+            channel='arenavision',
+            action='get_EAS',
+            icon=os.path.join(image_path, 'Ace_Stream_Logo.png'),
+            url='https://friendpaste.com/5ecLonVBEUjIsoiffYrhVc/raw'
+        ))
 
     return itemlist
 
@@ -315,20 +326,22 @@ def list_all_channels(item):
 
 def play(item):
     ret = None
-    data = httptools.downloadpage(item.url).data
 
-    tipo_url = re.findall('(id:|url=)"([^"]+)',data)
+    if not item.tipo_url:
+        data = httptools.downloadpage(item.url).data
+        item.tipo_url = re.findall('(id:|url=)"([^"]+)',data)
+        item.label = 'Arenavision' + item.label
 
-    if tipo_url:
+    if item.tipo_url:
         ret = {'action': 'play',
-               'url': tipo_url[0][1],
-               'titulo': 'Arenavision' + item.label}
+               'url': item.tipo_url[0][1],
+               'titulo': item.label}
 
-        if tipo_url[0][0] == 'id:':
+        if 'id' in item.tipo_url[0][0]:
             ret['VideoPlayer'] = 'plexus'
 
-        elif tipo_url[0][0] == 'url=':
-            ret['VideoPlayer'] = 'directo'
+        elif 'url' in item.tipo_url[0][0]:
+            ret['VideoPlayer'] = 'Directo'
 
         return ret
 
@@ -395,6 +408,26 @@ class ImageShower(xbmcgui.Window):
     def onControl(self, event):
         self.close()
 '''
+
+
+def get_EAS(item):
+    itemlist = list()
+
+    try:
+        if not item.url:
+            item.url = 'https://friendpaste.com/5ecLonVBEUjIsoiffYrhVc/raw'
+
+        for evento in load_json(httptools.downloadpage(item.url).data.replace("'", '"')):
+            if datetime.datetime.fromtimestamp(time.time()) < date_to_local(evento['fecha'],evento['hora'],'CEST'):
+                itemlist.append(item.clone(
+                    label = evento['label'],
+                    action = 'play',
+                    tipo_url = [[evento['tipo'], evento['url']]]
+                ))
+    except:
+        pass
+
+    return itemlist
 
 
 def main(item):

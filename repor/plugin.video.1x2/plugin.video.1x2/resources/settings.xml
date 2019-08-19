@@ -12,7 +12,7 @@
     <category label="Sport365">
         <setting id="sport_url" type="labelenum" values="http://www.sport365.live|http://www.sport365.sx"
                  label="Agenda Sport365:" default="http://www.sport365.live"/>
-        <setting id="sport_tipo" type="labelenum" values="InputStream|Streamlink|Directo"
+        <setting id="sport_tipo" type="labelenum" values="InputStream|Streamlink|Directo|F4mtester"
                  label="VideoPlayer:" default="InputStream"/>
 
     </category>
