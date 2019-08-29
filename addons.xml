@@ -432,7 +432,7 @@
 
 <addon id="script.kelebek"
        name="KELEBEK"
-       version="2.0.0"
+       version="3.0.0"
        provider-name="Anabel">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
@@ -447,13 +447,17 @@
   </extension>
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
-    <summary>KELEBEK</summary>
+    <summary>KELEBEK V3</summary>
     <description>Scan Sources searching changes and addons</description>
     <language></language>
     <license></license>
     <source></source>
     <forum></forum>
     <website></website>
+	<assets>
+		<icon>resources/icon.png</icon>
+		<fanart>resources/fanart.jpg</fanart>
+	</assets>
   </extension>
 </addon>
 
