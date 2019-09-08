@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.video.1x2"
-  version="1.0.8"
+  version="1.0.9"
   name="1x2"
   provider-name="By Teco">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
-    <import addon="script.module.streamlink.base"/>
-    <import addon="script.module.inputstreamhelper" version="0.3.3"/>
+    <import addon="script.module.requests" version="2.19.1"/>
   </requires>
   <extension point="xbmc.python.pluginsource" library="addon.py">
     <provides>video</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
     <platform>all</platform>
-    <summary lang="es"></summary>
+    <summary lang="es">Los videos son proporcionados por personas ... en línea ... en algún lugar...</summary>
     <description lang="es">Los videos son proporcionados por personas ... en línea ... en algún lugar...</description>
     <disclaimer lang="es">El autor no almacena ni distribuye ninguno de los contenidos que se muestran en este addon. El autor no tiene ninguna afiliación con el proveedor de contenidos.</disclaimer>
     <assets>
