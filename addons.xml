@@ -98,9 +98,9 @@
 </addon>
 
 <addon id="plugin.video.1x2"
-  version="1.0.9"
+  version="1.0.10"
   name="1x2"
-  provider-name="By Teco">
+  provider-name="Team NS">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
     <import addon="script.module.requests" version="2.19.1"/>
