@@ -25,7 +25,6 @@ def mainmenu(item):
         icon=os.path.join(image_path, 'sport365_logo.png')
     ))
 
-
     itemlist.append(item.clone(
         label='Canales 24',
         channel='canales24',
@@ -42,6 +41,12 @@ def mainmenu(item):
     ))
 
 
+    itemlist.append(item.clone(
+        label='Buscar Actualizaciones',
+        action='forceUpdate',
+        icon=os.path.join(image_path, 'update.png'),
+        plot="Version actual: %s\nHaz click para buscar nuevas actualizaciones." % xbmcaddon.Addon().getAddonInfo('version')
+    ))
 
     itemlist.append(item.clone(
         label='Ajustes',
@@ -56,6 +61,7 @@ def mainmenu(item):
             channel='test',
             action='mainmenu',
         ))
+
 
     return itemlist
 
@@ -101,15 +107,20 @@ def run(item):
         elif item.action == 'open_settings':
             xbmcaddon.Addon(id=sys.argv[0][9:-1]).openSettings()
 
+        elif item.action == 'forceUpdate':
+                xbmc.executebuiltin('UpdateAddonRepos()')
+                xbmc.executebuiltin('UpdateLocalAddons()')
+                xbmcgui.Dialog().notification('1x2', "Salga del addon para aplicar la actualizacion.")
+
         elif item.action == 'mantenimiento':
             xbmcgui.Dialog().ok('1x2 En mantenimiento',
                                 'Ups!  Esta sección no esta operativa.',
                                 'Estamos trabajando para encontrar una solución.',
                                 'Disculpen las molestias.')
 
-
     if itemlist:
         for item in itemlist:
+            #logger(item)
             listitem = xbmcgui.ListItem(item.label or item.title)
             listitem.setInfo('video', {'title': item.label or item.title, 'mediatype': 'video'})
             if item.plot:
@@ -154,8 +165,11 @@ def play(video_item):
         return
 
     elif video_item['VideoPlayer'] == 'plexus':
-        url = 'plugin://program.plexus/?mode=1&url=acestream://%s&name=Arenavision %s' % \
+        url = 'plugin://program.plexus/?mode=1&url=acestream://%s&name=%s' % \
               (video_item['url'], video_item['titulo'])
+
+        if video_item.get('iconImage'):
+            url += '&iconimage=' + video_item.get('iconImage')
 
     elif video_item['VideoPlayer'] == 'f4mtester':
         url = 'plugin://plugin.video.f4mTester/?streamtype=HLSRETRY&url=%s&name=%s' % \
@@ -172,6 +186,7 @@ def play(video_item):
 
 
     xbmcplugin.endOfDirectory(handle=int(sys.argv[1]), succeeded=False)
+    xbmc.executebuiltin('Dialog.Close(all,true)')
     if url:
         xbmc.executebuiltin('RunPlugin(' + url + ')')
 

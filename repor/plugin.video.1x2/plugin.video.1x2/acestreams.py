@@ -101,13 +101,14 @@ def download_arenavision(tipo='guide'):
         set_setting('arena_url', url)
 
     data = response.data
+    logger(data)
     if not data:
         xbmcgui.Dialog().ok('1x2',
                             'Ups!  Parece que la página %s no funciona.' % url,
                             'Intentelo cambiando el dominio dentro de Ajustes.')
 
     elif tipo == 'guide':
-        url_guide = re.findall('<a href="([^"]+)">EVENTS GUIDE', response.data)
+        url_guide = re.findall('<a href="([^"]+)">.*?Events Guide List</a>', data)
         if url_guide:
             data = httptools.downloadpage(url + url_guide[0]).data
         else:
@@ -427,7 +428,7 @@ def play(item):
     if not item.tipo_url:
         data = httptools.downloadpage(item.url).data
         item.tipo_url = re.findall('(id:|url=)"([^"]+)',data)
-        item.label = 'Arenavision' + item.label
+        item.label = 'Arenavision ' + item.label
 
     if item.tipo_url:
         ret = {'action': 'play',

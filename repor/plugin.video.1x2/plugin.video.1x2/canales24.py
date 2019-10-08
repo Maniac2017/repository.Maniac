@@ -1,47 +1,115 @@
 # -*- coding: utf-8 -*-
 
 from libs.tools import *
-
+from libs import jsunpack
+import threading
 
 def list_all_channels(item):
     itemlist = list()
+    canales =list()
 
-    for d in ['https://dailysport.pw', 'http://acestreampi.ddns.net/sports.php']:
-        data = httptools.downloadpage(d).data
+    canales.extend(get_channels_dailysport(item))
+    canales.extend(get_channels_sportzonline(item))
+    canales.extend(get_channels_sporttv(item))
 
-        canales = sorted(set(re.findall("<a href=([^>]+)>Channel (\d+) (.*?)</a>", data)), key=lambda c: int(c[1]))
-        for url, n, idioma in canales:
-            itemlist.append(item.clone(
-                label='[COLOR red]Canal %s %s[/COLOR]' % (n, idioma),
-                canal=n,
-                action='play',
-                isPlayable=True,
-                url=('https://dailysport.pw/' + url) if not 'dailysport.pw' in url else url.replace("'", "")
-            ))
-        if itemlist: break
+
+    for n, url in enumerate(canales):
+        itemlist.append(item.clone(
+            label='[COLOR red]Canal %s[/COLOR]' % (n+1),
+            title = 'Canales [COLOR red]24[/COLOR] - Canal %s' % (n+1),
+            action='play',
+            isPlayable=True,
+            url=url
+        ))
 
     return itemlist
 
 
-def play(item):
+def get_channels_dailysport(item):
+    threads = list()
+    ret = []
+
+    def get_online(canal, ret):
+        data = httptools.downloadpage(canal[1]).data
+        url = re.findall(".*?source:\s*'(.*?)'", data)
+        if url and httptools.downloadpage(url[-1], headers={'Referer': canal[1]}).code == 200:
+            ret.append(canal)
+
+
+    for n in range(1,11):
+        url = 'https://dailysport.pw/c%s.php' % n
+        t = threading.Thread(target=get_online, args=((n,url), ret))
+        threads.append(t)
+        t.setDaemon(True)
+        t.start()
+
+    running = [t for t in threads if t.isAlive()]
+    while running:
+        time.sleep(0.5)
+        running = [t for t in threads if t.isAlive()]
+
+    return [x[1] for x in sorted(ret, key=lambda x: x[0])]
+
+
+def play__dailysport(item):
     url = None
     header = 'User-Agent=%s&Referer=%s' % (urllib.quote(httptools.default_headers["User-Agent"]),
-                                           'https://dailysport.pw/c%s.php' % item.canal)
+                                           item.url)
 
-    if item.url.endswith('.m3u8'):
-        url = item.url
-    else:
-        try:
-            data = httptools.downloadpage(item.url).data
-            url = re.findall(".*?source:\s*'(.*?)'", data)[-1]
-        except:
-            pass
-
-    if url:
+    try:
+        data = httptools.downloadpage(item.url).data
+        url = re.findall(".*?source:\s*'(.*?)'", data)[-1]
         url = url + '|' + header
-        return {'action': 'play', 'VideoPlayer': 'f4mtester', 'url': url, 'titulo': item.label}
+
+        return {'action': 'play', 'VideoPlayer': 'f4mtester', 'url': url, 'titulo': item.title}
+
+    except:
+        pass
 
     xbmcgui.Dialog().ok('1x2',
                         'Ups!  Parece que en estos momentos no hay nada que ver en este enlace.',
                         'Intentelo mas tarde o pruebe en otro enlace, por favor.')
     return None
+
+
+def get_channels_sportzonline(item):
+    return ['https://sportzonline.co/channels/hd/hd%s.php' %n for n in range(1, 7)]
+
+
+def play_sportzonline(item):
+    try:
+        data = httptools.downloadpage(item.url).data
+        url = 'https:' + re.findall('<iframe src="([^"]+)', data)[0]
+        data = httptools.downloadpage(url, headers={'Referer': url}).data
+        data = re.sub(r"\n|\r|\t|\s{2}|&nbsp;", "", data)
+
+        packed = re.findall('<script>(eval.*?)</script>', data)[0]
+        url = re.findall('source:"([^"]+)',  jsunpack.unpack(packed))
+
+        ret = {'action': 'play',
+               'url': url[0],
+               'VideoPlayer': 'f4mtester',
+               'titulo': item.title}
+
+        return ret
+
+    except:
+        pass
+
+    xbmcgui.Dialog().ok('1x2',
+                        'Ups!  Parece que en estos momentos no hay nada que ver en este enlace.',
+                        'Intentelo mas tarde o pruebe en otro enlace, por favor.')
+    return None
+
+
+def get_channels_sporttv(item):
+    return ['https://v2.sportzonline.to/channels/pt/sporttv%s.php' %n for n in range(1, 6)]
+
+
+def play(item):
+    logger(item)
+    if 'dailysport.pw' in item.url:
+        return play__dailysport(item)
+
+    elif 'sportzonline' in item.url:
+        return play_sportzonline(item)
