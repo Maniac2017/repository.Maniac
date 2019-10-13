@@ -9,7 +9,7 @@
     </category>
 
     <category label="Sport365">
-        <setting id="sport_url" type="labelenum" values="http://www.sport365.live|http://www.sport365.sx|http://www.sport247.live"
+        <setting id="sport_url" type="labelenum" values="http://www.sport365.live|http://www.sport365.sx|http://www.sport247.live|http://www.s365.live"
                  label="Agenda Sport365:" default="http://www.sport365.sx"/>
     </category>
 </settings>

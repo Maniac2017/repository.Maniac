@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from libs.tools import *
+import urlparse
 
 def mainmenu(item):
     itemlist = list()
@@ -101,14 +102,14 @@ def download_arenavision(tipo='guide'):
         set_setting('arena_url', url)
 
     data = response.data
-    logger(data)
+
     if not data:
         xbmcgui.Dialog().ok('1x2',
                             'Ups!  Parece que la página %s no funciona.' % url,
                             'Intentelo cambiando el dominio dentro de Ajustes.')
 
     elif tipo == 'guide':
-        url_guide = re.findall('<a href="([^"]+)">.*?Events Guide List</a>', data)
+        url_guide = re.findall('<a href="([^"]+)">.*?Guide.*?</a>', data, re.IGNORECASE)
         if url_guide:
             data = httptools.downloadpage(url + url_guide[0]).data
         else:
@@ -355,8 +356,9 @@ def get_id(item):
 
 def get_KPRICORNIO(item):
     itemlist = []
-    canales = dict()
     ids = list()
+    ids_canales = dict()
+    info_canales = dict()
 
     url = 'https://pastebin.com/raw/v7crBBsi'
     data = httptools.downloadpage(url).data
@@ -371,24 +373,29 @@ def get_KPRICORNIO(item):
     except:
         return itemlist
 
-    patron = "#EXTINF:-1,\s?\.?(.*?)\s?\(.*?acestream:\/\/(\w{40})"
-    for title, id in re.findall(patron, data, re.DOTALL):
-        if id in ids: continue
+    patron = '#EXTINF:-1 .*?tvg-logo="([^"]+)".*?audio-track="([^"]+)",\s?\.?(.*?)\s?\(.*?acestream:\/\/(\w{40})'
+    for logo, idioma, title, id in re.findall(patron, data, re.DOTALL):
+        descartado = [p for p in ['cuatro', 'la 1', 'antena 3', 'arenavision'] if p in title.lower()]
+        if id in ids or descartado:
+            continue
+
         ids.append(id)
-
-        if title not in canales.keys():
-            canales[title] = [id]
+        if title not in ids_canales.keys():
+            ids_canales[title] = [id]
+            info_canales[title] = (logo, idioma)
         else:
-            canales[title].append(id)
+            ids_canales[title].append(id)
 
-    for title, ids in canales.items():
+    for title, ids in ids_canales.items():
+        titulo = '%s [%s]' % (title, info_canales[title][1].upper())
         new_item = item.clone(
             label ='',
-            title=title
+            title = titulo,
+            icon=  info_canales[title][0]
         )
 
         if len(ids) > 1:
-            new_item.label= '%s (%s)' % (title, len(ids))
+            new_item.label= '%s (%s)' % (titulo, len(ids))
             new_item.options = ids
             new_item.action = 'get_canales_KPRICORNIO'
             itemlist.append(new_item)
@@ -400,6 +407,7 @@ def get_KPRICORNIO(item):
             itemlist.append(new_item)
 
     if itemlist:
+        itemlist.sort(key=lambda i: i.title)
         itemlist.insert(0, item.clone(label='[B][COLOR gold]%s[/COLOR][/B]' %fecha_str, action=''))
 
     return itemlist

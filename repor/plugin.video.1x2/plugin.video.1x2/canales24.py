@@ -4,22 +4,23 @@ from libs.tools import *
 from libs import jsunpack
 import threading
 
+
 def list_all_channels(item):
     itemlist = list()
     canales =list()
 
     canales.extend(get_channels_dailysport(item))
-    canales.extend(get_channels_sportzonline(item))
     canales.extend(get_channels_sporttv(item))
 
+    for n, url_idioma in enumerate(canales):
+        label = '[COLOR red]Canal %s[/COLOR]' % (n + 1)
 
-    for n, url in enumerate(canales):
         itemlist.append(item.clone(
-            label='[COLOR red]Canal %s[/COLOR]' % (n+1),
+            label = (label + ' (%s)' % url_idioma[1]) if url_idioma[1] else label,
             title = 'Canales [COLOR red]24[/COLOR] - Canal %s' % (n+1),
             action='play',
             isPlayable=True,
-            url=url
+            url=url_idioma[0]
         ))
 
     return itemlist
@@ -35,6 +36,12 @@ def get_channels_dailysport(item):
         if url and httptools.downloadpage(url[-1], headers={'Referer': canal[1]}).code == 200:
             ret.append(canal)
 
+    try:
+        data = httptools.downloadpage('https://dailysport.pw').data
+        idiomas = set(re.findall('Channel (\d+)\s([^<\(]+)', data))
+        idiomas = dict(eval(str(idiomas).replace('Spanish', 'Español').replace('English','Ingles')))
+    except:
+        idiomas = dict()
 
     for n in range(1,11):
         url = 'https://dailysport.pw/c%s.php' % n
@@ -48,7 +55,7 @@ def get_channels_dailysport(item):
         time.sleep(0.5)
         running = [t for t in threads if t.isAlive()]
 
-    return [x[1] for x in sorted(ret, key=lambda x: x[0])]
+    return [(x[1],idiomas.get(str(x[0]),'').strip()) for x in sorted(ret, key=lambda x: x[0])]
 
 
 def play__dailysport(item):
@@ -72,11 +79,13 @@ def play__dailysport(item):
     return None
 
 
-def get_channels_sportzonline(item):
-    return ['https://sportzonline.co/channels/hd/hd%s.php' %n for n in range(1, 7)]
+def get_channels_sporttv(item):
+    a = [('https://sportzonline.co/channels/bra/br%s.php' %n, 'Portugues') for n in range(1, 4)]
+    a.extend([('https://v2.sportzonline.to/channels/pt/sporttv%s.php' %n, 'Portugues') for n in range(1, 6)])
+    return a
 
 
-def play_sportzonline(item):
+def play_sporttv(item):
     try:
         data = httptools.downloadpage(item.url).data
         url = 'https:' + re.findall('<iframe src="([^"]+)', data)[0]
@@ -102,14 +111,9 @@ def play_sportzonline(item):
     return None
 
 
-def get_channels_sporttv(item):
-    return ['https://v2.sportzonline.to/channels/pt/sporttv%s.php' %n for n in range(1, 6)]
-
-
 def play(item):
-    logger(item)
     if 'dailysport.pw' in item.url:
         return play__dailysport(item)
 
     elif 'sportzonline' in item.url:
-        return play_sportzonline(item)
+        return play_sporttv(item)

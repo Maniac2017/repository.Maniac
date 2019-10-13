@@ -19,11 +19,15 @@ def mainmenu(item):
     ))
 
     itemlist.append(item.clone(
-        label='S365',
+        #label='S365',
+        label='[COLOR FFB0C4DE]%s[/COLOR] [COLOR FFFAFAD2](En mantenimiento)[/COLOR]' % 'S365',
         channel='s365',
-        action='mainmenu',
-        icon=os.path.join(image_path, 'sport365_logo.png')
+        #action='mainmenu',
+        action='mantenimiento',
+        isFolder=False, # Para mantenimiento
+        icon=os.path.join(image_path, 'mantenimiento.png')
     ))
+
 
     itemlist.append(item.clone(
         label='Canales 24',
@@ -31,6 +35,7 @@ def mainmenu(item):
         action='list_all_channels',
         icon=os.path.join(image_path, 'sports_icon.png')
     ))
+
 
     itemlist.append(item.clone(
         label='SportsTube',
@@ -47,6 +52,7 @@ def mainmenu(item):
         icon=os.path.join(image_path, 'update.png'),
         plot="Version actual: %s\nHaz click para buscar nuevas actualizaciones." % xbmcaddon.Addon().getAddonInfo('version')
     ))
+
 
     itemlist.append(item.clone(
         label='Ajustes',
@@ -206,7 +212,7 @@ if __name__ == '__main__':
             import hashlib
             hash = hashlib.md5(open(F4mProxy_path, 'rb').read()).hexdigest()
 
-            if hash != '85fe93a44fb3c13876a5f78099d00194':
+            if hash != '1d3f071bce0b59079bb86c9d3cc8b7b4':
                 logger(hash)
                 if xbmcgui.Dialog().yesno('1x2',
                                           'Para poder disfrutar de todo el contenido de sport365',

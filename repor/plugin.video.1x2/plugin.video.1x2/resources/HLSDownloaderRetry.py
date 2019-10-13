@@ -521,7 +521,7 @@ def downloadInternal(url,file,maxbitrate=0,stopEvent=None , callbackpath="",call
                         value = value.strip().strip('"')
                         if key == 'BANDWIDTH':
                             print 'bitrate %.2f kbps'%(int(value)/1024.0)
-                            if int(value)<=int(maxbitrate) and int(value)>lastbitrate:
+                            if (int(maxbitrate)> 0 and int(value)<=int(maxbitrate) and int(value)>lastbitrate) or (int(maxbitrate)== 0 and int(value)>lastbitrate):
                                 choice=i
                                 lastbitrate=int(value)
                         elif key == 'PROGRAM-ID':
@@ -534,8 +534,9 @@ def downloadInternal(url,file,maxbitrate=0,stopEvent=None , callbackpath="",call
                             print "unknown STREAM-INF attribute %s"%key
                             #raise ValueError("unknown STREAM-INF attribute %s"%key)
                     print
-                if choice==-1: choice=0
+                if choice==-1: choice=len(variants) - 1
                 #choice = int(raw_input("Selection? "))
+
                 print 'choose %d'%choice
                 url = urlparse.urljoin(redirurl, variants[choice][0])
         except: 
