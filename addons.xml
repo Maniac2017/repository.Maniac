@@ -98,7 +98,7 @@
 </addon>
 
 <addon id="plugin.video.1x2"
-  version="1.0.17"
+  version="1.0.18"
   name="1x2"
   provider-name="Team NS">
   <requires>

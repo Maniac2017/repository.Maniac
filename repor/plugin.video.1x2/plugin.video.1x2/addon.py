@@ -37,6 +37,15 @@ def mainmenu(item):
     ))
 
 
+
+    itemlist.append(item.clone(
+        label='SportOline',
+        channel='sportonline',
+        action='mainmenu',
+        icon=os.path.join(image_path, 'sportoline.png')
+    ))
+
+
     itemlist.append(item.clone(
         label='SportsTube',
         channel='pastube',
