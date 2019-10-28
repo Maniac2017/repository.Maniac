@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<settings>
+
+    <category label="Arenavision">
+        <setting id="arena_url" type="labelenum" values="http://arenavision.us|http://arenavision.biz|http://arenavision.in|http://arenavision.cc"
+                 label="Agenda Arenavision:" default="http://arenavision.us"/>
+        <setting id="get_categorias" type="bool" label="Clasificar por deportes" default="false"/>
+        <setting id="arena_hide" type="bool" label="Ocultar eventos finalizados" default="false"/>
+    </category>
+
+    <category label="Sport365">
+        <setting id="sport_url" type="labelenum" values="http://www.sport365.live|http://www.sport365.sx|http://www.sport247.live|http://www.s365.live"
+                 label="Agenda Sport365:" default="http://www.sport365.sx"/>
+    </category>
+
+    <category label="Canales SD">
+        <setting label="Autoplay" type="bool" id="autoplay" default="true"/>
+        <setting label="Usar livestreamer" type="bool" id="livestreamer" default="false"/>
+        <setting label="Usar inputstream.adaptive" type="bool" id="inputstream" default="false"/>
+        <setting label="Tiempo de cache (Horas)" type="slider" id="cache_time" default="8" range="0,80" option="int"/>
+        <setting id="tap_sort" type="bool" label="Ordenar por paises" default="true"/>
+    </category>
+</settings>
