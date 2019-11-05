@@ -373,10 +373,10 @@ def get_KPRICORNIO(item):
     except:
         return itemlist
 
-    patron = '#EXTINF:-1 .*?tvg-logo="([^"]+)".*?audio-track="([^"]+)",\s?\.?(.*?)\s?\(.*?acestream:\/\/(\w{40})'
-    for logo, idioma, title, id in re.findall(patron, data, re.DOTALL):
-        descartado = [p for p in ['cuatro', 'la 1', 'antena 3', 'arenavision'] if p in title.lower()]
-        if id in ids or descartado:
+    patron = '#EXTINF:-1 .*?tvg-logo="([^"]+)" group-title="([^"]+)" audio-track="([^"]*)",\s?\.?(.*?)\s?\(.*?acestream:\/\/(\w{40})'
+
+    for logo, group, idioma, title, id in re.findall(patron, data, re.DOTALL):
+        if group in ['Entretenimiento']:
             continue
 
         ids.append(id)
@@ -387,7 +387,7 @@ def get_KPRICORNIO(item):
             ids_canales[title].append(id)
 
     for title, ids in ids_canales.items():
-        titulo = '%s [%s]' % (title, info_canales[title][1].upper())
+        titulo = ('%s [%s]' % (title, info_canales[title][1].upper())) if info_canales[title][1] else title
         new_item = item.clone(
             label ='',
             title = titulo,

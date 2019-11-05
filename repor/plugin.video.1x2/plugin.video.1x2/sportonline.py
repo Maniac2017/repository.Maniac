@@ -127,7 +127,7 @@ def read_guide():
                 idioma = 'Portugués'
             else:
                 idioma = url.split('/')[-1].upper()
-                idioma = idioma_esp.get(idiomas_eng[idioma],'')
+                idioma = idioma_esp.get(idiomas_eng.get(idioma), idioma)
 
             hora_evento = datetime.datetime.strptime(hora, '%H:%M').time()
             if hora_evento < hora_ant:
@@ -141,7 +141,7 @@ def read_guide():
             guide.append({
                 'fecha': fecha_hora_local.date(),
                 'hora': fecha_hora_local.time(),
-                'title': titulo.strip().replace(' x ', ' vs ').replace(' @ ', ' vs. '),
+                'title': titulo.strip().replace(' x ', ' vs. ').replace(' @ ', ' vs. '),
                 'url': url + '.php',
                 'idioma': idioma})
 
