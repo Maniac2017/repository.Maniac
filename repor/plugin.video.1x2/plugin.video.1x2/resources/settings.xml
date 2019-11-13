@@ -14,10 +14,7 @@
     </category>
 
     <category label="Canales SD">
-        <setting label="Autoplay" type="bool" id="autoplay" default="true"/>
-        <setting label="Usar livestreamer" type="bool" id="livestreamer" default="true"/>
-        <setting label="Usar inputstream.adaptive" type="bool" id="inputstream" default="false"/>
-        <setting label="Tiempo de cache (Horas)" type="slider" id="cache_time" default="8" range="0,80" option="int"/>
         <setting id="tap_sort" type="bool" label="Ordenar por paises" default="true"/>
+        <setting label="TvTap settings..." type="action" id="ishelper_settings" option="close" action="Addon.OpenSettings(script.module.TvTap)"/>
     </category>
 </settings>

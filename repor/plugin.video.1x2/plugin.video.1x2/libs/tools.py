@@ -150,7 +150,6 @@ class Deportes:
             Competition('International Champions Cup','INTERNATIONAL CHAMPIONS CUP',os.path.join(image_path, 'International_Champions_Cup.png')),
             Competition('Premier League',['PREMIER LEAGUE','England - Premier League'],os.path.join(image_path, 'soccer_liga_inlaterra.png')),
             Competition('Liga de Campeones de la AFC','Asia - AFC Champions League',os.path.join(image_path, 'soccer_AFC_Champions_League.png')),
-            Competition('English Football League Championship',['ENGLISH CHAMPIONSHIP','England - Championship'],os.path.join(image_path, 'soccer_inlaterra_2.png')),
             Competition('Francia Ligue 1',['LIGUE 1','France - Ligue 1','FRANCE LIGUE 1'],os.path.join(image_path, 'soccer_liga_francia.png')),
             Competition('Francia Ligue 2','France - Ligue 2',os.path.join(image_path, 'soccer_francia2.png')),
             Competition('Supercopa de Portugal',['PORTUGAL CUP','Portugal - League Cup','PORTUGAL LEAGUE CUP'],os.path.join(image_path, 'soccer_cup_portugal.png')),
@@ -160,7 +159,7 @@ class Deportes:
             Competition('Major League Soccer',['USA MLS', 'USA - MLS'],os.path.join(image_path, 'soccer_liga_usa.png')),
             Competition('Primera División de Chile',['CHILE PRIMERA','CHILE LEAGUE'],os.path.join(image_path, 'soccer_liga_chile.png')),
             Competition('Copa Chile','CHILE COPA',os.path.join(image_path, 'Copachilemtslogo.png')),
-            Competition('Primera División de Argentina',['ARGENTINA SUPERLIGA', 'ARGENTINA PRIMERA', 'Argentina - Primera Division'],os.path.join(image_path, 'soccer_liga_argentina.png')),
+            Competition('Primera División de Argentina',['ARGENTINA SUPERLIGA', 'ARGENTINA PRIMERA', 'Argentina - Primera Division', 'ARGENTINA SUPPERLIGA'],os.path.join(image_path, 'soccer_liga_argentina.png')),
             Competition('Supercopa de los Países Bajos','DUTCH SUPERCUP',os.path.join(image_path, 'soccer_dutch_cup.png')),
             Competition('Serie A',['ITALY SERIE A','Italy - Serie A'],os.path.join(image_path, 'soccer_liga_italia.png')),
             Competition('Liga de las Naciones de la UEFA','UEFA NATIONS LEAGUE',os.path.join(image_path, 'soccer_uefa_nation_league.png')),
@@ -205,8 +204,9 @@ class Deportes:
             Competition('Leagues Cup','LEAGUES CUP',os.path.join(image_path, 'socer_League_Cup.png')),
             Competition('Serie A de Ecuador','ECUADOR PRIMERA',os.path.join(image_path, 'soccer_Pro_Ecuador.png')),
             Competition('Supercopa de Europa','UEFA SUPERCUP',os.path.join(image_path, 'UEFA_Super_Cup.png')),
+            Competition('FA Cup',['England - FA Cup','FA CUP'],os.path.join(image_path, 'soccer_the_facup.png')),
             Competition('Liga II','Romania - Liga 2',os.path.join(image_path, 'soccer_romania_2.png')),
-            Competition('English Football League One',['EFL CUP','England - League One','England - EFL Cup'],os.path.join(image_path, 'soccer_england_3.png')),
+            Competition('English Football League One',['EFL CUP','England - League One','England - EFL Cup','ENGLISH CHAMPIONSHIP','England - Championship'],os.path.join(image_path, 'soccer_england_3.png')),
             Competition('Regionalliga North','Germany - Regionalliga North',os.path.join(image_path, 'soccer_regional_nord.png')),
             Competition('Copa de Rumania','Romania - Romanian Cup',os.path.join(image_path, 'soccer_Cupa-Romaniei.png')),
             Competition('Copa de Rusia','Russia - Russian Cup',os.path.join(image_path, 'soccer_russian_cup.png')),
@@ -298,9 +298,9 @@ class Evento(object):
         if {'fecha', 'hora', 'sport', 'title', 'competition'} - set(self.__dict__):
             raise()
         #logger(self.fecha)
-        if not 'formatTime' in self.__dict__:
-            self.formatTime = 'UTC'
-        self.datetime = date_to_local(self.fecha.replace(".", "/"), self.hora, self.formatTime)
+
+        self.datetime = date_to_local(self.fecha.replace(".", "/"), self.hora, self.__dict__.get('formatTime', 'UTC'),
+                                      self.__dict__.pop('deltaTime', 0))
         self.fecha = self.datetime.date().strftime("%d-%m-%Y")
         #logger(self.fecha)
         self.hora = self.datetime.time().strftime("%H:%M")

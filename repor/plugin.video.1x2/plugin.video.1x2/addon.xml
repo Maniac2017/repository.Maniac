@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.video.1x2"
-  version="1.0.21"
+  version="1.0.22"
   name="1x2"
   provider-name="Team NS">
   <requires>

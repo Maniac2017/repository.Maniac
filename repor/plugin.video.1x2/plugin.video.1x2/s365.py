@@ -73,7 +73,7 @@ def read_guide(item):
                 deporte = competicion
                 competicion = ''
 
-            guide.append(Evento(fecha=fecha, hora=hora, formatTime='CEST', sport=deporte,
+            guide.append(Evento(fecha=fecha, hora=hora, formatTime='CEST', deltaTime=-1, sport=deporte,
                                 competition=competicion, title=titulo, channels=canales,
                                 direct=True if "green-big.png" in thumb else False))
 

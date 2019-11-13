@@ -15,7 +15,6 @@ def main(item):
             canales.sort(key=lambda e: e['label'])
 
         for i in canales:
-            logger(i)
             if i['filetype'] == 'file':
                 pais, name = i['label'].split(' - ')
                 itemlist.append(item.clone(
@@ -32,7 +31,3 @@ def main(item):
                             'Intentelo mas tarde, por favor.')
 
     return itemlist
-
-
-for name in ["autoplay", "livestreamer", "inputstream", "cache_time"]:
-    xbmcaddon.Addon('script.module.TvTap').setSetting(name, xbmcaddon.Addon('plugin.video.1x2').getSetting(name))
