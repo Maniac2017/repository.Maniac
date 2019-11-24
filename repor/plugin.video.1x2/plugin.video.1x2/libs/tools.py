@@ -345,6 +345,7 @@ class Evento(object):
 
 # Funciones auxiliares
 def get_utc_offset():
+    return 1
     utc_offset = xbmcgui.Window(10000).getProperty('utc_offset')
     if not utc_offset:
         data = httptools.downloadpage('https://time.is/es/UTC').data
