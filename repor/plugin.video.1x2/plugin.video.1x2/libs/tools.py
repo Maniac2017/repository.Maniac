@@ -150,14 +150,14 @@ class Deportes:
             Competition('International Champions Cup','INTERNATIONAL CHAMPIONS CUP',os.path.join(image_path, 'International_Champions_Cup.png')),
             Competition('Premier League',['PREMIER LEAGUE','England - Premier League'],os.path.join(image_path, 'soccer_liga_inlaterra.png')),
             Competition('Liga de Campeones de la AFC','Asia - AFC Champions League',os.path.join(image_path, 'soccer_AFC_Champions_League.png')),
-            Competition('Francia Ligue 1',['LIGUE 1','France - Ligue 1','FRANCE LIGUE 1'],os.path.join(image_path, 'soccer_liga_francia.png')),
+            Competition('Francia Ligue 1',['LIGUE 1','France - Ligue 1','FRANCE LIGUE 1','France Ligue 1'],os.path.join(image_path, 'soccer_liga_francia.png')),
             Competition('Francia Ligue 2','France - Ligue 2',os.path.join(image_path, 'soccer_francia2.png')),
-            Competition('Supercopa de Portugal',['PORTUGAL CUP','Portugal - League Cup','PORTUGAL LEAGUE CUP'],os.path.join(image_path, 'soccer_cup_portugal.png')),
+            Competition('Supercopa de Portugal',['Portugal - Portuguese Cup','PORTUGAL CUP','Portugal - League Cup','PORTUGAL LEAGUE CUP'],os.path.join(image_path, 'soccer_cup_portugal.png')),
             Competition('Bundesliga', ['BUNDESLIGA','Germany - Bundesliga'],os.path.join(image_path, 'soccer_liga_alemana.png')),
             Competition('Bundesliga 2',['Germany - 2.Bundesliga', '2.Bundesliga'],os.path.join(image_path, 'soccer_budesliga2.png')),
             Competition('Primera División de México',['Mexico - Liga MX', 'MEXICO LIGA MX', 'MEXICO PRIMERA'],os.path.join(image_path, 'soccer_liga_mexico.png')),
             Competition('Major League Soccer',['USA MLS', 'USA - MLS'],os.path.join(image_path, 'soccer_liga_usa.png')),
-            Competition('Primera División de Chile',['CHILE PRIMERA','CHILE LEAGUE'],os.path.join(image_path, 'soccer_liga_chile.png')),
+            Competition('Primera División de Chile',['CHILE PRIMERA','CHILE LEAGUE','CHILE PRIMERA A'],os.path.join(image_path, 'soccer_liga_chile.png')),
             Competition('Copa Chile','CHILE COPA',os.path.join(image_path, 'Copachilemtslogo.png')),
             Competition('Primera División de Argentina',['ARGENTINA SUPERLIGA', 'ARGENTINA PRIMERA', 'Argentina - Primera Division', 'ARGENTINA SUPPERLIGA'],os.path.join(image_path, 'soccer_liga_argentina.png')),
             Competition('Supercopa de los Países Bajos','DUTCH SUPERCUP',os.path.join(image_path, 'soccer_dutch_cup.png')),
@@ -172,6 +172,7 @@ class Deportes:
             Competition('Ekstraklasa','Poland - Ekstraklasa',os.path.join(image_path, 'soccer_polaco.png')),
             Competition('Campeonato Brasileño de Serie A', 'BRAZIL BRASILEIRAO',os.path.join(image_path, 'soccer_liga_brasil.png')),
             Competition('Superliga de Grecia', 'Greece - Super League',os.path.join(image_path, 'soccer_Super_League_Greece.png')),
+            Competition('La W-League', 'Australia - W-League',os.path.join(image_path, 'soccer_W_League.png')),
             Competition('Liga Premier de Rusia', 'Russia - Premier League',os.path.join(image_path, 'soccer_rusia.png')),
             Competition('Liga Juvenil de la UEFA',['UEFA YOUTH LEAGUE','Europe - UEFA Youth League'],os.path.join(image_path, 'soccer_youth_league.png')),
             Competition('Superliga de Suiza','Switzerland - Super League',os.path.join(image_path, 'soccer_suiza.png')),
@@ -179,7 +180,7 @@ class Deportes:
             Competition('Regionalliga Südwest','Germany - Regionalliga South West',os.path.join(image_path, 'soccer_regional_alemana.png')),
             Competition('Copa Argentina','ARGENTINA COPA',os.path.join(image_path, 'soccer_copa_argentina.png')),
             Competition('Liga Premier de Ucrania','Ukraine - Premier League',os.path.join(image_path, 'soccer_ucrania.png')),
-            Competition('Copa Libertadores de América',['COPA LIBERTADORES','South America - Copa Libertadores'],os.path.join(image_path, 'soccer_comenbol_libertadores.png')),
+            Competition('Copa Libertadores de América',['COPA LIBERTADORES','South America - Copa Libertadores','COPA LIBERTADORES FINAL'],os.path.join(image_path, 'soccer_comenbol_libertadores.png')),
             Competition('Superliga de China',['CHINESE SUPER LEAGUE','China - Super League'],os.path.join(image_path, 'soccer_liga_China.png')),
             Competition('Superliga de Turquia',['TURKISH SUPERLIG','TURKISH LEAGUE','Turkey - Super Lig','TURKISH SUPER LIG'],os.path.join(image_path, 'soccer_liga_turquia.png')),
             Competition('Liga I','Romania - Liga 1',os.path.join(image_path, 'soccer_rumania.png')),
@@ -211,6 +212,7 @@ class Deportes:
             Competition('Copa de Rumania','Romania - Romanian Cup',os.path.join(image_path, 'soccer_Cupa-Romaniei.png')),
             Competition('Copa de Rusia','Russia - Russian Cup',os.path.join(image_path, 'soccer_russian_cup.png')),
             Competition('Copa de la República Checa','Czech Republic - Czech Cup',os.path.join(image_path, 'soccer_czech-mol-cup.png')),
+            Competition('Czech Liga','Czech Republic - First League',os.path.join(image_path, 'soccer_replublica_checa.png')),
             Competition('Liga Premier de Bielorrusia','Belarus - Premier League',os.path.join(image_path, 'soccer_Federation_of_Belarus.png')),
             Competition('Copa de Polonia','Poland - Polish Cup',os.path.join(image_path, 'soccer_poland_polish_cup.png')),
             Competition('Tercera Categoría League Griega','Greece - Football League',os.path.join(image_path, 'soccer_tercera_griega.png')),
@@ -228,8 +230,10 @@ class Deportes:
             Competition('Liga Allsvenskan','Sweden - Allsvenskan',os.path.join(image_path, 'soccer_sweden_superettan.png')),
             Competition('Superliga de Serbia','Serbia - Super Liga',os.path.join(image_path, 'Soccer_uperLiga.png')),
             Competition('Primera Liga de Croacia','Croatia - 1. HNL',os.path.join(image_path, 'soccer_croatia-prva-hnl.png')),
+            Competition('Copa Africana de Naciones',['Africa - African Cup of Nations','Africa - U23 African Cup of Nations'],os.path.join(image_path, 'soccer_copa_africa.png')),
             Competition('Eurocopa Sub-21',['Europe - U21 European Championship','European Championship'],os.path.join(image_path, 'soccer_sub_21.png')),
-            Competition('Amistoso',['Club Friendlies','FRIENDLY MATCH','International Friendlies'],os.path.join(image_path, 'soccer_amistoso.png'))
+            Competition('Copa Mundial de Fútbol',['World - World Cup','World Cup'],os.path.join(image_path, 'soccer_copa_mundo.png')),
+            Competition('Amistoso',['Club Friendlies','FRIENDLY MATCH','International Friendlies','U21 International Friendlies'],os.path.join(image_path, 'soccer_amistoso.png'))
         ]
 
 
@@ -344,7 +348,7 @@ def get_utc_offset():
     utc_offset = xbmcgui.Window(10000).getProperty('utc_offset')
     if not utc_offset:
         data = httptools.downloadpage('https://time.is/es/UTC').data
-        utc = re.findall('<div id="twd">(\d+):', data, re.DOTALL)[0]
+        utc = re.findall('<span id="favt5">(\d+):', data, re.DOTALL)[0]
         cest = re.findall('<span id="favt4">(\d+):', data, re.DOTALL)[0]
         utc_offset = str(int(cest) - int(utc))
         xbmcgui.Window(10000).setProperty('utc_offset', utc_offset)

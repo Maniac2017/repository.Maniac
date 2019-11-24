@@ -40,8 +40,6 @@ def mainmenu(item):
         plot="Basado en TV Tap"
     ))
 
-
-
     itemlist.append(item.clone(
         label='SportOnline',
         channel='sportonline',
@@ -49,6 +47,12 @@ def mainmenu(item):
         icon=os.path.join(image_path, 'sportoline.png')
     ))
 
+    itemlist.append(item.clone(
+        label='All American Sports',
+        channel='720pStream',
+        action='mainmenu',
+        icon=os.path.join(image_path, '720pstream.png')
+    ))
 
     itemlist.append(item.clone(
         label='SportsTube',
@@ -66,11 +70,11 @@ def mainmenu(item):
         plot="Version actual: %s\nHaz click para buscar nuevas actualizaciones." % xbmcaddon.Addon().getAddonInfo('version')
     ))
 
-
     itemlist.append(item.clone(
         label='Ajustes',
         action='open_settings',
-        plot='Menu de configuración'
+        plot='Menu de configuración',
+        icon=os.path.join(image_path, 'red_config.png')
     ))
 
     # test
@@ -86,7 +90,7 @@ def mainmenu(item):
 
 
 def run(item):
-    logger('run item: %s' % item, 'info')
+    #logger('run item: %s' % item, 'info')
     itemlist = list()
     channel = None
 
@@ -183,6 +187,29 @@ def play(video_item):
         xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, listitem)
         return
 
+    elif video_item['VideoPlayer'] == 'inputstream':
+        url = video_item['url']
+        listitem = xbmcgui.ListItem()
+        listitem.setInfo('video', {'title': video_item['titulo']})
+        listitem.setProperty('IsPlayable', 'true')
+        listitem.setProperty('inputstreamaddon', 'inputstream.adaptive')
+        listitem.setProperty('inputstream.adaptive.license_type', video_item.get('license_type', 'com.widevine.alpha'))
+        listitem.setProperty('inputstream.adaptive.manifest_type', video_item.get('manifest_type', 'hls'))
+
+        if video_item.get('mimetype'):
+            listitem.setMimeType(video_item.get('MimeType')) #['application/dash+xml', 'application/vnd.apple.mpegurl']
+
+        if video_item.get('license_key'):
+            listitem.setProperty('inputstream.adaptive.license_key', video_item.get('license_key'))
+
+        if video_item.get('headers'):
+            listitem.setProperty('inputstream.adaptive.stream_headers',video_item.get('headers'))
+            url += '|' + video_item.get('headers')
+
+        listitem.setPath(url)
+        xbmcplugin.setResolvedUrl(int(sys.argv[1]), True, listitem)
+        return
+
     elif video_item['VideoPlayer'] == 'plexus':
         url = 'plugin://program.plexus/?mode=1&url=acestream://%s&name=%s' % \
               (video_item['url'], video_item['titulo'])
@@ -225,7 +252,7 @@ if __name__ == '__main__':
             import hashlib
             hash = hashlib.md5(open(F4mProxy_path, 'rb').read()).hexdigest()
 
-            if hash != '1d3f071bce0b59079bb86c9d3cc8b7b4':
+            if hash != '26b2512f6bcede0621ee3fff1d6cf5e6':
                 logger(hash)
                 if xbmcgui.Dialog().yesno('1x2',
                                           'Para poder disfrutar de todo el contenido de sport365',
@@ -246,9 +273,22 @@ if __name__ == '__main__':
             xbmcgui.Dialog().ok('1x2',
                                 'Ups! Para poder utilizar el canal sport365 es necesario tener instalado F4mTester.')
 
-        item = Item(action='mainmenu', icon=os.path.join(image_path, 'red_config.png'))
+
+        # Activar inputstream.adaptative
+        try:
+            command = {
+                "jsonrpc": "2.0",
+                "method": "Addons.SetAddonEnabled",
+                "params": {"addonid": "inputstream.adaptive", "enabled": True},
+                "id": 1}
+            ret = json.loads(xbmc.executeJSONRPC(json.dumps(command)))
+        except Exception:
+            ret = 'error'
+
+        if 'error' in ret:
+            xbmcgui.Dialog().ok('1x2',
+                    'Ups! Para poder utilizar el canal 720pStream es necesario tener instalado inputstream.adaptive.')
+
+        item = Item(action='mainmenu', icon=os.path.join(image_path, 'logo.gif'))
 
     run(item)
-
-
-

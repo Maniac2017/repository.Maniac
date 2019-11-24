@@ -355,7 +355,7 @@ def handle_basic_m3u(url):
                 if attribs['METHOD'] == 'NONE':
                     assert 'URI' not in attribs, 'EXT-X-KEY: METHOD=NONE, but URI found'
                     assert 'IV' not in attribs, 'EXT-X-KEY: METHOD=NONE, but IV found'
-                    enc = Nonee
+                    enc = None
                 elif attribs['METHOD'] == 'AES-128':
                     if not aesdone:
                         #aesdone=False there can be multple aes per file

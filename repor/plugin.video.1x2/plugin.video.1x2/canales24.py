@@ -68,7 +68,14 @@ def play__dailysport(item):
         url = re.findall(".*?source:\s*'(.*?)'", data)[-1]
         url = url + '|' + header
 
-        return {'action': 'play', 'VideoPlayer': 'f4mtester', 'url': url, 'titulo': item.title}
+        return {'action': 'play',
+                'VideoPlayer': 'inputstream',
+                'manifest_type': 'hls',
+                'mimetype': 'application/vnd.apple.mpegurl',
+                'license_key': '|' + header,
+                'headers': header,
+                'url': url,
+                'titulo': item.title}
 
     except:
         pass
@@ -95,10 +102,18 @@ def play_sporttv(item):
         packed = re.findall('<script>(eval.*?)</script>', data)[0]
         url = re.findall('source:"([^"]+)',  jsunpack.unpack(packed))
 
-        ret = {'action': 'play',
-               'url': url[0],
-               'VideoPlayer': 'f4mtester',
-               'titulo': item.title}
+        ret = {'action': 'play', 'url': url[0], 'VideoPlayer': 'f4mtester', 'titulo': item.title}
+        '''headers = 'User-Agent={0}&Referer={1}'.format(
+            urllib.quote(httptools.default_headers["User-Agent"]), item.url)
+
+        ret =  {'action': 'play',
+                'VideoPlayer': 'inputstream',
+                'manifest_type': 'hls',
+                'mimetype': 'application/vnd.apple.mpegurl',
+                'license_key': '|' + headers,
+                'headers': headers,
+                'url': url[0],# + '|' + headers,
+                'titulo': item.title}'''
 
         return ret
 
