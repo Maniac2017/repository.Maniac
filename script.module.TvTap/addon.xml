@@ -7,7 +7,7 @@
     <import addon="script.module.routing" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="addon.py">
-    <provides>all</provides>
+    <provides>executable</provides>
   </extension>
   <extension point="xbmc.addon.metadata">
     <summary lang="en_gb">All credit goes to the Original Dev RACC</summary>
