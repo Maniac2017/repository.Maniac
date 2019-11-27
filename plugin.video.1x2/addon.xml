@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <addon id="plugin.video.1x2"
-  version="1.0.24"
+  version="1.0.25"
   name="1x2"
   provider-name="Team NS">
   <requires>
     <import addon="xbmc.python" version="2.25.0"/>
     <import addon="script.module.requests" version="2.19.1"/>
     <import addon="script.module.routing" />
+    <import addon="inputstream.adaptive" />
+    <import addon="plugin.video.youtube" />
+    <import addon="script.video.F4mProxy" version="2.8.8"/>
+    <import addon="plugin.video.f4mTester" version="2.7.2"/>
     <import addon="script.module.TvTap" />
+    <import addon="program.plexus" />
   </requires>
   <extension point="xbmc.python.pluginsource" library="addon.py">
     <provides>video</provides>

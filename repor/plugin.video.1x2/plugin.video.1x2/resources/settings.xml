@@ -2,7 +2,7 @@
 <settings>
 
     <category label="Arenavision">
-        <setting id="arena_url" type="labelenum" values="http://arenavision.us|http://arenavision.biz|http://arenavision.in|http://arenavision.cc"
+        <setting id="arena_url" type="labelenum" values="https://arenavision.us|https://arenavision.biz|https://arenavision.in|https://arenavision.cc"
                  label="Agenda Arenavision:" default="http://arenavision.us"/>
         <setting id="get_categorias" type="bool" label="Clasificar por deportes" default="false"/>
         <setting id="arena_hide" type="bool" label="Ocultar eventos finalizados" default="false"/>

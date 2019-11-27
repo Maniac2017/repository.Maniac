@@ -307,11 +307,14 @@ def retry_if_cloudflare(response, args):
         auth_args['url'] = auth_url
         auth_args['follow_redirects'] = False
         auth_args['headers'] = {'Referer': args['url']}
+        if not '&s=' in auth_url:
+            auth_args['url'] = auth_url.split('?jschl_answer=')[0]
+            auth_args['post'] = 'jschl_answer=' + auth_url.split('?jschl_answer=')[1]
 
         resp = downloadpage(**auth_args)
         if resp.sucess:
             logger("cloudflare: Autorización correcta, descargando página")
-            args['bypass_cloudflare'] = False
+            args['bypass_cloudflare'] = False if [a[3] for a in inspect.stack()].count('retry_if_cloudflare') > 2 else True
             return downloadpage(**args).__dict__
         elif resp.code == 403 and resp.headers.get('cf-chl-bypass'):
             if [a[3] for a in inspect.stack()].count('retry_if_cloudflare') > 2:
@@ -418,15 +421,22 @@ class Cloudflare:
 
         try:
             self.js_data["auth_url"] = \
-            re.compile('<form id="challenge-form" action="([^"]+)" method="get">').findall(response["data"])[0]
+            re.compile('<form id="challenge-form" action="([^"]+)"').findall(response["data"])[0]
             self.js_data["params"] = {}
             self.js_data["params"]["jschl_vc"] = \
             re.compile('<input type="hidden" name="jschl_vc" value="([^"]+)"').findall(response["data"])[0]
             self.js_data["params"]["pass"] = \
             re.compile('<input type="hidden" name="pass" value="([^"]+)"').findall(response["data"])[0]
-            self.js_data["params"]["s"] = \
-            re.compile('<input type="hidden" name="s" value="([^"]+)"').findall(response["data"])[0]
-
+            try:
+                self.js_data["params"]["s"] = \
+                re.compile('<input type="hidden" name="s" value="([^"]+)"').findall(response["data"])[0]
+            except:
+                pass
+            try:
+                self.js_data["params"]["r"] = \
+                re.compile('<input type="hidden" name="r" value="([^"]+)"').findall(response["data"])[0]
+            except:
+                pass
             var, self.js_data["value"] = \
             re.compile('var s,t,o,p,b,r,e,a,k,i,n,g,f[^:]+"([^"]+)":([^\n]+)};', re.DOTALL).findall(response["data"])[0]
             # ~ logger(var)

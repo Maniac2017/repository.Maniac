@@ -150,9 +150,9 @@ class Deportes:
             Competition('International Champions Cup','INTERNATIONAL CHAMPIONS CUP',os.path.join(image_path, 'International_Champions_Cup.png')),
             Competition('Premier League',['PREMIER LEAGUE','England - Premier League'],os.path.join(image_path, 'soccer_liga_inlaterra.png')),
             Competition('Liga de Campeones de la AFC','Asia - AFC Champions League',os.path.join(image_path, 'soccer_AFC_Champions_League.png')),
-            Competition('Francia Ligue 1',['LIGUE 1','France - Ligue 1','FRANCE LIGUE 1','France Ligue 1'],os.path.join(image_path, 'soccer_liga_francia.png')),
+            Competition('Francia Ligue 1',['LIGUE 1','France - Ligue 1','FRANCE LIGUE 1'],os.path.join(image_path, 'soccer_liga_francia.png')),
             Competition('Francia Ligue 2','France - Ligue 2',os.path.join(image_path, 'soccer_francia2.png')),
-            Competition('Supercopa de Portugal',['Portugal - Portuguese Cup','PORTUGAL CUP','Portugal - League Cup','PORTUGAL LEAGUE CUP'],os.path.join(image_path, 'soccer_cup_portugal.png')),
+            Competition('Supercopa de Portugal',['PORTUGAL CUP','Portugal - League Cup','PORTUGAL LEAGUE CUP'],os.path.join(image_path, 'soccer_cup_portugal.png')),
             Competition('Bundesliga', ['BUNDESLIGA','Germany - Bundesliga'],os.path.join(image_path, 'soccer_liga_alemana.png')),
             Competition('Bundesliga 2',['Germany - 2.Bundesliga', '2.Bundesliga'],os.path.join(image_path, 'soccer_budesliga2.png')),
             Competition('Primera División de México',['Mexico - Liga MX', 'MEXICO LIGA MX', 'MEXICO PRIMERA'],os.path.join(image_path, 'soccer_liga_mexico.png')),
@@ -180,7 +180,7 @@ class Deportes:
             Competition('Regionalliga Südwest','Germany - Regionalliga South West',os.path.join(image_path, 'soccer_regional_alemana.png')),
             Competition('Copa Argentina','ARGENTINA COPA',os.path.join(image_path, 'soccer_copa_argentina.png')),
             Competition('Liga Premier de Ucrania','Ukraine - Premier League',os.path.join(image_path, 'soccer_ucrania.png')),
-            Competition('Copa Libertadores de América',['COPA LIBERTADORES','South America - Copa Libertadores','COPA LIBERTADORES FINAL'],os.path.join(image_path, 'soccer_comenbol_libertadores.png')),
+            Competition('Copa Libertadores de América',['COPA LIBERTADORES','South America - Copa Libertadores'],os.path.join(image_path, 'soccer_comenbol_libertadores.png')),
             Competition('Superliga de China',['CHINESE SUPER LEAGUE','China - Super League'],os.path.join(image_path, 'soccer_liga_China.png')),
             Competition('Superliga de Turquia',['TURKISH SUPERLIG','TURKISH LEAGUE','Turkey - Super Lig','TURKISH SUPER LIG'],os.path.join(image_path, 'soccer_liga_turquia.png')),
             Competition('Liga I','Romania - Liga 1',os.path.join(image_path, 'soccer_rumania.png')),
@@ -200,7 +200,7 @@ class Deportes:
             Competition('Clasificación para la Eurocopa 2020',['UEFA EURO 2020 QF','Europe - UEFA European Championship'],os.path.join(image_path, 'soccer_eurocopa.png')),
             Competition('Liga Premier de Israel','Israel - Premier League',os.path.join(image_path, 'soccer_israeli_premier_league.png')),
             Competition('Liga Leumit','Israel - Liga Leumit',os.path.join(image_path, 'soccer_israel_2.png')),
-            Competition('Liga de Campeones de la Concacaf','CONCACAF CHAMPIONS LEAGUE',os.path.join(image_path, 'soccer_concaf_champions_league.png')),
+            Competition('Liga de Campeones de la Concacaf',['CONCACAF CHAMPIONS LEAGUE','CONCACAF FINAL'],os.path.join(image_path, 'soccer_concaf_champions_league.png')),
             Competition('Liga de Naciones Concacaf','CONCACAF NATIONS LEAGUE',os.path.join(image_path, 'soccer_nations_league.png')),
             Competition('Leagues Cup','LEAGUES CUP',os.path.join(image_path, 'socer_League_Cup.png')),
             Competition('Serie A de Ecuador','ECUADOR PRIMERA',os.path.join(image_path, 'soccer_Pro_Ecuador.png')),
@@ -345,13 +345,16 @@ class Evento(object):
 
 # Funciones auxiliares
 def get_utc_offset():
-    return 1
     utc_offset = xbmcgui.Window(10000).getProperty('utc_offset')
     if not utc_offset:
-        data = httptools.downloadpage('https://time.is/es/UTC').data
-        utc = re.findall('<span id="favt5">(\d+):', data, re.DOTALL)[0]
-        cest = re.findall('<span id="favt4">(\d+):', data, re.DOTALL)[0]
-        utc_offset = str(int(cest) - int(utc))
+        data = httptools.downloadpage('http://horaexacta.com.es/').data
+        patron = "<span id='cet' lah='(\d+).*?<span id='utc' lah='(\d+)"
+        cest, utc = re.findall(patron,data)[0]
+        cest = int(cest)
+        utc = int(utc)
+        if cest == 0:
+            cest = 24
+        utc_offset = str(cest - utc)
         xbmcgui.Window(10000).setProperty('utc_offset', utc_offset)
 
     return int(utc_offset)

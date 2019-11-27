@@ -40,13 +40,13 @@ def mainmenu(item):
             plot='Basada en el grupo de Telegram: https://t.me/acestream_spanish'
         ))
 
-    if get_KPRICORNIO(item):
+    '''if get_KPRICORNIO(item):
         itemlist.append(item.clone(
             label='Canales KPRICORNIO',
             action='get_KPRICORNIO',
             icon=os.path.join(image_path, 'kapricornio.png'),
             plot='Canales recopilados por KPRICORNIO'
-        ))
+        ))'''
 
 
     itemlist.append(item.clone(
