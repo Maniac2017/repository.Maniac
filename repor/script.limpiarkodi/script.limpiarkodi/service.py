@@ -20,7 +20,7 @@ import shutil
 import urllib2,urllib
 import re
 import controlstartup as control
-torrentsdir   =  xbmc.translatePath(os.path.join('special://home/cache/xbmcup'))
+tempPath = xbmc.translatePath('special://home/addons/temp/')
 CacheRomdir   =  xbmc.translatePath(os.path.join('special://home/addons/temp',''))
 packagesdir   =  xbmc.translatePath(os.path.join('special://home/addons/packages',''))
 thumbnails    =  xbmc.translatePath('special://home/userdata/Thumbnails')

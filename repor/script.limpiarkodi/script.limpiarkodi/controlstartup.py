@@ -25,9 +25,10 @@ import os
 
 thumbnailPath = xbmc.translatePath('special://thumbnails');
 cachePath = os.path.join(xbmc.translatePath('special://home'), 'cache')
+cdmPath = os.path.join(xbmc.translatePath('special://home'), 'cdm')
 tempPath = xbmc.translatePath('special://home/temp')
 torrentsdir = xbmc.translatePath(os.path.join('special://cache'))
-tempPath = xbmc.translatePath('special://kodi/temp')
+tempPath = xbmc.translatePath('special://home/addons/temp/')
 addonPath = os.path.join(os.path.join(xbmc.translatePath('special://home'), 'addons'),'script.limpiarkodi')
 
 mediaPath = os.path.join(addonPath, 'media')
@@ -43,11 +44,11 @@ class cacheEntry:
         self.path = pathi
 
 def setupCacheEntries():
-    entries = 19 #make sure this refelcts the amount of entries you have
-    dialogName = [" YouTube", " UrlResolve", " Simple Cacher", " Simple Downloader", " Metadatautils", " Streamlink", " Tvalacarta", " Resolveurl", " Alfa Downloads", " Metahandler", " Youtube.dl", " Extendedinfo", " TheMovieDB", " Extendedinfo/YouTube", " Autocompletion/Google", " Autocompletion/Bing", " Universalscrapers", " Torrents Alfa", " Clouddrive Common"]
+    entries = 21 #make sure this refelcts the amount of entries you have
+    dialogName = [" YouTube", " UrlResolve", " Simple Cacher", " Simple Downloader", " Metadatautils", " Streamlink", " Tvalacarta", " Resolveurl", " Alfa Downloads", " Metahandler", " Youtube.dl", " Extendedinfo", " TheMovieDB", " Extendedinfo/YouTube", " Autocompletion/Google", " Autocompletion/Bing", " Universalscrapers", " Torrents Alfa", " MediaExplorer Downloads", " Balandro Downloads", " MediaExplorer Torrent"]
     pathName = ["special://profile/addon_data/plugin.video.youtube/kodion", "special://profile/addon_data/script.module.urlresolve/cache",
                     "special://profile/addon_data/script.module.simplecache", "special://profile/addon_data/script.module.simple.downloader",
-                    "special://profile/addon_data/script.module.metadatautils/animatedgifs", "special://profile/addon_data/script.module.streamlink/base","special://profile/addon_data/plugin.video.tvalacarta/downloads", "special://profile/addon_data/script.module.resolveurl/cache", "special://profile/addon_data/plugin.video.alfa/downloads", "special://profile/addon_data/script.module.metahandler/meta_cache", "special://profile/addon_data/script.module.youtube.dl/tmp", "special://profile/addon_data/script.extendedinfo/images", "special://profile/addon_data/script.extendedinfo/TheMovieDB", "special://profile/addon_data/script.extendedinfo/YouTube", "special://profile/addon_data/plugin.program.autocompletion/Google", "special://profile/addon_data/plugin.program.autocompletion/Bing", "special://profile/addon_data/script.module.universalscrapers", "special://profile/addon_data/plugin.video.alfa/videolibrary/temp_torrents_Alfa", "special://profile/addon_data/script.module.clouddrive.common",]
+                    "special://profile/addon_data/script.module.metadatautils/animatedgifs", "special://profile/addon_data/script.module.streamlink/base","special://profile/addon_data/plugin.video.tvalacarta/downloads", "special://profile/addon_data/script.module.resolveurl/cache", "special://profile/addon_data/plugin.video.alfa/downloads", "special://profile/addon_data/script.module.metahandler/meta_cache", "special://profile/addon_data/script.module.youtube.dl/tmp", "special://profile/addon_data/script.extendedinfo/images", "special://profile/addon_data/script.extendedinfo/TheMovieDB", "special://profile/addon_data/script.extendedinfo/YouTube", "special://profile/addon_data/plugin.program.autocompletion/Google", "special://profile/addon_data/plugin.program.autocompletion/Bing", "special://profile/addon_data/script.module.universalscrapers", "special://profile/addon_data/plugin.video.alfa/videolibrary/temp_torrents_Alfa", "special://profile/addon_data/plugin.video.mediaexplorer/downloads", "special://profile/addon_data/plugin.video.balandro/downloads", "special://profile/addon_data/plugin.video.mediaexplorer/torrent/.cache"]
                     
     cacheEntries = []
     
@@ -88,6 +89,27 @@ def clearCache():
                     for f in files:
                         try:
                             if (f == "kodi.log" or f == "kodi.old.log"): continue
+                            os.unlink(os.path.join(root, f))
+                        except:
+                            pass
+                    for d in dirs:
+                        try:
+                            shutil.rmtree(os.path.join(root, d))
+                        except:
+                            pass
+                        
+            else:
+                pass
+    if os.path.exists(cdmPath)==True:    
+        for root, dirs, files in os.walk(cdmPath):
+            file_count = 0
+            file_count += len(files)
+            if file_count > 0:
+                dialog = xbmcgui.Dialog()
+                if dialog.yesno("Borrar Archivos en CDM", str(file_count) + " Archivos Encontrados", "Desea Eliminarlos?"):
+                    for f in files:
+                        try:
+                            if (f == "*.dmp" or f == "*.txt"): continue
                             os.unlink(os.path.join(root, f))
                         except:
                             pass
@@ -258,7 +280,7 @@ def deleteThumbnails():
 
     if os.path.exists(thumbnailPath)==True:  
             dialog = xbmcgui.Dialog()
-            if dialog.yesno("Borrar Imagenes", "Esta Opcion Borra las Imagenes", "Desea Eliminarlas?"):
+            if dialog.yesno("Borrar Imagenes", "Esta opcion eliminara todas las Imagenes", "Desea continuar?"):
                 for root, dirs, files in os.walk(thumbnailPath):
                     file_count = 0
                     file_count += len(files)
@@ -332,25 +354,3 @@ def purgeCacheRom():
             else:
                 dialog = xbmcgui.Dialog()
                 dialog.ok("Limpia tu Kodi", "Eliminados Archivos en Temp")
-
-def purgeTorrents():
-
-    torrentsPath = xbmc.translatePath('special://home/cache/')
-    dialog = xbmcgui.Dialog()
-    for root, dirs, files in os.walk(torrentsPath):
-            file_count = 0
-            file_count += len(files)
-    if dialog.yesno("Borrar contenido Torrent", "%d Torrents Encontrados."%file_count, "Desea Eliminarlo?"):  
-        for root, dirs, files in os.walk(torrentsPath):
-            file_count = 0
-            file_count += len(files)
-            if file_count > 0:
-                for f in files:
-                    os.unlink(os.path.join(root, f))
-                for d in dirs:
-                    shutil.rmtree(os.path.join(root, d))
-                dialog = xbmcgui.Dialog()
-                dialog.ok("Limpia tu Kodi", "Borrar todo el contenido de Torrents")
-            else:
-                dialog = xbmcgui.Dialog()
-                dialog.ok("Limpia tu Kodi", "Eliminados Torrents")

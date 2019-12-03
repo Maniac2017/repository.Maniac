@@ -1,1 +1,373 @@
-import base64;exec base64.b64decode('IyAgIHNjcmlwdC5saW1waWFya29kaQojICAgQ29weXJpZ2h0IChDKSAyMDE2ICBUZWNvCiMKIyAgIFRoaXMgcHJvZ3JhbSBpcyBmcmVlIHNvZnR3YXJlOiB5b3UgY2FuIHJlZGlzdHJpYnV0ZSBpdCBhbmQvb3IgbW9kaWZ5CiMgICBpdCB1bmRlciB0aGUgdGVybXMgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGFzIHB1Ymxpc2hlZCBieQojICAgdGhlIEZyZWUgU29mdHdhcmUgRm91bmRhdGlvbiwgZWl0aGVyIHZlcnNpb24gMyBvZiB0aGUgTGljZW5zZSwgb3IKIyAgIChhdCB5b3VyIG9wdGlvbikgYW55IGxhdGVyIHZlcnNpb24uCiMKIyAgIFRoaXMgcHJvZ3JhbSBpcyBkaXN0cmlidXRlZCBpbiB0aGUgaG9wZSB0aGF0IGl0IHdpbGwgYmUgdXNlZnVsLAojICAgYnV0IFdJVEhPVVQgQU5ZIFdBUlJBTlRZOyB3aXRob3V0IGV2ZW4gdGhlIGltcGxpZWQgd2FycmFudHkgb2YKIyAgIE1FUkNIQU5UQUJJTElUWSBvciBGSVRORVNTIEZPUiBBIFBBUlRJQ1VMQVIgUFVSUE9TRS4gIFNlZSB0aGUKIyAgIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlIGZvciBtb3JlIGRldGFpbHMuCiMKIyAgIFlvdSBzaG91bGQgaGF2ZSByZWNlaXZlZCBhIGNvcHkgb2YgdGhlIEdOVSBHZW5lcmFsIFB1YmxpYyBMaWNlbnNlCiMgICBhbG9uZyB3aXRoIHRoaXMgcHJvZ3JhbS4gIElmIG5vdCwgc2VlIDxodHRwOi8vd3d3LmdudS5vcmcvbGljZW5zZXMvPi4KaWYgOTcgLSA5NzogT09vT29PMG8wbzBPTyArIElJSUkgLiBJaSAlIG9PTwppZiAxIC0gMTogSUkgLSBpaUlJaTFpMUlpaSAtIEkxIC0gSUlvb29PMG9vTzBvbyAqIE9PTwppZiA1IC0gNTogaTFpSTEgKyBvMDBvTzBvbzBPME8wIC0gaWkxSTFpaTFJaUlpMSAlIG9vb09vTyAtIElpSUkxSWlJCmltcG9ydCB4Ym1jICwgeGJtY2FkZG9uICwgeGJtY2d1aSAsIHhibWNwbHVnaW4gLCBvcyAsIHN5cyAsIHhibWN2ZnMgLCBnbG9iCmltcG9ydCBzaHV0aWwKaW1wb3J0IHVybGxpYjIgLCB1cmxsaWIKaW1wb3J0IHJlCmltcG9ydCBvcwpvb29vMDBPb09vT28wID0gJ3NjcmlwdC5saW1waWFya29kaScKbzBvbzBPTyA9IHhibWMgLiB0cmFuc2xhdGVQYXRoICggb3MgLiBwYXRoIC4gam9pbiAoICdzcGVjaWFsOi8vaG9tZS9hZGRvbnMvJyArIG9vb28wME9vT29PbzAgLCAnZmFuYXJ0LmpwZycgKSApCkkxSWlJMUlJSTExaSA9IHhibWMgLiB0cmFuc2xhdGVQYXRoICggb3MgLiBwYXRoIC4gam9pbiAoICdzcGVjaWFsOi8vaG9tZS9hZGRvbnMvJyArIG9vb28wME9vT29PbzAgLCAnaWNvbi5wbmcnICkgKQpPMG9Pb29PID0geGJtYyAuIHRyYW5zbGF0ZVBhdGggKCAnc3BlY2lhbDovL3RodW1ibmFpbHMnICkgOwpvT29vT09vT08gPSBvcyAuIHBhdGggLiBqb2luICggeGJtYyAuIHRyYW5zbGF0ZVBhdGggKCAnc3BlY2lhbDovL2hvbWUnICkgLCAnY2FjaGUnICkKb08wMG9vbzBvME9PID0geGJtYyAuIHRyYW5zbGF0ZVBhdGggKCBvcyAuIHBhdGggLiBqb2luICggJ3NwZWNpYWw6Ly9jYWNoZScgKSApCmlJMTFJMWlpSTFpID0geGJtYyAuIHRyYW5zbGF0ZVBhdGggKCAnc3BlY2lhbDovL2hvbWUvdGVtcCcgKQpJaWlpID0gb3MgLiBwYXRoIC4gam9pbiAoIG9zIC4gcGF0aCAuIGpvaW4gKCB4Ym1jIC4gdHJhbnNsYXRlUGF0aCAoICdzcGVjaWFsOi8vaG9tZScgKSAsICdhZGRvbnMnICkgLCAnc2NyaXB0LmxpbXBpYXJrb2RpJyApCk8wMDAwTyA9IG9zIC4gcGF0aCAuIGpvaW4gKCBJaWlpICwgJ21lZGlhJyApCk8wMDBPb28wbzBPT28gPSB4Ym1jIC4gdHJhbnNsYXRlUGF0aCAoICdzcGVjaWFsOi8vZGF0YWJhc2UnICkKT29PMG9vb09vTzAgPSB4Ym1jIC4gdHJhbnNsYXRlUGF0aCAoIG9zIC4gcGF0aCAuIGpvaW4gKCAnc3BlY2lhbDovL2hvbWUvdXNlcmRhdGEvVGh1bWJuYWlscycgLCAnJyApICkKaWYgNjEgLSA2MTogTzBvb09vMCAvIG8wT08gLyBPMDAgLyBPMDBvME8wTwppZiA4NyAtIDg3OiBvTwppZiA0MiAtIDQyOiBPb08wb29vb28KaWYgMzYgLSAzNjogSWlJSTFJaUkgLiBJSW9vb08wb29PMG9vCmNsYXNzIG8wMDAwbzAwTzAgOgogZGVmIF9faW5pdF9fICggc2VsZiAsIG5hbWVpICwgcGF0aGkgKSA6CiAgc2VsZiAuIG5hbWUgPSBuYW1laQogIHNlbGYgLiBwYXRoID0gcGF0aGkKICBpZiA1MSAtIDUxOiBpaUlJaTFpMUlpaSAuIE9vTzBvb29vbyAlIE9Pb09vTzBvMG8wT08KICBpZiAzMSAtIDMxOiBpMWlJMSAvIGkxaUkxICUgSUkgKiBPb08wb29vb28gLSBJSQogIGlmIDc5IC0gNzk6IGlpMUkxaWkxSWlJaTEgLSBPMDAgLyBvME9PICogSWkgJSBpMWlJMQpkZWYgaWlJSWlpaUkxMSAoICkgOgogaWYgOTkgLSA5OTogTzBvb09vMCArIG9vb09vTyAlIG9PICogTzAwICogTzAwbzBPME8KIElJSWlpMUlpICggJ0xpbXBpYXIgQ2FjaGUgeSBSb20nICwgJ3VybCcgLCAxICwgSTFJaUkxSUlJMTFpICkKIElJSWlpMUlpICggJ0JvcnJhciBJbWFnZW5lcycgLCAndXJsJyAsIDIgLCBJMUlpSTFJSUkxMWkgKQogSUlJaWkxSWkgKCAnTGltcGlhciBUZW1wJyAsICd1cmwnICwgMyAsIEkxSWlJMUlJSTExaSApCiBJSUlpaTFJaSAoICdQdXJnYXIgUGFja2FnZXMnICwgJ3VybCcgLCA1ICwgSTFJaUkxSUlJMTFpICkKIGlmIDg5IC0gODk6IE9PTyAvIElJSUkgKiBPMG9vT28wIC8gb08gLSBpaUlJaTFpMUlpaSAqIGkxaUkxCiBpZiAyMiAtIDIyOiBpaUlJaTFpMUlpaSArIE9Pb09vTzBvMG8wT08gLyBpaTFJMWlpMUlpSWkxIC4gb08KIGlmIDQ4IC0gNDg6IElJSUkgLiBJaUlJMUlpSQogaWYgOTcgLSA5NzogaWlJSWkxaTFJaWkgKiBJaUlJMUlpSSAlIE8wMAogaWYgMzkgLSAzOTogSUlvb29PMG9vTzBvbwogaWYgNDAgLSA0MDogaWkxSTFpaTFJaUlpMSAqIE8wb29PbzAgLyBJMQogaWYgMjggLSAyODogbzBPTyAtIG8wMG9PMG9vME8wTzAgLyBvTyArIE9vTzBvb29vbyAvIElpCmRlZiBJSTFJSTFJSTEgKCBuYW1lICwgdXJsICwgaWNvbmltYWdlICkgOgogSTFpaUkxSSA9IFRydWUKIGlJaTFJSUkxMSA9IHhibWNndWkgLiBMaXN0SXRlbSAoIG5hbWUgLCBpY29uSW1hZ2UgPSAiRGVmYXVsdFZpZGVvLnBuZyIgLCB0aHVtYm5haWxJbWFnZSA9IGljb25pbWFnZSApCiBpSWkxSUlJMTEgLiBzZXRJbmZvICggdHlwZSA9ICJWaWRlbyIgLCBpbmZvTGFiZWxzID0geyAiVGl0bGUiIDogbmFtZSB9ICkKIEkxaWlJMUkgPSB4Ym1jcGx1Z2luIC4gYWRkRGlyZWN0b3J5SXRlbSAoIGhhbmRsZSA9IGludCAoIHN5cyAuIGFyZ3YgWyAxIF0gKSAsIHVybCA9IHVybCAsIGxpc3RpdGVtID0gaUlpMUlJSTExICkKIHJldHVybiBJMWlpSTFJCiBpZiA1NSAtIDU1OiBvT08gLSBJaQogaWYgNjUgLSA2NTogSWkgLyBPMG9vT28wICogSTEgKyBPMDAgKyBPMDBvME8wTwpkZWYgSWlpMUkxaSAoIG5hbWUgLCB1cmwgLCBtb2RlICwgaWNvbmltYWdlICkgOgogbzAwID0gc3lzIC4gYXJndiBbIDAgXSArICI/dXJsPSIgKyB1cmxsaWIgLiBxdW90ZV9wbHVzICggdXJsICkgKyAiJm1vZGU9IiArIHN0ciAoIG1vZGUgKSArICImbmFtZT0iICsgdXJsbGliIC4gcXVvdGVfcGx1cyAoIG5hbWUgKQogSTFpaUkxSSA9IFRydWUKIGlJaTFJSUkxMSA9IHhibWNndWkgLiBMaXN0SXRlbSAoIG5hbWUgLCBpY29uSW1hZ2UgPSAiRGVmYXVsdEZvbGRlci5wbmciICwgdGh1bWJuYWlsSW1hZ2UgPSBpY29uaW1hZ2UgKQogaUlpMUlJSTExIC4gc2V0SW5mbyAoIHR5cGUgPSAiVmlkZW8iICwgaW5mb0xhYmVscyA9IHsgIlRpdGxlIiA6IG5hbWUgfSApCiBpZiAxNSAtIDE1OiBPb08wb29vb28gKiBPT08gKiBJaSAvIE8wb29PbzAKIEkxaWlJMUkgPSB4Ym1jcGx1Z2luIC4gYWRkRGlyZWN0b3J5SXRlbSAoIGhhbmRsZSA9IGludCAoIHN5cyAuIGFyZ3YgWyAxIF0gKSAsIHVybCA9IG8wMCAsIGxpc3RpdGVtID0gaUlpMUlJSTExICwgaXNGb2xkZXIgPSBUcnVlICkKIHJldHVybiBJMWlpSTFJCiBpZiAxMDAgLSAxMDA6IEkxICogT09vT29PMG8wbzBPTwpkZWYgSUlJaWkxSWkgKCBuYW1lICwgdXJsICwgbW9kZSAsIGljb25pbWFnZSApIDoKIG8wMCA9IHN5cyAuIGFyZ3YgWyAwIF0gKyAiP3VybD0iICsgdXJsbGliIC4gcXVvdGVfcGx1cyAoIHVybCApICsgIiZtb2RlPSIgKyBzdHIgKCBtb2RlICkgKyAiJm5hbWU9IiArIHVybGxpYiAuIHF1b3RlX3BsdXMgKCBuYW1lICkKIEkxaWlJMUkgPSBUcnVlCiBpSWkxSUlJMTEgPSB4Ym1jZ3VpIC4gTGlzdEl0ZW0gKCBuYW1lICwgaWNvbkltYWdlID0gIkRlZmF1bHRGb2xkZXIucG5nIiAsIHRodW1ibmFpbEltYWdlID0gaWNvbmltYWdlICkKIGlJaTFJSUkxMSAuIHNldEluZm8gKCB0eXBlID0gIlZpZGVvIiAsIGluZm9MYWJlbHMgPSB7ICJUaXRsZSIgOiBuYW1lIH0gKQogaUlpMUlJSTExIC4gc2V0UHJvcGVydHkgKCAnZmFuYXJ0X2ltYWdlJyAsIG8wb28wT08gKQogSTFpaUkxSSA9IHhibWNwbHVnaW4gLiBhZGREaXJlY3RvcnlJdGVtICggaGFuZGxlID0gaW50ICggc3lzIC4gYXJndiBbIDEgXSApICwgdXJsID0gbzAwICwgbGlzdGl0ZW0gPSBpSWkxSUlJMTEgLCBpc0ZvbGRlciA9IEZhbHNlICkKIHJldHVybiBJMWlpSTFJCiBpZiA3MCAtIDcwOiBJSSArIGkxaUkxIC8gb29vT29PCiBpZiA1MSAtIDUxOiBJSUlJIC8gaWlJSWkxaTFJaWkKIGlmIDU2IC0gNTY6IGkxaUkxCiBpZiA0NiAtIDQ2OiBPMG9vT28wIC0gb08gLSBJaUlJMUlpSQogaWYgNjMgLSA2MzogSTEgLSBvTyAqIEkxIC0gaWlJSWkxaTFJaWkKZGVmIG9vb09vbzBvMG8gKCApIDoKIEkxaUlpMTFJaTFJMTEgPSBbIF0KIGlpSUlpMWlpID0gc3lzIC4gYXJndiBbIDIgXQogaWYgbGVuICggaWlJSWkxaWkgKSA+PSAyIDoKICBPME9PbyA9IHN5cyAuIGFyZ3YgWyAyIF0KICBpMUlpaWkxMWlpID0gTzBPT28gLiByZXBsYWNlICggJz8nICwgJycgKQogIGlmICggTzBPT28gWyBsZW4gKCBPME9PbyApIC0gMSBdID09ICcvJyApIDoKICAgTzBPT28gPSBPME9PbyBbIDAgOiBsZW4gKCBPME9PbyApIC0gMiBdCiAgSWlJaWlpSSA9IGkxSWlpaTExaWkgLiBzcGxpdCAoICcmJyApCiAgSTFpSWkxMUlpMUkxMSA9IHsgfQogIGZvciBJMUlpaTEgaW4gcmFuZ2UgKCBsZW4gKCBJaUlpaWlJICkgKSA6CiAgIGlJaUkxaWlJSTFJaSA9IHsgfQogICBpSWlJMWlpSUkxSWkgPSBJaUlpaWlJIFsgSTFJaWkxIF0gLiBzcGxpdCAoICc9JyApCiAgIGlmICggbGVuICggaUlpSTFpaUlJMUlpICkgKSA9PSAyIDoKICAgIEkxaUlpMTFJaTFJMTEgWyBpSWlJMWlpSUkxSWkgWyAwIF0gXSA9IGlJaUkxaWlJSTFJaSBbIDEgXQogcmV0dXJuIEkxaUlpMTFJaTFJMTEKIGlmIDgyIC0gODI6IElpIC0gaWlJSWkxaTFJaWkgKyBvMDBvTzBvbzBPME8wCiBpZiA3NSAtIDc1OiBJSW9vb08wb29PMG9vICogSUlvb29PMG9vTzBvbyAuIElJSUkgJSBJSW9vb08wb29PMG9vCiBpZiAyNyAtIDI3OiBvME9PCiBpZiA0MiAtIDQyOiBvME9PIC8gT09PIC0gT29PMG9vb29vICsgaWkxSTFpaTFJaUlpMQpkZWYgaWkxaTFpMSAoICkgOgogSTFJSWkxID0gMTkKIG8wT09PbzBvT09PTyA9IFsgIiBZb3VUdWJlIiAsICIgVXJsUmVzb2x2ZSIgLCAiIFNpbXBsZSBDYWNoZXIiICwgIiBTaW1wbGUgRG93bmxvYWRlciIgLCAiIE1ldGFkYXRhdXRpbHMiICwgIiBTdHJlYW1saW5rIiAsICIgVHZhbGFjYXJ0YSIgLCAiIFJlc29sdmV1cmwiICwgIiBBbGZhIERvd25sb2FkcyIgLCAiIE1ldGFoYW5kbGVyIiAsICIgWW91dHViZS5kbCIgLCAiIEV4dGVuZGVkaW5mbyIgLCAiIFRoZU1vdmllREIiICwgIiBFeHRlbmRlZGluZm8vWW91VHViZSIgLCAiIEF1dG9jb21wbGV0aW9uL0dvb2dsZSIgLCAiIEF1dG9jb21wbGV0aW9uL0JpbmciICwgIiBVbml2ZXJzYWxzY3JhcGVycyIgLCAiIFRvcnJlbnRzIEFsZmEiICwgIiBDbG91ZGRyaXZlIENvbW1vbiIgXQogbzAwMDBPTyA9IFsgInNwZWNpYWw6Ly9wcm9maWxlL2FkZG9uX2RhdGEvcGx1Z2luLnZpZGVvLnlvdXR1YmUva29kaW9uIiAsICJzcGVjaWFsOi8vcHJvZmlsZS9hZGRvbl9kYXRhL3NjcmlwdC5tb2R1bGUudXJscmVzb2x2ZS9jYWNoZSIgLAogInNwZWNpYWw6Ly9wcm9maWxlL2FkZG9uX2RhdGEvc2NyaXB0Lm1vZHVsZS5zaW1wbGVjYWNoZSIgLCAic3BlY2lhbDovL3Byb2ZpbGUvYWRkb25fZGF0YS9zY3JpcHQubW9kdWxlLnNpbXBsZS5kb3dubG9hZGVyIiAsCiAic3BlY2lhbDovL3Byb2ZpbGUvYWRkb25fZGF0YS9zY3JpcHQubW9kdWxlLm1ldGFkYXRhdXRpbHMvYW5pbWF0ZWRnaWZzIiAsICJzcGVjaWFsOi8vcHJvZmlsZS9hZGRvbl9kYXRhL3NjcmlwdC5tb2R1bGUuc3RyZWFtbGluay9iYXNlIiAsICJzcGVjaWFsOi8vcHJvZmlsZS9hZGRvbl9kYXRhL3BsdWdpbi52aWRlby50dmFsYWNhcnRhL2Rvd25sb2FkcyIgLCAic3BlY2lhbDovL3Byb2ZpbGUvYWRkb25fZGF0YS9zY3JpcHQubW9kdWxlLnJlc29sdmV1cmwvY2FjaGUiICwgInNwZWNpYWw6Ly9wcm9maWxlL2FkZG9uX2RhdGEvcGx1Z2luLnZpZGVvLmFsZmEvZG93bmxvYWRzIiAsICJzcGVjaWFsOi8vcHJvZmlsZS9hZGRvbl9kYXRhL3NjcmlwdC5tb2R1bGUubWV0YWhhbmRsZXIvbWV0YV9jYWNoZSIgLCAic3BlY2lhbDovL3Byb2ZpbGUvYWRkb25fZGF0YS9zY3JpcHQubW9kdWxlLnlvdXR1YmUuZGwvdG1wIiAsICJzcGVjaWFsOi8vcHJvZmlsZS9hZGRvbl9kYXRhL3NjcmlwdC5leHRlbmRlZGluZm8vaW1hZ2VzIiAsICJzcGVjaWFsOi8vcHJvZmlsZS9hZGRvbl9kYXRhL3NjcmlwdC5leHRlbmRlZGluZm8vVGhlTW92aWVEQiIgLCAic3BlY2lhbDovL3Byb2ZpbGUvYWRkb25fZGF0YS9zY3JpcHQuZXh0ZW5kZWRpbmZvL1lvdVR1YmUiICwgInNwZWNpYWw6Ly9wcm9maWxlL2FkZG9uX2RhdGEvcGx1Z2luLnByb2dyYW0uYXV0b2NvbXBsZXRpb24vR29vZ2xlIiAsICJzcGVjaWFsOi8vcHJvZmlsZS9hZGRvbl9kYXRhL3BsdWdpbi5wcm9ncmFtLmF1dG9jb21wbGV0aW9uL0JpbmciICwgInNwZWNpYWw6Ly9wcm9maWxlL2FkZG9uX2RhdGEvc2NyaXB0Lm1vZHVsZS51bml2ZXJzYWxzY3JhcGVycyIgLCAic3BlY2lhbDovL3Byb2ZpbGUvYWRkb25fZGF0YS9wbHVnaW4udmlkZW8uYWxmYS92aWRlb2xpYnJhcnkvdGVtcF90b3JyZW50c19BbGZhIiAsICJzcGVjaWFsOi8vcHJvZmlsZS9hZGRvbl9kYXRhL3NjcmlwdC5tb2R1bGUuY2xvdWRkcml2ZS5jb21tb24iICwgXQogaWYgMjYgLSAyNjogb29vT29PCiBvb28wb29Pb08wT28gPSBbIF0KIGlmIDMyIC0gMzI6IGlpMUkxaWkxSWlJaTEgKyBJMSAtIE9vTzBvb29vbyAlIE8wMCArIG9PTwogZm9yIGlpMTFpSUlpMUkgaW4gcmFuZ2UgKCBJMUlJaTEgKSA6CiAgb29vMG9vT29PME9vIC4gYXBwZW5kICggbzAwMDBvMDBPMCAoIG8wT09PbzBvT09PTyBbIGlpMTFpSUlpMUkgXSAsIG8wMDAwT08gWyBpaTExaUlJaTFJIF0gKSApCiAgaWYgOTAgLSA5MDogT29PMG9vb29vIC8gSWkgKyBJSUlJCiByZXR1cm4gb29vMG9vT29PME9vCiBpZiA5NyAtIDk3OiBPT29Pb08wbzBvME9PICUgT09PICogSUlJSSAlIE8wb29PbzAgLSBPMG9vT28wCiBpZiA1NyAtIDU3OiBJSW9vb08wb29PMG9vCmRlZiBvT29vT08gKCApIDoKIGlmIDgwIC0gODA6IG8wT08gKyBPb08wb29vb28gKyBJMSAvIG9vb09vTwogaWYgb3MgLiBwYXRoIC4gZXhpc3RzICggb09vb09Pb09PICkgPT0gVHJ1ZSA6CiAgZm9yIG9vMG9vb08gLCBJaTFpSSAsIEkxMTFJaWlpMTFpMUkgaW4gb3MgLiB3YWxrICggb09vb09Pb09PICkgOgogICBpMTFpSTExMSA9IDAKICAgaTExaUkxMTEgKz0gbGVuICggSTExMUlpaWkxMWkxSSApCiAgIGlmIGkxMWlJMTExID4gMCA6CiAgICBpZiA5NiAtIDk2OiBpMWlJMSAtIE8wb29PbzAgLiBpaUlJaTFpMUlpaSAuIE8wMG8wTzBPICUgbzBPTyAtIG9vb09vTwogICAgTzBPT08wbyA9IHhibWNndWkgLiBEaWFsb2cgKCApCiAgICBpZiBPME9PTzBvIC4geWVzbm8gKCAiQm9ycmFyIENhY2hlIiAsIHN0ciAoIGkxMWlJMTExICkgKyAiIEFyY2hpdm9zIEVuY29udHJhZG9zIiAsICJEZXNlYSBFbGltaW5hcmxvcz8iICkgOgogICAgIGlmIDI1IC0gMjU6IElJIC0gSUkKICAgICBmb3IgT29PTzBPb28gaW4gSTExMUlpaWkxMWkxSSA6CiAgICAgIHRyeSA6CiAgICAgICBpZiAoIE9vT08wT29vID09ICJrb2RpLmxvZyIgb3IgT29PTzBPb28gPT0gImtvZGkub2xkLmxvZyIgKSA6IGNvbnRpbnVlCiAgICAgICBvcyAuIHVubGluayAoIG9zIC4gcGF0aCAuIGpvaW4gKCBvbzBvb29PICwgT29PTzBPb28gKSApCiAgICAgIGV4Y2VwdCA6CiAgICAgICBwYXNzCiAgICAgZm9yIElpaWkxSUkxSUlpIGluIElpMWlJIDoKICAgICAgdHJ5IDoKICAgICAgIHNodXRpbCAuIHJtdHJlZSAoIG9zIC4gcGF0aCAuIGpvaW4gKCBvbzBvb29PICwgSWlpaTFJSTFJSWkgKSApCiAgICAgIGV4Y2VwdCA6CiAgICAgICBwYXNzCiAgICAgICBpZiAzMiAtIDMyOiBJaSAuIGlpSUlpMWkxSWlpIC8gb29vT29PICUgT29PMG9vb29vIC8gSTEgKiBvMDBvTzBvbzBPME8wCiAgIGVsc2UgOgogICAgcGFzcwogaWYgb3MgLiBwYXRoIC4gZXhpc3RzICggaUkxMUkxaWlJMWkgKSA9PSBUcnVlIDoKICBmb3Igb28wb29vTyAsIElpMWlJICwgSTExMUlpaWkxMWkxSSBpbiBvcyAuIHdhbGsgKCBpSTExSTFpaUkxaSApIDoKICAgaTExaUkxMTEgPSAwCiAgIGkxMWlJMTExICs9IGxlbiAoIEkxMTFJaWlpMTFpMUkgKQogICBpZiBpMTFpSTExMSA+IDAgOgogICAgTzBPT08wbyA9IHhibWNndWkgLiBEaWFsb2cgKCApCiAgICBpZiBPME9PTzBvIC4geWVzbm8gKCAiQm9ycmFyIEFyY2hpdm9zIGVuIFJPTSBDYWNoZSIgLCBzdHIgKCBpMTFpSTExMSApICsgIiBBcmNoaXZvcyBFbmNvbnRyYWRvcyIgLCAiRGVzZWEgRWxpbWluYXJsb3M/IiApIDoKICAgICBmb3IgT29PTzBPb28gaW4gSTExMUlpaWkxMWkxSSA6CiAgICAgIHRyeSA6CiAgICAgICBpZiAoIE9vT08wT29vID09ICJrb2RpLmxvZyIgb3IgT29PTzBPb28gPT0gImtvZGkub2xkLmxvZyIgKSA6IGNvbnRpbnVlCiAgICAgICBvcyAuIHVubGluayAoIG9zIC4gcGF0aCAuIGpvaW4gKCBvbzBvb29PICwgT29PTzBPb28gKSApCiAgICAgIGV4Y2VwdCA6CiAgICAgICBwYXNzCiAgICAgZm9yIElpaWkxSUkxSUlpIGluIElpMWlJIDoKICAgICAgdHJ5IDoKICAgICAgIHNodXRpbCAuIHJtdHJlZSAoIG9zIC4gcGF0aCAuIGpvaW4gKCBvbzBvb29PICwgSWlpaTFJSTFJSWkgKSApCiAgICAgIGV4Y2VwdCA6CiAgICAgICBwYXNzCiAgICAgICBpZiA1MyAtIDUzOiBPT08gKiBvTyAlIG8wT08KICAgZWxzZSA6CiAgICBwYXNzCiBpZiB4Ym1jIC4gZ2V0Q29uZFZpc2liaWxpdHkgKCAnc3lzdGVtLnBsYXRmb3JtLkFUVjInICkgOgogIEkxMWlpMWkgPSBvcyAuIHBhdGggLiBqb2luICggJy9wcml2YXRlL3Zhci9tb2JpbGUvTGlicmFyeS9DYWNoZXMvQXBwbGVUVi9WaWRlby8nICwgJ090aGVyJyApCiAgaWYgNiAtIDY6IEkxCiAgZm9yIG9vMG9vb08gLCBJaTFpSSAsIEkxMTFJaWlpMTFpMUkgaW4gb3MgLiB3YWxrICggSTExaWkxaSApIDoKICAgaTExaUkxMTEgPSAwCiAgIGkxMWlJMTExICs9IGxlbiAoIEkxMTFJaWlpMTFpMUkgKQogICBpZiA5NCAtIDk0OiBJSW9vb08wb29PMG9vICsgb29vT29PCiAgIGlmIGkxMWlJMTExID4gMCA6CiAgICBpZiA1NiAtIDU2OiBvTyAlIElpSUkxSWlJIC4gSUkgLyBPT08KICAgIE8wT09PMG8gPSB4Ym1jZ3VpIC4gRGlhbG9nICggKQogICAgaWYgTzBPT08wbyAuIHllc25vICggIkJvcnJhIEFUVjIgQ2FjaGUgIiAsIHN0ciAoIGkxMWlJMTExICkgKyAiIEFyY2hpdm9zIEVuY29udHJhZG9zICdPdHJvcyciICwgIkRlc2VhIEVsaW1pbmFybG8/IiApIDoKICAgICBpZiAyNiAtIDI2OiBvTyAuIElJSUkgJSBvME9PCiAgICAgZm9yIE9vT08wT29vIGluIEkxMTFJaWlpMTFpMUkgOgogICAgICBvcyAuIHVubGluayAoIG9zIC4gcGF0aCAuIGpvaW4gKCBvbzBvb29PICwgT29PTzBPb28gKSApCiAgICAgZm9yIElpaWkxSUkxSUlpIGluIElpMWlJIDoKICAgICAgc2h1dGlsIC4gcm10cmVlICggb3MgLiBwYXRoIC4gam9pbiAoIG9vMG9vb08gLCBJaWlpMUlJMUlJaSApICkKICAgICAgaWYgMzcgLSAzNzogbzBPTyAqIG9PTyAtIG9PIC0gaWlJSWkxaTFJaWkKICAgZWxzZSA6CiAgICBwYXNzCiAgSTFpMSA9IG9zIC4gcGF0aCAuIGpvaW4gKCAnL3ByaXZhdGUvdmFyL21vYmlsZS9MaWJyYXJ5L0NhY2hlcy9BcHBsZVRWL1ZpZGVvLycgLCAnTG9jYWxBbmRSZW50YWwnICkKICBpZiAyMyAtIDIzOiBJSSAvIG9PTyAvIElpSUkxSWlJIC0gT29PMG9vb29vIC0gTzBvb09vMCAlIE8wb29PbzAKICBmb3Igb28wb29vTyAsIElpMWlJICwgSTExMUlpaWkxMWkxSSBpbiBvcyAuIHdhbGsgKCBJMWkxICkgOgogICBpMTFpSTExMSA9IDAKICAgaTExaUkxMTEgKz0gbGVuICggSTExMUlpaWkxMWkxSSApCiAgIGlmIDk0IC0gOTQ6IElJb29vTzBvb08wb28gJSBvMDBvTzBvbzBPME8wICogaWkxSTFpaTFJaUlpMSAuIG9vb09vTyAvIG8wT08gKiBPT29Pb08wbzBvME9PCiAgIGlmIGkxMWlJMTExID4gMCA6CiAgICBpZiA2MSAtIDYxOiBvMDBvTzBvbzBPME8wICogbzBPTyArIE8wb29PbzAgLyBvb29Pb08KICAgIE8wT09PMG8gPSB4Ym1jZ3VpIC4gRGlhbG9nICggKQogICAgaWYgTzBPT08wbyAuIHllc25vICggIkJvcnJhIEFUVjIgQ2FjaGUgIiAsIHN0ciAoIGkxMWlJMTExICkgKyAiIEFyY2hpdm9zIEVuY29udHJhZG9zICdMb2NhbEFuZFJlbnRhbCciICwgIkRlc2VhIEVsaW1pbmFybG9zPyIgKSA6CiAgICAgaWYgMzkgLSAzOTogaTFpSTEgJSBvT08gLiBvMDBvTzBvbzBPME8wIC0gTzBvb09vMCAqIE9vTzBvb29vbwogICAgIGZvciBPb09PME9vbyBpbiBJMTExSWlpaTExaTFJIDoKICAgICAgb3MgLiB1bmxpbmsgKCBvcyAuIHBhdGggLiBqb2luICggb28wb29vTyAsIE9vT08wT29vICkgKQogICAgIGZvciBJaWlpMUlJMUlJaSBpbiBJaTFpSSA6CiAgICAgIHNodXRpbCAuIHJtdHJlZSAoIG9zIC4gcGF0aCAuIGpvaW4gKCBvbzBvb29PICwgSWlpaTFJSTFJSWkgKSApCiAgICAgIGlmIDI3IC0gMjc6IElpCiAgIGVsc2UgOgogICAgcGFzcwogICAgaWYgOTQgLSA5NDogb08gLSBvb29Pb08KIG9vbzBvb09vTzBPbyA9IGlpMWkxaTEgKCApCiBpZiA3MCAtIDcwOiBvME9PIC4gaWlJSWkxaTFJaWkgKiBPb08wb29vb28KIGZvciBvT28wMG8wMG8wIGluIG9vbzBvb09vTzBPbyA6CiAgaUlJMSA9IHhibWMgLiB0cmFuc2xhdGVQYXRoICggb09vMDBvMDBvMCAuIHBhdGggKQogIGlmIG9zIC4gcGF0aCAuIGV4aXN0cyAoIGlJSTEgKSA9PSBUcnVlIDoKICAgZm9yIG9vMG9vb08gLCBJaTFpSSAsIEkxMTFJaWlpMTFpMUkgaW4gb3MgLiB3YWxrICggaUlJMSApIDoKICAgIGkxMWlJMTExID0gMAogICAgaTExaUkxMTEgKz0gbGVuICggSTExMUlpaWkxMWkxSSApCiAgICBpZiBpMTFpSTExMSA+IDAgOgogICAgIGlmIDk1IC0gOTU6IElJICsgTzBvb09vMCAvIElJSUkgKyBPMDAKICAgICBPME9PTzBvID0geGJtY2d1aSAuIERpYWxvZyAoICkKICAgICBpZiBPME9PTzBvIC4geWVzbm8gKCAiTGltcGlhIHR1IEtvZGkiICwgc3RyICggaTExaUkxMTEgKSArICIlcyBBcmNoaXZvcyBDYWNoZSBFbmNvbnRyYWRvcyIgJSAoIG9PbzAwbzAwbzAgLiBuYW1lICkgLCAiRGVzZWEgRWxpbWluYXJsb3M/IiApIDoKICAgICAgZm9yIE9vT08wT29vIGluIEkxMTFJaWlpMTFpMUkgOgogICAgICAgb3MgLiB1bmxpbmsgKCBvcyAuIHBhdGggLiBqb2luICggb28wb29vTyAsIE9vT08wT29vICkgKQogICAgICBmb3IgSWlpaTFJSTFJSWkgaW4gSWkxaUkgOgogICAgICAgc2h1dGlsIC4gcm10cmVlICggb3MgLiBwYXRoIC4gam9pbiAoIG9vMG9vb08gLCBJaWlpMUlJMUlJaSApICkKICAgICAgIGlmIDg1IC0gODU6IG9PIC4gSUkgKiBJSW9vb08wb29PMG9vICUgSUkgJSBJaSAtIE8wb29PbzAKICAgIGVsc2UgOgogICAgIHBhc3MKICAgICBpZiAxMDAgLSAxMDA6IElJICogT09vT29PMG8wbzBPTyArIE9PTyAqIGlpMUkxaWkxSWlJaTEgKiBPT08KICAgICBpZiA4NCAtIDg0OiBvME9PICsgb09PIC4gT29PMG9vb29vICUgb08gJSBJaUlJMUlpSSAqIGlpSUlpMWkxSWlpCiBPME9PTzBvID0geGJtY2d1aSAuIERpYWxvZyAoICkKIE8wT09PMG8gLiBvayAoICJMaW1waWEgdHUgS29kaSIgLCAiVG9kb3MgbG9zIEFyY2hpdm9zIHNlIExpbXBpYXJvbiBjb24gRXhpdG8iICkKIGlmIDI2IC0gMjY6IGlpSUlpMWkxSWlpIC4gTzAwCiBpZiA0NyAtIDQ3OiBPMDAgLSBvMDBvTzBvbzBPME8wIC0gSUkKZGVmIEkxSUlJSTEgKCApIDoKIGlmIDQ4IC0gNDg6IE9vTzBvb29vbyAuIElJCiBpZiBvcyAuIHBhdGggLiBleGlzdHMgKCBPMG9Pb29PICkgPT0gVHJ1ZSA6CiAgTzBPT08wbyA9IHhibWNndWkgLiBEaWFsb2cgKCApCiAgaWYgTzBPT08wbyAuIHllc25vICggIkJvcnJhciBJbWFnZW5lcyIgLCAiRXN0YSBPcGNpb24gQm9ycmEgbGFzIEltYWdlbmVzIiAsICJEZXNlYSBFbGltaW5hcmxhcz8iICkgOgogICBmb3Igb28wb29vTyAsIElpMWlJICwgSTExMUlpaWkxMWkxSSBpbiBvcyAuIHdhbGsgKCBPMG9Pb29PICkgOgogICAgaTExaUkxMTEgPSAwCiAgICBpMTFpSTExMSArPSBsZW4gKCBJMTExSWlpaTExaTFJICkKICAgIGlmIGkxMWlJMTExID4gMCA6CiAgICAgZm9yIE9vT08wT29vIGluIEkxMTFJaWlpMTFpMUkgOgogICAgICB0cnkgOgogICAgICAgb3MgLiB1bmxpbmsgKCBvcyAuIHBhdGggLiBqb2luICggb28wb29vTyAsIE9vT08wT29vICkgKQogICAgICBleGNlcHQgOgogICAgICAgcGFzcwogICAgICAgaWYgODYgLSA4NjogT09PIC8gSWlJSTFJaUkgKiBJaUlJMUlpSSAqIG8wMG9PMG9vME8wTzAKICAgICAgIGlmIDkwIC0gOTA6IEkxIC0gT29PMG9vb29vICUgT09vT29PMG8wbzBPTyAtIE9PTyAuIGkxaUkxIC8gSUlJSQogaWYgb3MgLiBwYXRoIC4gZXhpc3RzICggT29PMG9vb09vTzAgKSA6CiAgdHJ5IDoKICAgZm9yIG9vMG9vb08gLCBJaTFpSSAsIEkxMTFJaWlpMTFpMUkgaW4gb3MgLiB3YWxrICggT29PMG9vb09vTzAgKSA6CiAgICBpMTFpSTExMSA9IDAKICAgIGkxMWlJMTExICs9IGxlbiAoIEkxMTFJaWlpMTFpMUkgKQogICAgaWYgMTAgLSAxMDogT09vT29PMG8wbzBPTyAuIElJIC0gSWkgLiBJSUlJIC4gT09vT29PMG8wbzBPTwogICAgaWYgaTExaUkxMTEgPiAwIDoKICAgICBmb3IgT29PTzBPb28gaW4gSTExMUlpaWkxMWkxSSA6IG9zIC4gdW5saW5rICggb3MgLiBwYXRoIC4gam9pbiAoIG9vMG9vb08gLCBPb09PME9vbyApICkKICAgICBmb3IgSWlpaTFJSTFJSWkgaW4gSWkxaUkgOiBzaHV0aWwgLiBybXRyZWUgKCBvcyAuIHBhdGggLiBqb2luICggb28wb29vTyAsIElpaWkxSUkxSUlpICkgKQogIGV4Y2VwdCA6CiAgIHBhc3MKICAgaWYgMTAgLSAxMDogSWlJSTFJaUkgKyBPT29Pb08wbzBvME9PIC8gb29vT29PICsgSUlvb29PMG9vTzBvbyAtIEkxCiB0cnkgOgogIE9Pb09vME9PID0gb3MgLiBwYXRoIC4gam9pbiAoIE8wMDBPb28wbzBPT28gLCAiVGV4dHVyZXMxMy5kYiIgKQogIG9zIC4gdW5saW5rICggT09vT28wT08gKQogZXhjZXB0IDoKICBwYXNzCiBPME9PTzBvIC4gb2sgKCAiW0NPTE9SPXJlZF1BdGVuY2lvblsvQ09MT1JdIiAsICJEZWJlIFJlaW5pY2lhciBLb2RpIFBhcmEgQXBsaWNhciBsb3MgQ2FtYmlvcyIgKQogaWYgMTAwIC0gMTAwOiBJaUlJMUlpSSArIG9PTwpkZWYgaWlpaUlpICggKSA6CiBpZiA1NCAtIDU0OiBPMDBvME8wTwogaUkxMUkxaWlJMWkgPSB4Ym1jIC4gdHJhbnNsYXRlUGF0aCAoICdzcGVjaWFsOi8vaG9tZS9hZGRvbnMvdGVtcCcgKQogTzBPT08wbyA9IHhibWNndWkgLiBEaWFsb2cgKCApCiBmb3Igb28wb29vTyAsIElpMWlJICwgSTExMUlpaWkxMWkxSSBpbiBvcyAuIHdhbGsgKCBpSTExSTFpaUkxaSApIDoKICBpMTFpSTExMSA9IDAKICBpMTFpSTExMSArPSBsZW4gKCBJMTExSWlpaTExaTFJICkKIGlmIE8wT09PMG8gLiB5ZXNubyAoICJCb3JyYXIgVGVtcCBkZSBLb2RpIiAsICIlZCBBcmNoaXZvcyBlbiBUZW1wIEVuY29udHJhZG9zLiIgJSBpMTFpSTExMSAsICJEZXNlYSBCb3JyYXIgRXN0bz8iICkgOgogIGZvciBvbzBvb29PICwgSWkxaUkgLCBJMTExSWlpaTExaTFJIGluIG9zIC4gd2FsayAoIGlJMTFJMWlpSTFpICkgOgogICBpMTFpSTExMSA9IDAKICAgaTExaUkxMTEgKz0gbGVuICggSTExMUlpaWkxMWkxSSApCiAgIGlmIGkxMWlJMTExID4gMCA6CiAgICBmb3IgT29PTzBPb28gaW4gSTExMUlpaWkxMWkxSSA6CiAgICAgb3MgLiB1bmxpbmsgKCBvcyAuIHBhdGggLiBqb2luICggb28wb29vTyAsIE9vT08wT29vICkgKQogICAgZm9yIElpaWkxSUkxSUlpIGluIElpMWlJIDoKICAgICBzaHV0aWwgLiBybXRyZWUgKCBvcyAuIHBhdGggLiBqb2luICggb28wb29vTyAsIElpaWkxSUkxSUlpICkgKQogICAgTzBPT08wbyA9IHhibWNndWkgLiBEaWFsb2cgKCApCiAgICBPME9PTzBvIC4gb2sgKCAiTGltcGlhIHR1IEtvZGkiICwgIkJvcnJhciB0b2RvcyBsb3MgQXJjaGl2b3MgZW4gVGVtcCIgKQogICBlbHNlIDoKICAgIE8wT09PMG8gPSB4Ym1jZ3VpIC4gRGlhbG9nICggKQogICAgTzBPT08wbyAuIG9rICggIkxpbXBpYSB0dSBLb2RpIiAsICJFbGltaW5hZG9zIEFyY2hpdm9zIGVuIFRlbXAiICkKICAgIGlmIDQwIC0gNDA6IElJIC4gT29PMG9vb29vIC8gSUkgKyBJMSAlIElpSUkxSWlJCmRlZiBJaWkgKCApIDoKIGlmIDk0IC0gOTQ6IGkxaUkxICogSWlJSTFJaUkgJSBPMDBvME8wTyAqIElJICUgSUkKIElJaUlJSSA9IHhibWMgLiB0cmFuc2xhdGVQYXRoICggJ3NwZWNpYWw6Ly9ob21lL2FkZG9ucy9wYWNrYWdlcycgKQogTzBPT08wbyA9IHhibWNndWkgLiBEaWFsb2cgKCApCiBmb3Igb28wb29vTyAsIElpMWlJICwgSTExMUlpaWkxMWkxSSBpbiBvcyAuIHdhbGsgKCBJSWlJSUkgKSA6CiAgaTExaUkxMTEgPSAwCiAgaTExaUkxMTEgKz0gbGVuICggSTExMUlpaWkxMWkxSSApCiBpZiBPME9PTzBvIC4geWVzbm8gKCAiQm9ycmFyIGNvbnRlbmlkbyBQYWNrYWdlIiAsICIlZCBQYWNrYWdlcyBFbmNvbnRyYWRvcy4iICUgaTExaUkxMTEgLCAiRGVzZWEgRWxpbWluYXJsbz8iICkgOgogIGZvciBvbzBvb29PICwgSWkxaUkgLCBJMTExSWlpaTExaTFJIGluIG9zIC4gd2FsayAoIElJaUlJSSApIDoKICAgaTExaUkxMTEgPSAwCiAgIGkxMWlJMTExICs9IGxlbiAoIEkxMTFJaWlpMTFpMUkgKQogICBpZiBpMTFpSTExMSA+IDAgOgogICAgZm9yIE9vT08wT29vIGluIEkxMTFJaWlpMTFpMUkgOgogICAgIG9zIC4gdW5saW5rICggb3MgLiBwYXRoIC4gam9pbiAoIG9vMG9vb08gLCBPb09PME9vbyApICkKICAgIGZvciBJaWlpMUlJMUlJaSBpbiBJaTFpSSA6CiAgICAgc2h1dGlsIC4gcm10cmVlICggb3MgLiBwYXRoIC4gam9pbiAoIG9vMG9vb08gLCBJaWlpMUlJMUlJaSApICkKICAgIE8wT09PMG8gPSB4Ym1jZ3VpIC4gRGlhbG9nICggKQogICAgTzBPT08wbyAuIG9rICggIkxpbXBpYSB0dSBLb2RpIiAsICJCb3JyYXIgdG9kbyBlbCBjb250ZW5pZG8gZGUgUGFja2FnZXMiICkKICAgZWxzZSA6CiAgICBPME9PTzBvID0geGJtY2d1aSAuIERpYWxvZyAoICkKICAgIE8wT09PMG8gLiBvayAoICJMaW1waWEgdHUgS29kaSIgLCAiRWxpbWluYWRvcyBQYWNrYWdlcyIgKQogICAgaWYgODEgLSA4MTogSUlJSQpkZWYgaUlpSWlpaSAoICkgOgogaWYgOTAgLSA5MDogaWkxSTFpaTFJaUlpMSAlIElpSUkxSWlJIC4gSUkgLiBvTyAtIGlpSUlpMWkxSWlpICUgSWlJSTFJaUkKIG9PMDBvb28wbzBPTyA9IHhibWMgLiB0cmFuc2xhdGVQYXRoICggJ3NwZWNpYWw6Ly9ob21lL2NhY2hlL3hibWN1cCcgKQogTzBPT08wbyA9IHhibWNndWkgLiBEaWFsb2cgKCApCiBmb3Igb28wb29vTyAsIElpMWlJICwgSTExMUlpaWkxMWkxSSBpbiBvcyAuIHdhbGsgKCBvTzAwb29vMG8wT08gKSA6CiAgaTExaUkxMTEgPSAwCiAgaTExaUkxMTEgKz0gbGVuICggSTExMUlpaWkxMWkxSSApCiBpZiBPME9PTzBvIC4geWVzbm8gKCAiQm9ycmFyIGNvbnRlbmlkbyBUb3JyZW50IiAsICIlZCBUb3JyZW50cyBFbmNvbnRyYWRvcy4iICUgaTExaUkxMTEgLCAiRGVzZWEgRWxpbWluYXJsbz8iICkgOgogIGZvciBvbzBvb29PICwgSWkxaUkgLCBJMTExSWlpaTExaTFJIGluIG9zIC4gd2FsayAoIG9PMDBvb28wbzBPTyApIDoKICAgaTExaUkxMTEgPSAwCiAgIGkxMWlJMTExICs9IGxlbiAoIEkxMTFJaWlpMTFpMUkgKQogICBpZiBpMTFpSTExMSA+IDAgOgogICAgZm9yIE9vT08wT29vIGluIEkxMTFJaWlpMTFpMUkgOgogICAgIG9zIC4gdW5saW5rICggb3MgLiBwYXRoIC4gam9pbiAoIG9vMG9vb08gLCBPb09PME9vbyApICkKICAgIGZvciBJaWlpMUlJMUlJaSBpbiBJaTFpSSA6CiAgICAgc2h1dGlsIC4gcm10cmVlICggb3MgLiBwYXRoIC4gam9pbiAoIG9vMG9vb08gLCBJaWlpMUlJMUlJaSApICkKICAgIE8wT09PMG8gPSB4Ym1jZ3VpIC4gRGlhbG9nICggKQogICAgTzBPT08wbyAuIG9rICggIkxpbXBpYSB0dSBLb2RpIiAsICJCb3JyYXIgdG9kbyBlbCBjb250ZW5pZG8gZGUgVG9ycmVudHMiICkKICAgZWxzZSA6CiAgICBPME9PTzBvID0geGJtY2d1aSAuIERpYWxvZyAoICkKICAgIE8wT09PMG8gLiBvayAoICJMaW1waWEgdHUgS29kaSIgLCAiRWxpbWluYWRvcyBUb3JyZW50cyIgKQogICAgaWYgMjcgLSAyNzogaWkxSTFpaTFJaUlpMSArIElJb29vTzBvb08wb28gLSBPMG9vT28wCiAgICBpZiA5NSAtIDk1OiBJSUlJICUgb29vT29PCiAgICBpZiA3NyAtIDc3OiBPT29Pb08wbzBvME9PICogaWkxSTFpaTFJaUlpMQogICAgaWYgODEgLSA4MTogSUlJSSAtIE8wb29PbzAKICAgIGlmIDE2IC0gMTY6IEkxICogaWkxSTFpaTFJaUlpMSAvIGkxaUkxICogb29vT29PICogTzAwCiAgICBpZiAyMyAtIDIzOiBvb29Pb08gLyBvT08gKyBpMWlJMSAlIElpSUkxSWlJCk8wT09vID0gb29vT29vMG8wbyAoICkKTzBvID0gTm9uZQpJaTFJMWkxaUlJID0gTm9uZQppSWlJSTEgPSBOb25lCmlmIDQyIC0gNDI6IElpSUkxSWlJICogaWkxSTFpaTFJaUlpMSAqIG9vb09vTyAqIE9Pb09vTzBvMG8wT08gLiBJaUlJMUlpSSAtIG9vb09vTwp0cnkgOgogTzBvID0gdXJsbGliIC4gdW5xdW90ZV9wbHVzICggTzBPT28gWyAidXJsIiBdICkKZXhjZXB0IDoKIHBhc3MKdHJ5IDoKIElpMUkxaTFpSUkgPSB1cmxsaWIgLiB1bnF1b3RlX3BsdXMgKCBPME9PbyBbICJuYW1lIiBdICkKZXhjZXB0IDoKIHBhc3MKdHJ5IDoKIGlJaUlJMSA9IGludCAoIE8wT09vIFsgIm1vZGUiIF0gKQpleGNlcHQgOgogcGFzcwogaWYgNDQgLSA0NDogTzBvb09vMAppZiBpSWlJSTEgPT0gTm9uZSBvciBPMG8gPT0gTm9uZSBvciBsZW4gKCBPMG8gKSA8IDEgOgogaWlJSWlpaUkxMSAoICkKIGlmIDMyIC0gMzI6IElJb29vTzBvb08wb28gLSBPT08gLyBvb29Pb08KZWxpZiBpSWlJSTEgPT0gMSA6CiBvT29vT08gKCApCiBpZiA4IC0gODogT29PMG9vb29vCmVsaWYgaUlpSUkxID09IDIgOgogSTFJSUlJMSAoICkKIGlmIDQ2IC0gNDY6IElJICogaTFpSTEgKyBJSQplbGlmIGlJaUlJMSA9PSAzIDoKIGlpaWlJaSAoICkKIGlmIDM1IC0gMzU6IE8wMCAlIE9PTwplbGlmIGlJaUlJMSA9PSA0IDoKIGlJaUlpaWkgKCApCiBpZiA0MCAtIDQwOiBJSUlJICsgTzBvb09vMCAtIG9vb09vTyAuIE9PTyAuIE9PTyAuIE9Pb09vTzBvMG8wT08KZWxpZiBpSWlJSTEgPT0gNSA6CiBJaWkgKCApCiBpZiA1OCAtIDU4OiBJaUlJMUlpSSAqIE9Pb09vTzBvMG8wT08KeGJtY3BsdWdpbiAuIGVuZE9mRGlyZWN0b3J5ICggaW50ICggc3lzIC4gYXJndiBbIDEgXSApICkgIyA4MDdjYjFiZmZmYjIzNGRhY2UzZjkzMGY1NzFhOTAzOWQ3NmY0Y2Y5Cg==')
+#   script.limpiarkodi
+#   Copyright (C) 2016  Teco
+#
+#   This program is free software: you can redistribute it and/or modify
+#   it under the terms of the GNU General Public License as published by
+#   the Free Software Foundation, either version 3 of the License, or
+#   (at your option) any later version.
+#
+#   This program is distributed in the hope that it will be useful,
+#   but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   GNU General Public License for more details.
+#
+#   You should have received a copy of the GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+
+
+import xbmc, xbmcaddon, xbmcgui, xbmcplugin, os, sys, xbmcvfs, glob
+import shutil
+import urllib2,urllib
+import re
+import os
+addon_id = 'script.limpiarkodi'
+fanart = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id , 'fanart.jpg'))
+icon = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id, 'icon.png'))
+thumbnailPath = xbmc.translatePath('special://thumbnails');
+cachePath = os.path.join(xbmc.translatePath('special://home'), 'cache')
+cdmPath = os.path.join(xbmc.translatePath('special://home'), 'cdm')
+tempPath = xbmc.translatePath('special://home/addons/temp/')
+addonPath = os.path.join(os.path.join(xbmc.translatePath('special://home'), 'addons'),'script.limpiarkodi')
+mediaPath = os.path.join(addonPath, 'media')
+databasePath = xbmc.translatePath('special://database')
+THUMBS = xbmc.translatePath(os.path.join('special://home/userdata/Thumbnails',''))
+#######################################################################
+#                          CLASSES
+#######################################################################
+
+class cacheEntry:
+    def __init__(self, namei, pathi):
+        self.name = namei
+        self.path = pathi
+
+
+
+def mainMenu():
+
+    addItem('Limpiar Cache y Rom','url', 1,icon)
+    addItem('Borrar Imagenes', 'url', 2,icon)
+    addItem('Limpiar Temp', 'url', 3,icon)
+    addItem('Purgar Packages', 'url', 4,icon)
+
+
+    
+#######################################################################
+#                        Add to menus
+#######################################################################
+
+def addLink(name,url,iconimage):
+    ok=True
+    liz=xbmcgui.ListItem(name, iconImage="DefaultVideo.png", thumbnailImage=iconimage)
+    liz.setInfo( type="Video", infoLabels={ "Title": name } )
+    ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=url,listitem=liz)
+    return ok
+
+
+def addDir(name,url,mode,iconimage):
+    u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+    ok=True
+    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+    liz.setInfo( type="Video", infoLabels={ "Title": name } )
+
+    ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=True)
+    return ok
+
+def addItem(name,url,mode,iconimage):
+    u=sys.argv[0]+"?url="+urllib.quote_plus(url)+"&mode="+str(mode)+"&name="+urllib.quote_plus(name)
+    ok=True
+    liz=xbmcgui.ListItem(name, iconImage="DefaultFolder.png", thumbnailImage=iconimage)
+    liz.setInfo( type="Video", infoLabels={ "Title": name } )
+    liz.setProperty('fanart_image', fanart)
+    ok=xbmcplugin.addDirectoryItem(handle=int(sys.argv[1]),url=u,listitem=liz,isFolder=False)
+    return ok
+
+#######################################################################
+#                        Parses Choice
+#######################################################################
+      
+def get_params():
+    param=[]
+    paramstring=sys.argv[2]
+    if len(paramstring)>=2:
+            params=sys.argv[2]
+            cleanedparams=params.replace('?','')
+            if (params[len(params)-1]=='/'):
+                    params=params[0:len(params)-2]
+            pairsofparams=cleanedparams.split('&')
+            param={}
+            for i in range(len(pairsofparams)):
+                    splitparams={}
+                    splitparams=pairsofparams[i].split('=')
+                    if (len(splitparams))==2:
+                            param[splitparams[0]]=splitparams[1]
+    return param
+
+#######################################################################
+#                        Work Functions
+#######################################################################
+def setupCacheEntries():
+    entries = 21 #make sure this refelcts the amount of entries you have
+    dialogName = [" YouTube", " UrlResolve", " Simple Cacher", " Simple Downloader", " Metadatautils", " Streamlink", " Tvalacarta", " Resolveurl", " Alfa Downloads", " Metahandler", " Youtube.dl", " Extendedinfo", " TheMovieDB", " Extendedinfo/YouTube", " Autocompletion/Google", " Autocompletion/Bing", " Universalscrapers", " Torrents Alfa", " MediaExplorer Downloads", " Balandro Downloads", " MediaExplorer Torrent"]
+    pathName = ["special://profile/addon_data/plugin.video.youtube/kodion", "special://profile/addon_data/script.module.urlresolve/cache",
+                    "special://profile/addon_data/script.module.simplecache", "special://profile/addon_data/script.module.simple.downloader",
+                    "special://profile/addon_data/script.module.metadatautils/animatedgifs", "special://profile/addon_data/script.module.streamlink/base","special://profile/addon_data/plugin.video.tvalacarta/downloads", "special://profile/addon_data/script.module.resolveurl/cache", "special://profile/addon_data/plugin.video.alfa/downloads", "special://profile/addon_data/script.module.metahandler/meta_cache", "special://profile/addon_data/script.module.youtube.dl/tmp", "special://profile/addon_data/script.extendedinfo/images", "special://profile/addon_data/script.extendedinfo/TheMovieDB", "special://profile/addon_data/script.extendedinfo/YouTube", "special://profile/addon_data/plugin.program.autocompletion/Google", "special://profile/addon_data/plugin.program.autocompletion/Bing", "special://profile/addon_data/script.module.universalscrapers", "special://profile/addon_data/plugin.video.alfa/videolibrary/temp_torrents_Alfa", "special://profile/addon_data/plugin.video.mediaexplorer/downloads", "special://profile/addon_data/plugin.video.balandro/downloads", "special://profile/addon_data/plugin.video.mediaexplorer/torrent/.cache"]
+                    
+    cacheEntries = []
+    
+    for x in range(entries):
+        cacheEntries.append(cacheEntry(dialogName[x],pathName[x]))
+    
+    return cacheEntries
+
+
+def clearCache():
+
+    if os.path.exists(cachePath)==True:
+        for root, dirs, files in os.walk(cachePath):
+            file_count = 0
+            file_count += len(files)
+            if file_count > 0:
+
+                dialog = xbmcgui.Dialog()
+                if dialog.yesno("Borrar Cache", str(file_count) + " Archivos Encontrados", "Desea Eliminarlos?"):
+                
+                    for f in files:
+                        try:
+                            if (f == "*.log" or f == "*.old.log"): continue
+                            os.unlink(os.path.join(root, f))
+                        except:
+                            pass
+                    for d in dirs:
+                        try:
+                            shutil.rmtree(os.path.join(root, d))
+                        except:
+                            pass
+                        
+            else:
+                pass
+    if os.path.exists(tempPath)==True:    
+        for root, dirs, files in os.walk(tempPath):
+            file_count = 0
+            file_count += len(files)
+            if file_count > 0:
+                dialog = xbmcgui.Dialog()
+                if dialog.yesno("Borrar Archivos en ROM Cache", str(file_count) + " Archivos Encontrados", "Desea Eliminarlos?"):
+                    for g in files:
+                        try:
+                            if (g == "*.log" or f == "*.old.log"): continue
+                            os.unlink(os.path.join(root, g))
+                        except:
+                            pass
+                    for d in dirs:
+                        try:
+                            shutil.rmtree(os.path.join(root, d))
+                        except:
+                            pass
+                        
+            else:
+                pass
+    if os.path.exists(cdmPath)==True:    
+        for root, dirs, files in os.walk(cdmPath):
+            file_count = 0
+            file_count += len(files)
+            if file_count > 0:
+                dialog = xbmcgui.Dialog()
+                if dialog.yesno("Borrar Archivos en CDM", str(file_count) + " Archivos Encontrados", "Desea Eliminarlos?"):
+                    for h in files:
+                        try:
+                            if (h == "*.dmp" or f == "*.txt"): continue
+                            os.unlink(os.path.join(root, h))
+                        except:
+                            pass
+                    for d in dirs:
+                        try:
+                            shutil.rmtree(os.path.join(root, d))
+                        except:
+                            pass
+                        
+            else:
+                pass
+    if xbmc.getCondVisibility('system.platform.ATV2'):
+        atv2_cache_a = os.path.join('/private/var/mobile/Library/Caches/AppleTV/Video/', 'Other')
+        
+        for root, dirs, files in os.walk(atv2_cache_a):
+            file_count = 0
+            file_count += len(files)
+        
+            if file_count > 0:
+
+                dialog = xbmcgui.Dialog()
+                if dialog.yesno("Borra ATV2 Cache ", str(file_count) + " Archivos Encontrados 'Otros'", "Desea Eliminarlo?"):
+                
+                    for f in files:
+                        os.unlink(os.path.join(root, f))
+                    for d in dirs:
+                        shutil.rmtree(os.path.join(root, d))
+                        
+            else:
+                pass
+        atv2_cache_b = os.path.join('/private/var/mobile/Library/Caches/AppleTV/Video/', 'LocalAndRental')
+        
+        for root, dirs, files in os.walk(atv2_cache_b):
+            file_count = 0
+            file_count += len(files)
+        
+            if file_count > 0:
+
+                dialog = xbmcgui.Dialog()
+                if dialog.yesno("Borra ATV2 Cache ", str(file_count) + " Archivos Encontrados 'LocalAndRental'", "Desea Eliminarlos?"):
+                
+                    for f in files:
+                        os.unlink(os.path.join(root, f))
+                    for d in dirs:
+                        shutil.rmtree(os.path.join(root, d))
+                        
+            else:
+                pass
+
+    cacheEntries = setupCacheEntries()
+
+    for entry in cacheEntries:
+        clear_cache_path = xbmc.translatePath(entry.path)
+        if os.path.exists(clear_cache_path)==True:    
+            for root, dirs, files in os.walk(clear_cache_path):
+                file_count = 0
+                file_count += len(files)
+                if file_count > 0:
+
+                    dialog = xbmcgui.Dialog()
+                    if dialog.yesno("Limpia tu Kodi",str(file_count) + "%s Archivos Cache Encontrados"%(entry.name), "Desea Eliminarlos?"):
+                        for f in files:
+                            os.unlink(os.path.join(root, f))
+                        for d in dirs:
+                            shutil.rmtree(os.path.join(root, d))
+                            
+                else:
+                    pass
+
+
+    dialog = xbmcgui.Dialog()
+    dialog.ok("Limpia tu Kodi", "Todos los Archivos se Limpiaron con Exito")
+
+
+def deleteThumbnails():
+
+    if os.path.exists(thumbnailPath)==True:  
+            dialog = xbmcgui.Dialog()
+            if dialog.yesno("Borrar Imagenes", "Esta opcion eliminara todas las Imagenes", "Desea continuar?"):
+                for root, dirs, files in os.walk(thumbnailPath):
+                    file_count = 0
+                    file_count += len(files)
+                    if file_count > 0:
+                        for f in files:
+                            try:
+                                os.unlink(os.path.join(root, f))
+                            except:
+                                pass
+
+
+    if os.path.exists(THUMBS):
+        try:
+            for root, dirs, files in os.walk(THUMBS):
+                file_count = 0
+                file_count += len(files)
+                # Count files and give option to delete
+                if file_count > 0:
+                        for f in files:    os.unlink(os.path.join(root, f))
+                        for d in dirs: shutil.rmtree(os.path.join(root, d))
+        except:
+            pass
+
+    try:
+        text13 = os.path.join(databasePath,"Textures13.db")
+        os.unlink(text13)
+    except:
+        pass
+    dialog.ok("[COLOR=red]Atencion[/COLOR]", "Debe Reiniciar Kodi Para Aplicar los Cambios")
+        
+def purgeCacheRom():
+
+    tempPath = xbmc.translatePath('special://home/addons/temp')
+    dialog = xbmcgui.Dialog()
+    for root, dirs, files in os.walk(tempPath):
+            file_count = 0
+            file_count += len(files)
+    if dialog.yesno("Borrar Temp de Kodi", "%d Archivos en Temp Encontrados."%file_count, "Desea Borrar Esto?"):  
+        for root, dirs, files in os.walk(tempPath):
+            file_count = 0
+            file_count += len(files)
+            if file_count > 0:
+                for f in files:
+                    os.unlink(os.path.join(root, f))
+                for d in dirs:
+                    shutil.rmtree(os.path.join(root, d))
+                dialog = xbmcgui.Dialog()
+                dialog.ok("Limpia tu Kodi", "Borrar todos los Archivos en Temp")
+            else:
+                dialog = xbmcgui.Dialog()
+                dialog.ok("Limpia tu Kodi", "Eliminados Archivos en Temp")
+
+def purgePackages():
+
+    purgePath = xbmc.translatePath('special://home/addons/packages')
+    dialog = xbmcgui.Dialog()
+    for root, dirs, files in os.walk(purgePath):
+            file_count = 0
+            file_count += len(files)
+    if dialog.yesno("Borrar contenido Package", "%d Packages Encontrados."%file_count, "Desea Eliminarlo?"):
+        for root, dirs, files in os.walk(purgePath):
+            file_count = 0
+            file_count += len(files)
+            if file_count > 0:            
+                for f in files:
+                    os.unlink(os.path.join(root, f))
+                for d in dirs:
+                    shutil.rmtree(os.path.join(root, d))
+                dialog = xbmcgui.Dialog()
+                dialog.ok("Limpia tu Kodi", "Borrar todo el contenido de Packages")
+            else:
+                dialog = xbmcgui.Dialog()
+                dialog.ok("Limpia tu Kodi", "Eliminados Packages")
+
+
+
+#######################################################################
+#                       Support
+#######################################################################
+
+
+params=get_params()
+url=None
+name=None
+mode=None
+
+try:
+        url=urllib.unquote_plus(params["url"])
+except:
+        pass
+try:
+        name=urllib.unquote_plus(params["name"])
+except:
+        pass
+try:
+        mode=int(params["mode"])
+except:
+        pass
+
+if mode==None or url==None or len(url)<1:
+        mainMenu()
+       
+elif mode==1:
+        clearCache()
+        
+elif mode==2:
+        deleteThumbnails()
+
+elif mode==3:
+        purgeCacheRom()
+
+elif mode==4:
+        purgePackages()
+
+xbmcplugin.endOfDirectory(int(sys.argv[1]))
