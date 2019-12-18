@@ -12,15 +12,17 @@ def list_all_channels(item):
     canales.extend(get_channels_dailysport(item))
     canales.extend(get_channels_sporttv(item))
 
-    for n, url_idioma in enumerate(canales):
-        label = '[COLOR red]Canal %s[/COLOR]' % (n + 1)
+    for n_url_idioma in canales:
+        n, url, idioma = n_url_idioma
+
+        label = '[COLOR red]Canal %s[/COLOR]' % n
 
         itemlist.append(item.clone(
-            label = (label + ' (%s)' % url_idioma[1]) if url_idioma[1] else label,
-            title = 'Canales [COLOR red]24[/COLOR] - Canal %s' % (n+1),
+            label=(label + ' (%s)' % idioma) if idioma else label,
+            title='Canales [COLOR red]24[/COLOR] - Canal %s' % n,
             action='play',
-            isPlayable=True,
-            url=url_idioma[0]
+            isPlayable= True,
+            url=url
         ))
 
     return itemlist
@@ -31,14 +33,20 @@ def get_channels_dailysport(item):
     ret = []
 
     def get_online(canal, ret):
-        data = httptools.downloadpage(canal[1]).data
-        url = re.findall(".*?source:\s*'(.*?)'", data)
-        if url and httptools.downloadpage(url[-1], headers={'Referer': canal[1]}).code == 200:
-            ret.append(canal)
+        data = httptools.downloadpage(canal[1],timeout=1)
+        url = re.findall("source:\s*'([^']+)'", data.data)
+        if url:
+            res= httptools.downloadpage(url[-1], headers={'Referer': canal[1]})
+            if res.headers:
+                #logger("%s - %s" % (canal[0], res.headers))
+                last_modified = datetime.datetime.strptime(res.headers['last-modified'][5:-4], '%d %b %Y %H:%M:%S')
+                date = datetime.datetime.strptime(res.headers['date'][5:-4], '%d %b %Y %H:%M:%S')
+                if last_modified > date - datetime.timedelta(minutes=15):
+                    ret.append(canal)
 
     try:
         data = httptools.downloadpage('https://dailysport.pw').data
-        idiomas = set(re.findall('Channel (\d+)\s([^<\(]+)', data))
+        idiomas = set(re.findall('Channel (\d+)\s([^<(]+)', data))
         idiomas = dict(eval(str(idiomas).replace('Spanish', 'Español').replace('English','Ingles')))
     except:
         idiomas = dict()
@@ -49,13 +57,17 @@ def get_channels_dailysport(item):
         threads.append(t)
         t.setDaemon(True)
         t.start()
-
+        
+    to = 0
+    #logger(to)
     running = [t for t in threads if t.isAlive()]
-    while running:
+    while running and to < 10.5:
         time.sleep(0.5)
+        to += 0.5
         running = [t for t in threads if t.isAlive()]
+    #logger(to)
 
-    return [(x[1],idiomas.get(str(x[0]),'').strip()) for x in sorted(ret, key=lambda x: x[0])]
+    return [(x[0],x[1],idiomas.get(str(x[0]),'').strip()) for x in sorted(ret, key=lambda x: x[0])]
 
 
 def play__dailysport(item):
@@ -65,7 +77,7 @@ def play__dailysport(item):
 
     try:
         data = httptools.downloadpage(item.url).data
-        url = re.findall(".*?source:\s*'(.*?)'", data)[-1]
+        url = re.findall("source:\s*'([^']+)'", data)[-1]
         url = url + '|' + header
 
         return {'action': 'play',
@@ -87,8 +99,8 @@ def play__dailysport(item):
 
 
 def get_channels_sporttv(item):
-    a = [('https://sportzonline.co/channels/bra/br%s.php' %n, 'Portugues') for n in range(1, 4)]
-    a.extend([('https://v2.sportzonline.to/channels/pt/sporttv%s.php' %n, 'Portugues') for n in range(1, 6)])
+    a = [(n + 19, 'https://sportzonline.co/channels/bra/br%s.php' %n, 'Portugues') for n in range(1, 4)]
+    a.extend([(n + 22, 'https://v2.sportzonline.to/channels/pt/sporttv%s.php' % n, 'Portugues') for n in range(1, 6)])
     return a
 
 

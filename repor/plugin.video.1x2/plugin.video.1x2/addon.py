@@ -19,10 +19,13 @@ def mainmenu(item):
     ))
 
     itemlist.append(item.clone(
-        label='S365',
+        #label='S365',
+        label='[COLOR FFB0C4DE]%s[/COLOR] [COLOR FFFAFAD2](En mantenimiento)[/COLOR]' % 'S365',
         channel='s365',
-        action='mainmenu',
-        icon=os.path.join(image_path, 'sport365_logo.png')
+        #action='mainmenu',
+        action='mantenimiento',
+        isFolder=False, # Para mantenimiento
+        icon=os.path.join(image_path, 'mantenimiento.png')
     ))
 
     itemlist.append(item.clone(
@@ -286,8 +289,13 @@ if __name__ == '__main__':
             ret = 'error'
 
         if 'error' in ret:
-            xbmcgui.Dialog().ok('1x2',
-                    'Ups! Para poder utilizar el canal 720pStream es necesario tener instalado inputstream.adaptive.')
+            if xbmcgui.Dialog().yesno('1x2',
+                    'Ups! Para poder utilizar el canal 720pStream es necesario tener instalado inputstream.adaptive.\n¿desea instalarlo ahora?',
+                                   yeslabel='Si', nolabel='No'):
+                try:
+                    xbmc.executebuiltin('InstallAddon(inputstream.adaptive)')
+                except:
+                    xbmcgui.Dialog().no('1x2', 'Ups! Parece ser que su sistema no es compatible con inputstream.adaptive.')
 
         item = Item(action='mainmenu', icon=os.path.join(image_path, 'logo.gif'))
 
