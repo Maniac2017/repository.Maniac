@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.IberiKa"
+       name="IberiKa"
+       version="0.0.8"
+       provider-name="Iberika">
+  <requires>
+    <import addon="xbmc.python" version="2.1.0"/>
+    <import addon="script.module.beautifulsoup" version="3.2.1"/>
+    <import addon="script.module.simple.downloader" version="0.9.4"/>
+    <import addon="script.module.requests" />
+    <import addon="script.module.httplib2" />
+    <import addon="script.module.liveresolver" version="0.1.24" optional="true"/>
+    <import addon="script.module.youtube.dl" optional="true"/>
+    <import addon="plugin.video.youtube" optional="true" />
+    <import addon="script.module.resolveurl" />
+	<import addon="script.module.urlresolver" />
+    <import addon="script.module.simplejson" />    
+    <import addon="script.module.livestreamer" optional="true"/>
+    <import addon="script.module.slproxy" optional="true"/>
+    <import addon="script.module.pyamf" optional="true"/>
+  </requires>
+  <extension point="xbmc.python.pluginsource" library="default.py">
+    <provides>video</provides>
+  </extension>
+
+
+  <extension point="xbmc.addon.metadata">
+    <summary>Creado por IberiKa</summary>
+    <description>Tal como indica la licencia GPL, cualquier persona puede hacer el uso que considere de mi trabajo. Los servicios y contenidos audiovisuales son ubicados en servidores de terceros y/o transmitidos por terceros. Nadie puede responsabilizar a Iberika de alojar contenido con copyright ya que nosotros no alojamos ningÃºn contenido con derechos de autor. Los enlaces que figuran en este addon han sido encontrados en diferentes webs de streaming online o de webs que alojan listas. No nos hacemos responsables del uso indebido que se pueda hacer del contenido de nuestro addon. No se admite ninguna compensacion economica o derivados.Espero que sea util, un saludo.       
+    </description>
+    <platform>all</platform>
+	 <assets>
+		<icon>icon.gif</icon>
+		<fanart>fanart.jpg</fanart>
+	  </assets>
+  </extension>
+  
+</addon>

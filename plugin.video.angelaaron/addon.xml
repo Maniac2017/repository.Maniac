@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<addon id="plugin.video.angelaaron" name="PVRIPTV" version="0.0.3" provider-name="Angelaaron">
+    <requires>
+    </requires>
+    <extension point="xbmc.python.pluginsource"
+               library="default.py">
+        <provides>video</provides>
+    </extension>
+    <extension point="xbmc.addon.metadata">
+        <platform>all</platform>
+        <summary>Gracias por usar mi addon</summary>
+        <description>Carga listas de forma sencilla</description>
+    </extension>
+</addon>
