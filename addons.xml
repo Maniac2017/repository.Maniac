@@ -391,7 +391,7 @@
 
 <addon id="script.limpiarkodi"
        name="Limpia Tu Kodi"
-       version="2.0.7"
+       version="2.0.8"
        provider-name="Catoal - Teco">
   <requires>
     <import addon="xbmc.python" version="2.1.0"/>
