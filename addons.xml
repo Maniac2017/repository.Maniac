@@ -97,80 +97,6 @@
 
 </addon>
 
-<addon id="plugin.video.1x2"
-  version="1.0.27"
-  name="1x2"
-  provider-name="Team NS">
-  <requires>
-    <import addon="xbmc.python" version="2.19.0"/>
-    <import addon="script.module.requests" version="2.19.1"/>
-    <import addon="script.module.routing"/>
-    <import addon="inputstream.adaptive" optional="true"/>
-    <import addon="plugin.video.youtube"/>
-    <import addon="script.video.F4mProxy" version="2.8.8"/>
-    <import addon="plugin.video.f4mTester" version="2.7.2"/>
-    <import addon="script.module.TvTap"/>
-    <import addon="program.plexus"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="addon.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <platform>all</platform>
-    <summary lang="es">Los videos son proporcionados por personas ... en línea ... en algún lugar...</summary>
-    <description lang="es">Los videos son proporcionados por personas ... en línea ... en algún lugar...</description>
-    <disclaimer lang="es">El autor no almacena ni distribuye ninguno de los contenidos que se muestran en este addon. El autor no tiene ninguna afiliación con el proveedor de contenidos.</disclaimer>
-    <assets>
-      <icon>icon.gif</icon>
-      <fanart>fanart.jpg</fanart>
-    </assets>
-  </extension>
-</addon>
-
-<addon id="plugin.video.Agora"
-       name="[B][LOWERCASE][CAPITALIZE][COLOR white]Agora[/CAPITALIZE][/LOWERCASE][/B][/COLOR]"
-       version="0.0.4"
-       provider-name="Teco">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.beautifulsoup4" />
-    <import addon="script.module.requests" />
-    <import addon="script.module.httplib2" />
-    <import addon="script.module.liveresolver" version="0.1.24" optional="true"/>
-    <import addon="script.module.youtube.dl" optional="true"/>
-    <import addon="plugin.video.youtube" optional="true" />
-    <import addon="script.module.urlresolver" optional="true"/>
-    <import addon="script.module.simplejson" />
-     <import addon="script.module.livestreamer" optional="true"/>
-     <import addon="script.module.pyamf" optional="true"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-
-  <extension point="xbmc.addon.metadata">
-    <summary>Addonagora@gmail.com</summary>
-    <description>Addon de Documentales 100% gratuito y basado en Youtube con licencia GNU GPL.</description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
-<addon id="plugin.video.angelaaron" name="PVRIPTV" version="0.0.3" provider-name="Angelaaron">
-    <requires>
-    </requires>
-    <extension point="xbmc.python.pluginsource"
-               library="default.py">
-        <provides>video</provides>
-    </extension>
-    <extension point="xbmc.addon.metadata">
-        <platform>all</platform>
-        <summary>Gracias por usar mi addon</summary>
-        <description>Carga listas de forma sencilla</description>
-    </extension>
-</addon>
-
 <addon id="plugin.video.JustForLaughs"
 	name="Just For Laughs"
 	version="1.0.0"
@@ -228,33 +154,6 @@
     <platform>all</platform>
     <forum>n/a</forum>
     <website>n/a</website>
-  </extension>
-</addon>
-
-<addon id="plugin.video.YouKids"
-       name="[COLOR gold]YouKids[/COLOR]"
-       version="0.0.3"
-       provider-name="Teco">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.beautifulsoup" version="3.2.1"/>
-    <import addon="script.module.simple.downloader" version="0.9.4"/>
-    <import addon="script.module.beautifulsoup4" />
-    <import addon="script.module.requests" />
-    <import addon="script.module.httplib2" />
-    <import addon="script.module.liveresolver" version="0.1.24" optional="true"/>
-    <import addon="script.module.youtube.dl" optional="true"/>
-    <import addon="plugin.video.youtube" optional="true" />
-    <import addon="script.module.urlresolver" optional="true"/>
-    <import addon="script.module.simplejson" />
-     <import addon="script.module.livestreamer" optional="true"/>
-     <import addon="script.module.pyamf" optional="true"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-    <summary>Todo el contenido del Addon esta basado en Youtube</summary>
-    <description>Addon Infantil con contenido Variado</description>
-    <platform>all</platform>
   </extension>
 </addon>
 
