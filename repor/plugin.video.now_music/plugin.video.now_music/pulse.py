@@ -177,8 +177,8 @@ YOUTUBE_CHANNEL_ID_150 = "PL_34_m4eTlaMCpwncwUniCT_BbmDf3YGH"
 YOUTUBE_CHANNEL_ID_151 = "PL7e7DXIcZhngq9s9w-DHtjasnDTY0GU9U"
 YOUTUBE_CHANNEL_ID_152 = "PL7e7DXIcZhngq9s9w-DHtjasnDTY0GU9U"
 YOUTUBE_CHANNEL_ID_153 = "PL7e7DXIcZhnhRWjyE0FZtj6fr5GEiq-oP"
-
-
+YOUTUBE_CHANNEL_ID_154 = "PL_34_m4eTlaOke2S7jdu6iOhjx855Tflx"
+YOUTUBE_CHANNEL_ID_155 = "PL_34_m4eTlaN8soNfVssZTAK-Ih8tSAZK"
 
 
 
@@ -202,6 +202,20 @@ def run():
 def main_list(params):
     plugintools.log("docu.main_list "+repr(params))
 
+    plugintools.add_item( 
+        #action="", 
+        title="Now 108 ",
+        url="plugin://plugin.video.youtube/playlist/"+YOUTUBE_CHANNEL_ID_155+"/",
+        thumbnail="https://i.imgur.com/CO0f6kJ.jpg",
+        folder=True )
+
+    plugintools.add_item( 
+        #action="", 
+        title="Now 107 ",
+        url="plugin://plugin.video.youtube/playlist/"+YOUTUBE_CHANNEL_ID_154+"/",
+        thumbnail="https://i.imgur.com/pRr2qWn.jpg",
+        folder=True )
+		
     plugintools.add_item( 
         #action="", 
         title="Now 106 ",
