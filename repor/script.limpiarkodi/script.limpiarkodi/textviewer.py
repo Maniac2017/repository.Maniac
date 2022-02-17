@@ -10,6 +10,7 @@ if sys.version_info.major==3:
     from six.moves import urllib
     from six.moves.urllib.parse import parse_qs, urlparse, quote_plus, unquote_plus
     from urllib.parse import urlparse
+    translatePath = xbmcvfs.translatePath
     try:
         from urllib.parse import parse_qs
     except ImportError:
@@ -20,6 +21,7 @@ if sys.version_info.major==2:
     from urllib2 import urlopen, Request, HTTPError
     from urlparse import urlparse
     from urlparse import parse_qs
+    translatePath = xbmc.translatePath
 Addon = xbmcaddon.Addon()
 addon = Addon.getAddonInfo('id')
 addonName = Addon.getAddonInfo('name')
@@ -137,7 +139,7 @@ class Viewer(xbmcgui.WindowXML):
             if mode == 'nocoin':
                 self.path = path
             else:
-                if xbmc.translatePath('special://logpath') not in self.path:
+                if translatePath('special://logpath') not in self.path:
                     self.path = get_logpath()
                 if '.old.log' in self.path:
                     self.path = self.path.replace('.old.log', '.log')
@@ -152,7 +154,7 @@ class Viewer(xbmcgui.WindowXML):
                 if 'nocoin.log' in path:
                     self.path = path.replace('nocoin.log', 'nocoin_error.log')
             else:
-                if xbmc.translatePath('special://logpath') not in self.path:
+                if translatePath('special://logpath') not in self.path:
                     self.path = get_logpath()
                 if '.old.log' not in self.path:
                     self.path = self.path.replace('.log', '.old.log')
@@ -224,9 +226,9 @@ def get_logpath():        # global path
         # path = ''
         # content = ''
     logfile_name = xbmc.getInfoLabel('System.FriendlyName').split()[0].lower()
-    l_path = os.path.join(xbmc.translatePath('special://logpath'), logfile_name + '.log')
+    l_path = os.path.join(translatePath('special://logpath'), logfile_name + '.log')
     if not os.path.isfile(l_path):
-        l_path = os.path.join(xbmc.translatePath('special://logpath'), 'kodi.log')
+        l_path = os.path.join(translatePath('special://logpath'), 'kodi.log')
         if not os.path.isfile(l_path):
             pass
     return l_path

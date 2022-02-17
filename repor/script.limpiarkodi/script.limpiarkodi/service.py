@@ -25,6 +25,7 @@ if sys.version_info.major==3:
     from six.moves import urllib
     from six.moves.urllib.parse import parse_qs, urlparse, quote_plus, unquote_plus
     from urllib.parse import urlparse
+    translatePath = xbmcvfs.translatePath
     try:
         from urllib.parse import parse_qs
     except ImportError:
@@ -35,20 +36,23 @@ if sys.version_info.major==2:
     from urllib2 import urlopen, Request, HTTPError
     from urlparse import urlparse
     from urlparse import parse_qs
-tempPath = xbmc.translatePath('special://home/addons/temp/')
-CacheRomdir   =  xbmc.translatePath(os.path.join('special://home/addons/temp',''))
-packagesdir   =  xbmc.translatePath(os.path.join('special://home/addons/packages',''))
-thumbnails    =  xbmc.translatePath('special://home/userdata/Thumbnails')
-dialog = xbmcgui.Dialog()
+    translatePath = xbmc.translatePath
+
+tempPath = translatePath('special://home/addons/temp/')
+CacheRomdir   =  translatePath(os.path.join('special://home/addons/temp',''))
+packagesdir   =  translatePath(os.path.join('special://home/addons/packages',''))
+thumbnails    =  translatePath('special://home/userdata/Thumbnails')
+
 setting = xbmcaddon.Addon().getSetting
-iconpath = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi','icon.png'))
+iconpath = translatePath(os.path.join('special://home/addons/script.limpiarkodi','icon.png'))
 filesize = int(setting('filesize_alert'))
 filesize_thumb = int(setting('filesizethumb_alert'))
 maxpackage_zips = int(setting('packagenumbers_alert'))
-print("MAINTENANCE SETTINGS", maxpackage_zips, filesize, filesize_thumb)
+
 total_size2 = 0
 total_size = 0
 count = 0
+
 for dirpath, dirnames, filenames in os.walk(packagesdir):
     count = 0
     for f in filenames:
@@ -56,9 +60,11 @@ for dirpath, dirnames, filenames in os.walk(packagesdir):
         fp = os.path.join(dirpath, f)
         total_size += os.path.getsize(fp)
 total_sizetext = "%.0f" % (total_size/1024000.0)
-    
+
+
 if count > maxpackage_zips or int(total_sizetext) > filesize: 
         control.purgePackages()
+
 
 if setting('autoclean') == 'true':
     control.clearCache()
@@ -76,8 +82,8 @@ for dirpath2, dirnames2, filenames2 in os.walk(thumbnails):
 total_sizetext2 = "%.0f" % (total_size2/1024000.0)
 
 if int(total_sizetext2) > filesize_thumb:
-    choice2 = xbmcgui.Dialog().yesno("[COLOR=red]AutoLimpiar[/COLOR]", 'La Carpeta Imagenes tiene [COLOR red]' + str(total_sizetext2) + ' MB   [/COLOR]', 'La carpeta se puede limpiar sin problemas para ahorrar espacio ...', 'Desea Eliminarlas?', yeslabel='Si',nolabel='No')
+    choice2 = xbmcgui.Dialog().yesno("[COLOR=red]AutoLimpiar[/COLOR]", 'La Carpeta Imagenes tiene [COLOR red]' + str(total_sizetext2) + ' MB   [/COLOR][CR]La carpeta se puede limpiar sin problemas para ahorrar espacio ...[CR]Desea Eliminarlas?', yeslabel='Si',nolabel='No')
     if choice2 == 1:
         control.deleteThumbnails()
 
-xbmc.executebuiltin('XBMC.Notification(%s, %s, %s, %s)' % ('Limpiar Kodi',  'Packages: '+ str(total_sizetext) +  ' MB'  ' - Images: ' + str(total_sizetext2) + ' MB' , '5000', iconpath))
+xbmcgui.Dialog().notification('Limpiar Kodi',  'Packages: '+ str(total_sizetext) +  ' MB'  ' - Images: ' + str(total_sizetext2) + ' MB' , iconpath, 5000)

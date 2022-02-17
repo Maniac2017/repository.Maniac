@@ -179,7 +179,8 @@ YOUTUBE_CHANNEL_ID_152 = "PL7e7DXIcZhngq9s9w-DHtjasnDTY0GU9U"
 YOUTUBE_CHANNEL_ID_153 = "PL7e7DXIcZhnhRWjyE0FZtj6fr5GEiq-oP"
 YOUTUBE_CHANNEL_ID_154 = "PL_34_m4eTlaOke2S7jdu6iOhjx855Tflx"
 YOUTUBE_CHANNEL_ID_155 = "PL_34_m4eTlaN8soNfVssZTAK-Ih8tSAZK"
-
+YOUTUBE_CHANNEL_ID_156 = "PL_34_m4eTlaMHeUxzgeE_l2GKSInf3T_M"
+YOUTUBE_CHANNEL_ID_157 = "PL_34_m4eTlaNCJ_rpWPq12Hx5Hq68YTMB"
 
 
 
@@ -204,11 +205,25 @@ def main_list(params):
 
     plugintools.add_item( 
         #action="", 
+        title="Now 110",
+        url="plugin://plugin.video.youtube/playlist/"+YOUTUBE_CHANNEL_ID_157+"/",
+        thumbnail="https://i.imgur.com/45KRSTY.jpg",
+        folder=True )
+		
+    plugintools.add_item( 
+        #action="", 
+        title="Now 109 ",
+        url="plugin://plugin.video.youtube/playlist/"+YOUTUBE_CHANNEL_ID_156+"/",
+        thumbnail="https://i.imgur.com/5ZBcFOZ.jpg",
+        folder=True )
+		
+    plugintools.add_item( 
+        #action="", 
         title="Now 108 ",
         url="plugin://plugin.video.youtube/playlist/"+YOUTUBE_CHANNEL_ID_155+"/",
         thumbnail="https://i.imgur.com/CO0f6kJ.jpg",
         folder=True )
-
+		
     plugintools.add_item( 
         #action="", 
         title="Now 107 ",

@@ -28,6 +28,7 @@ if sys.version_info.major==3:
     from six.moves import urllib
     from six.moves.urllib.parse import parse_qs, urlparse, quote_plus, unquote_plus
     from urllib.parse import urlparse
+    translatePath = xbmcvfs.translatePath
     try:
         from urllib.parse import parse_qs
     except ImportError:
@@ -38,39 +39,40 @@ if sys.version_info.major==2:
     from urllib2 import urlopen, Request, HTTPError
     from urlparse import urlparse
     from urlparse import parse_qs
+    translatePath = xbmc.translatePath
 addon_id = 'script.limpiarkodi'
-fanart = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id , 'fanart.jpg'))
-icon = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id, 'icon.png'))
-icon3 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'luar.png'))
-icon4 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'icon2.png'))
-icon2 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'indigo.png'))
-icon5 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'bibloteca.png'))
-icon6 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'ltemp.png'))
-icon7 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'paque.png'))
-icon8 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'update.png'))
-icon9 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'image.png'))
-icon10 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'depen.png'))
-icon11 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'Ajustes.png'))
-icon12 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'respaldo.png'))
-icon13 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'herra.png'))
-icon14 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'depenico.png'))
-icon15 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'Mante.png'))
-icon16 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'Mante.png'))
-icon17 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'lupa.png'))
-icon18 = xbmc.translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'gdrive.png'))
-thumbnailPath = xbmc.translatePath('special://thumbnails');
-cachePath = os.path.join(xbmc.translatePath('special://home'), 'cache')
-##cdmPath = os.path.join(xbmc.translatePath('special://home'), 'cdm')
-purgePath = os.path.join(xbmc.translatePath('special://home/addons'), 'packages')
-tempPath = xbmc.translatePath('special://home/addons/temp/')
-indigoPath = xbmc.translatePath('special://home/addons/plugin.program.indigo')
-gdrivePath = xbmc.translatePath('special://home/addons/plugin.video.gdrive')
-ltempPath = xbmc.translatePath('special://home/temp')
-addonPath = os.path.join(os.path.join(xbmc.translatePath('special://home'), 'addons'),'script.limpiarkodi')
+fanart = translatePath(os.path.join('special://home/addons/' + addon_id , 'fanart.jpg'))
+icon = translatePath(os.path.join('special://home/addons/' + addon_id, 'icon.png'))
+icon3 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'luar.png'))
+icon4 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'icon2.png'))
+icon2 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'indigo.png'))
+icon5 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'bibloteca.png'))
+icon6 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'ltemp.png'))
+icon7 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'paque.png'))
+icon8 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'update.png'))
+icon9 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'image.png'))
+icon10 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'depen.png'))
+icon11 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'Ajustes.png'))
+icon12 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'respaldo.png'))
+icon13 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'herra.png'))
+icon14 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'depenico.png'))
+icon15 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'Mante.png'))
+icon16 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'Mante.png'))
+icon17 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'lupa.png'))
+icon18 = translatePath(os.path.join('special://home/addons/script.limpiarkodi/media' , 'gdrive.png'))
+thumbnailPath = translatePath('special://thumbnails');
+cachePath = os.path.join(translatePath('special://home'), 'cache')
+##cdmPath = os.path.join(translatePath('special://home'), 'cdm')
+purgePath = os.path.join(translatePath('special://home/addons'), 'packages')
+tempPath = translatePath('special://home/addons/temp/')
+indigoPath = translatePath('special://home/addons/plugin.program.indigo')
+gdrivePath = translatePath('special://home/addons/plugin.video.gdrive')
+ltempPath = translatePath('special://home/temp')
+addonPath = os.path.join(os.path.join(translatePath('special://home'), 'addons'),'script.limpiarkodi')
 mediaPath = os.path.join(addonPath, 'media')
-databasePath = xbmc.translatePath('special://database')
-unoxdosPath = xbmc.translatePath('special://home/addons/script.limpiarkodi')
-THUMBS = xbmc.translatePath(os.path.join('special://home/userdata/Thumbnails',''))
+databasePath = translatePath('special://database')
+unoxdosPath = translatePath('special://home/addons/script.limpiarkodi')
+THUMBS = translatePath(os.path.join('special://home/userdata/Thumbnails',''))
 addonName = xbmcaddon.Addon().getAddonInfo('name')
 
 #######################################################################
@@ -188,7 +190,7 @@ def clearCache():
             if file_count > 0:
 
                 dialog = xbmcgui.Dialog()
-                if dialog.yesno("Borrar Cache", str(file_count) + " Archivos Encontrados", "Desea Eliminarlos?"):
+                if dialog.yesno("Borrar Cache", str(file_count) + " Archivos Encontrados[CR]Desea Eliminarlos?"):
                 
                     for f in files:
                         try:
@@ -210,7 +212,7 @@ def clearCache():
             file_count += len(files)
             if file_count > 0:
                 dialog = xbmcgui.Dialog()
-                if dialog.yesno("Borrar Archivos en ROM Cache", str(file_count) + " Archivos Encontrados", "Desea Eliminarlos?"):
+                if dialog.yesno("Borrar Archivos en ROM Cache", str(file_count) + " Archivos Encontrados[CR]Desea Eliminarlos?"):
                     for g in files:
                         try:
                             if (g == "*.log" or f == "*.old.log"): continue
@@ -253,7 +255,7 @@ def clearCache():
             if file_count > 0:
 
                 dialog = xbmcgui.Dialog()
-                if dialog.yesno("Borrar Cache", str(file_count) + " Archivos Encontrados", "Desea Eliminarlos?"):
+                if dialog.yesno("Borrar Cache", str(file_count) + " Archivos Encontrados[CR]Desea Eliminarlos?"):
                 
                     for f in files:
                         try:
@@ -279,7 +281,7 @@ def clearCache():
             if file_count > 0:
 
                 dialog = xbmcgui.Dialog()
-                if dialog.yesno("Borra ATV2 Cache ", str(file_count) + " Archivos Encontrados 'Otros'", "Desea Eliminarlo?"):
+                if dialog.yesno("Borra ATV2 Cache ", str(file_count) + " Archivos Encontrados 'Otros'[CR]Desea Eliminarlo?"):
                 
                     for f in files:
                         os.unlink(os.path.join(root, f))
@@ -297,7 +299,7 @@ def clearCache():
             if file_count > 0:
 
                 dialog = xbmcgui.Dialog()
-                if dialog.yesno("Borra ATV2 Cache ", str(file_count) + " Archivos Encontrados 'LocalAndRental'", "Desea Eliminarlos?"):
+                if dialog.yesno("Borra ATV2 Cache ", str(file_count) + " Archivos Encontrados 'LocalAndRental'[CR]Desea Eliminarlos?"):
                 
                     for f in files:
                         os.unlink(os.path.join(root, f))
@@ -310,7 +312,7 @@ def clearCache():
     cacheEntries = setupCacheEntries()
 
     for entry in cacheEntries:
-        clear_cache_path = xbmc.translatePath(entry.path)
+        clear_cache_path = translatePath(entry.path)
         if os.path.exists(clear_cache_path)==True:    
             for root, dirs, files in os.walk(clear_cache_path):
                 file_count = 0
@@ -318,7 +320,7 @@ def clearCache():
                 if file_count > 0:
 
                     dialog = xbmcgui.Dialog()
-                    if dialog.yesno("Limpia tu Kodi",str(file_count) + "%s Archivos Cache Encontrados"%(entry.name), "Desea Eliminarlos?"):
+                    if dialog.yesno("Limpia tu Kodi",str(file_count) + "%s Archivos Cache Encontrados[CR]Desea Eliminarlos?" %(entry.name)):
                         for f in files:
                             os.unlink(os.path.join(root, f))
                         for d in dirs:
@@ -364,7 +366,7 @@ def deleteThumbnails():
 
 def purgeCacheRom():
 
-    tempPath = xbmc.translatePath('special://home/addons/temp')
+    tempPath = translatePath('special://home/addons/temp')
     dialog = xbmcgui.Dialog()
     for root, dirs, folders in os.walk(tempPath):
             file_count = 0
@@ -375,7 +377,7 @@ def purgeCacheRom():
             file_count += len(folders)
             if file_count > 0:
                 dialog = xbmcgui.Dialog()
-                if dialog.yesno("Borrar Archivos en Temp", str(file_count) + " Archivos Encontrados", "Desea Eliminarlos?"):
+                if dialog.yesno("Borrar Archivos en Temp", str(file_count) + " Archivos Encontrados[CR]Desea Eliminarlos?"):
 
                     for f in folders:
                         try:
@@ -393,12 +395,12 @@ def purgeCacheRom():
 
 def purgePackages():
 
-    purgePath = xbmc.translatePath('special://home/addons/packages')
+    purgePath = translatePath('special://home/addons/packages')
     dialog = xbmcgui.Dialog()
     for root, dirs, files in os.walk(purgePath):
             file_count = 0
             file_count += len(files)
-    if dialog.yesno("Borrar contenido en Paquetes", "%d Paquetes Encontrados."%file_count, "Desea Eliminarlos?"):
+    if dialog.yesno("Borrar contenido en Paquetes", "%d Paquetes Encontrados.[CR]Desea Eliminarlos?" %file_count):
         for root, dirs, files in os.walk(purgePath):
             file_count = 0
             file_count += len(files)
@@ -439,7 +441,7 @@ def bibloteca():
 
 def deleteindigo():
 
-    indigoPath = xbmc.translatePath('special://home/addons/plugin.program.indigo')
+    indigoPath = translatePath('special://home/addons/plugin.program.indigo')
     dialog = xbmcgui.Dialog()
     for root, dirs, files in os.walk(indigoPath):
             file_count = 0
@@ -450,7 +452,7 @@ def deleteindigo():
             file_count += len(files)
             if file_count > 0:
                 dialog = xbmcgui.Dialog()
-                if dialog.yesno("Este Proceso Desinstala Indigo", str() + "Despues de desinstalar Indigo Kodi se  [COLOR red]reiniciara[/COLOR] ", "Esta seguro de que desea eliminar Indigo?"):
+                if dialog.yesno("Este Proceso Desinstala Indigo", str() + "Despues de desinstalar Indigo Kodi se  [COLOR red]reiniciara[/COLOR][CR]Esta seguro de que desea eliminar Indigo?"):
 
                     for f in files:
                         try:
@@ -471,7 +473,7 @@ def deleteindigo():
 
 def deletegdrive():
 
-    gdrivePath = xbmc.translatePath('special://home/addons/plugin.video.gdrive')
+    gdrivePath = translatePath('special://home/addons/plugin.video.gdrive')
     dialog = xbmcgui.Dialog()
     for root, dirs, files in os.walk(gdrivePath):
             file_count = 0
@@ -482,7 +484,7 @@ def deletegdrive():
             file_count += len(files)
             if file_count > 0:
                 dialog = xbmcgui.Dialog()
-                if dialog.yesno("Este Proceso Desinstala gdrive", str() + "Despues de desinstalar gdrive Kodi se  [COLOR red]reiniciara[/COLOR] ", "Esta seguro de que desea eliminar gdrive?"):
+                if dialog.yesno("Este Proceso Desinstala gdrive", str() + "Despues de desinstalar gdrive Kodi se  [COLOR red]reiniciara[/COLOR][CR]Esta seguro de que desea eliminar gdrive?"):
 
                     for f in files:
                         try:
@@ -523,9 +525,9 @@ def enablertmp():
 
 
 def compactDB():
-    conn = sqlite3.connect(xbmc.translatePath("special://home/userdata/Database/Addons27.db"))
+    conn = sqlite3.connect(translatePath("special://home/userdata/Database/Addons27.db"))
     size1 = size2 = 0
-    databasePath = xbmc.translatePath('special://database')
+    databasePath = translatePath('special://database')
     if os.path.exists(databasePath):
         files = ([f for f in os.listdir(databasePath) if f.endswith('.db') and os.path.isfile(os.path.join(databasePath, f))])
         d = xbmcgui.DialogProgress()
@@ -566,7 +568,7 @@ def compactDB():
 
 def exec_sql(command, database='Addons27.db'):
     res = None
-    conn = sqlite3.connect(xbmc.translatePath("special://home/userdata/Database/" + database))
+    conn = sqlite3.connect(translatePath("special://home/userdata/Database/" + database))
     try:
         cur = conn.cursor()
         cur.execute(command)
@@ -683,8 +685,8 @@ def buscar():
 def depenm():
 
     addItem('  Mostrar Dependencias', 'url', 19,icon10)
-    addItem('  Eliminar Repositorios Huerfanos', 'url', 9,icon10)
-    addItem('  Eliminar Depenpencias Huerfanas', 'url', 14,icon10)
+    ##addItem('  Eliminar Repositorios Huerfanos', 'url', 9,icon10)
+    ##addItem('  Eliminar Depenpencias Huerfanas', 'url', 14,icon10)
 
 
 

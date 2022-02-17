@@ -26,6 +26,7 @@ if sys.version_info.major==3:
     from six.moves import urllib
     from six.moves.urllib.parse import parse_qs, urlparse, quote_plus, unquote_plus
     from urllib.parse import urlparse
+    translatePath = xbmcvfs.translatePath
     try:
         from urllib.parse import parse_qs
     except ImportError:
@@ -36,22 +37,23 @@ if sys.version_info.major==2:
     from urllib2 import urlopen, Request, HTTPError
     from urlparse import urlparse
     from urlparse import parse_qs
-thumbnailPath = xbmc.translatePath('special://thumbnails');
-cachePath = os.path.join(xbmc.translatePath('special://home'), 'cache')
-##cdmPath = os.path.join(xbmc.translatePath('special://home'), 'cdm')
-purgePath = os.path.join(xbmc.translatePath('special://home/addons'), 'packages')
-ltempPath = xbmc.translatePath('special://home/temp')
-torrentsdir = xbmc.translatePath(os.path.join('special://cache'))
-tempPath = xbmc.translatePath('special://home/addons/temp/')
-addonPath = os.path.join(os.path.join(xbmc.translatePath('special://home'), 'addons'),'script.limpiarkodi')
-unoxdosPath = xbmc.translatePath('special://home/addons/plugin.video.1x2')
+    translatePath = xbmc.translatePath
+thumbnailPath = translatePath('special://thumbnails');
+cachePath = os.path.join(translatePath('special://home'), 'cache')
+##cdmPath = os.path.join(translatePath('special://home'), 'cdm')
+purgePath = os.path.join(translatePath('special://home/addons'), 'packages')
+ltempPath = translatePath('special://home/temp')
+torrentsdir = translatePath(os.path.join('special://cache'))
+tempPath = translatePath('special://home/addons/temp/')
+addonPath = os.path.join(os.path.join(translatePath('special://home'), 'addons'),'script.limpiarkodi')
+unoxdosPath = translatePath('special://home/addons/plugin.video.1x2')
 mediaPath = os.path.join(addonPath, 'media')
-databasePath = xbmc.translatePath('special://database')
-THUMBS    =  xbmc.translatePath(os.path.join('special://home/userdata/Thumbnails',''))
+databasePath = translatePath('special://database')
+THUMBS    =  translatePath(os.path.join('special://home/userdata/Thumbnails',''))
 
 addon_id = 'script.limpiarkodi'
-fanart = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id , 'fanart.jpg'))
-iconpath = xbmc.translatePath(os.path.join('special://home/addons/' + addon_id, 'icon.png'))
+fanart = translatePath(os.path.join('special://home/addons/' + addon_id , 'fanart.jpg'))
+iconpath = translatePath(os.path.join('special://home/addons/' + addon_id, 'icon.png'))
 class cacheEntry:
     def __init__(self, namei, pathi):
         self.name = namei
@@ -73,7 +75,6 @@ def setupCacheEntries():
 
 
 def clearCache():
-
     if os.path.exists(cachePath)==True:    
         for root, dirs, files in os.walk(cachePath):
             file_count = 0
@@ -211,7 +212,7 @@ def clearCache():
     cacheEntries = setupCacheEntries()
                                          
     for entry in cacheEntries:
-        clear_cache_path = xbmc.translatePath(entry.path)
+        clear_cache_path = translatePath(entry.path)
         if os.path.exists(clear_cache_path)==True:    
             for root, dirs, files in os.walk(clear_cache_path):
                 file_count = 0
@@ -234,7 +235,7 @@ def clearCache():
         pass
 
 
-    xbmc.executebuiltin('XBMC.Notification(%s, %s, %s, %s)' % ('Limpia tu Kodi' , 'Auto Limpieza[COLOR blue] Completada[/COLOR]' , '3000', iconpath))   
+    xbmcgui.Dialog().notification('Limpia tu Kodi' , 'Auto Limpieza[COLOR blue] Completada[/COLOR]' , iconpath, 3000)
 
 def Cacherom():
 
@@ -315,7 +316,7 @@ def Cacherom():
     cacheEntries = setupCacheEntries()
 
     for entry in cacheEntries:
-        clear_cache_path = xbmc.translatePath(entry.path)
+        clear_cache_path = translatePath(entry.path)
         if os.path.exists(clear_cache_path)==True:    
             for root, dirs, files in os.walk(clear_cache_path):
                 file_count = 0
@@ -330,16 +331,15 @@ def Cacherom():
                             
                 else:
                     pass
-                
 
+    xbmcgui.Dialog().notification('Limpia tu Kodi' , 'Auto Limpieza[COLOR blue] Completada[/COLOR]' , iconpath, 3000)
 
-    xbmc.executebuiltin('XBMC.Notification(%s, %s, %s, %s)' % ('Limpia tu Kodi' , 'Auto Limpieza[COLOR blue] Completada[/COLOR]' , '3000', iconpath))   
 
 def deleteThumbnails():
 
     if os.path.exists(thumbnailPath)==True:  
             dialog = xbmcgui.Dialog()
-            if dialog.yesno("Borrar Imagenes", "Esta opcion eliminara todas las Imagenes", "Desea continuar?"):
+            if dialog.yesno("Borrar Imagenes", "Esta opcion eliminara todas las Imagenes[CR]Desea continuar?"):
                 for root, dirs, files in os.walk(thumbnailPath):
                     file_count = 0
                     file_count += len(files)
@@ -370,9 +370,10 @@ def deleteThumbnails():
         pass
     dialog.ok("[COLOR=red]Atencion[/COLOR]", "Debe Reiniciar Kodi Para Aplicar los Cambios")
 
+
 def purgePackages():
 
-    purgePath = xbmc.translatePath('special://home/addons/packages')
+    purgePath = translatePath('special://home/addons/packages')
     for root, dirs, files in os.walk(purgePath):
             file_count = 0
             file_count += len(files)
@@ -389,8 +390,7 @@ def purgePackages():
                             shutil.rmtree(os.path.join(root, d))
                         except:
                             pass
-
-    xbmc.executebuiltin('XBMC.Notification(%s, %s, %s, %s)' % ('Limpia tu Kodi' , 'Auto Limpieza[COLOR blue] Completada[/COLOR]' , '3000', iconpath))
+    xbmcgui.Dialog().notification('Limpia tu Kodi' , 'Auto Limpieza[COLOR blue] Completada[/COLOR]', iconpath, 3000)
 
 
 def update():
@@ -413,7 +413,7 @@ def palantir():
 
 def purgeCacheRom():
 
-    tempPath = xbmc.translatePath('special://home/addons/temp')
+    tempPath = translatePath('special://home/addons/temp')
     paths = []
     if os.path.isdir(path_temp):
         paths = os.listdir(path_temp)
