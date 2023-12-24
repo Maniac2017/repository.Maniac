@@ -1,86 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <addons>
-<addon id="plugin.video.JustForLaughs"
-	name="Just For Laughs"
-	version="1.0.0"
-	provider-name="Clipol">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.addon.common" version="2.0.0"/>
-    <import addon="plugin.video.youtube" version="5.0.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="default.py">
-    <provides>video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="es">Kodi</summary>
-    <description lang="es">Camaras Ocultas</description>
-    <platform>all</platform>
-    <forum>n/a</forum>
-    <website>n/a</website>
-  </extension>
-</addon>
-
-<addon id="plugin.video.musicando" name="Musicando" version="1.0.0" provider-name="Catoal">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.addon.common" version="2.0.0"/>
-    <import addon="plugin.video.youtube" version="5.0.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="pulse.py">
-    <provides>audio video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="es">Los Mejores Videos de YouTube. </summary>
-    <description lang="es">Los videos mas destacados de la red.</description>
-    <description lang="en"></description>
-    <disclaimer lang="en"></disclaimer>
-    <platform>all</platform>
-    <forum>n/a</forum>
-    <website>n/a</website>
-  </extension>
-</addon>
-
-<addon id="plugin.video.now_music" name="Now Thats What I Call Music"	version="5.6.6"	provider-name="Catoal">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-    <import addon="script.module.addon.common" version="2.0.0"/>
-    <import addon="plugin.video.youtube" version="5.0.0"/>
-  </requires>
-  <extension point="xbmc.python.pluginsource" library="pulse.py">
-    <provides>audio video</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Now Thats What I Call Music Collection</summary>
-    <description lang="en"></description>
-    <disclaimer lang="en"></disclaimer>
-    <platform>all</platform>
-    <forum>n/a</forum>
-    <website>n/a</website>
-  </extension>
-</addon>
-
-<addon id="script.kodispeedtest"
-       name="Test de Velocidad"
-       version="0.1.0"
-       provider-name="[COLOR lime]Catoal[/COLOR]">
-  <requires>
-    <import addon="xbmc.python" version="2.1.0"/>
-  </requires>
-  <extension point="xbmc.python.script"
-             library="default.py">
-        <provides>video executable</provides>
-  </extension>
-  <extension point="xbmc.addon.metadata">
-    <summary lang="en">Test de velocidad</summary>
-    <description lang="en"></description>
-    <platform>all</platform>
-  </extension>
-</addon>
-
 <addon id="script.limpiarkodi"
        name="Limpia Tu Kodi"
-       version="3.0.1"
+       version="3.0.2"
        provider-name="Catoal">
   <requires>
     <import addon="script.module.six" version="1.11.0"/>
@@ -106,21 +28,5 @@
       <screenshot>resources/screenshot002.jpg</screenshot>
     </assets>
   </extension>
-</addon>
-
-<addon id="script.sin.guason" name="Sin Guason" version="1.1.5" provider-name="Guason">
-
-    <extension point="xbmc.service" library="startup.py" start="startup" />
-
-    <extension point="xbmc.addon.metadata">
-        <summary lang="en">Sin Spaw en Kodi</summary>
-        <description lang="en">Sin Spaw en Kodi</description>
-        <platform>all</platform>
-        <source>https://</source>
-        <assets>
-            <icon>icon.png</icon>
-            <fanart>fanart.png</fanart>
-        </assets>
-    </extension>
 </addon>
 </addons>
