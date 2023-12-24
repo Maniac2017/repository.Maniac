@@ -1,2 +1,0 @@
-Versión 5.6.6
-- Añadido Now 110
