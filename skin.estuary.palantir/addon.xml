@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<addon id="skin.estuary.palantir" version="1.0.0" name="Estuary Palantir" provider-name="The Lords Of Flix">
+	<requires>
+		<!--<import addon="xbmc.gui" version="5.16.0"/>-->
+		<import addon="script.skinshortcuts" version="0.4.0"  optional="true"/>
+	</requires>
+	<extension point="xbmc.gui.skin" debugging="false">
+		<res width="1920" height="1440" aspect="4:3" default="false" folder="xml" />
+		<res width="1920" height="1280" aspect="3:2" default="false" folder="xml" />
+		<res width="1920" height="1200" aspect="16:10" default="false" folder="xml" />
+		<res width="2040" height="1080" aspect="17:9" default="false" folder="xml" />
+		<res width="1920" height="1080" aspect="16:9" default="true" folder="xml" />
+		<res width="2560" height="1080" aspect="21:9" default="false" folder="xml" />
+		<res width="2338" height="1080" aspect="19.5:9" default="false" folder="xml" />
+		<res width="2160" height="1080" aspect="18:9" default="false" folder="xml" />
+	</extension>
+	<extension point="xbmc.addon.metadata">
+		<platform>all</platform>
+		<license>CC BY-SA 4.0, GNU GENERAL PUBLIC LICENSE Version 2.0</license>
+		<forum></forum>
+		<source></source>
+		<assets>
+			<icon>resources/icon.png</icon>
+			<fanart>resources/fanart.jpg</fanart>
+			<screenshot>extras/views/Amplia.png</screenshot>
+			<screenshot>extras/views/Fanart.png</screenshot>
+			<screenshot>extras/views/Flix Episodes.png</screenshot>
+			<screenshot>extras/views/Flix Seasons 2.png</screenshot>
+			<screenshot>extras/views/Flix Seasons.png</screenshot>
+			<screenshot>extras/views/Flix.png</screenshot>
+			<screenshot>extras/views/Iconwall.png</screenshot>
+			<screenshot>extras/views/Infowall.png</screenshot>
+			<screenshot>extras/views/Lista.png</screenshot>
+			<screenshot>extras/views/Mayusc.png</screenshot>
+			<screenshot>extras/views/Muro.png</screenshot>
+			<screenshot>extras/views/Poster.png</screenshot>
+		</assets>
+		<summary lang="es_ES">Estuary Palantir, modificacion del skin creado por phil65 y Piers adaptado especialmente para Palantir.</summary>
+		<summary lang="en_GB">Estuary Palantir, modification of the skin created by phil65 and Piers adapted especially for Palantir.</summary>
+	</extension>
+</addon>
